@@ -1,4 +1,4 @@
-# $Id: fit.contrast.R,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
+# $Id: fit.contrast.R,v 1.5 2005/06/09 14:20:26 nj7w Exp $
 
 fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
                             conf.int=NULL, df=FALSE, ...)

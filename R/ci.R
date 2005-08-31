@@ -1,4 +1,4 @@
-# $Id: ci.R,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
+# $Id: ci.R,v 1.10 2005/06/09 14:20:26 nj7w Exp $
 
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")

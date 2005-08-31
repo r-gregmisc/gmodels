@@ -1,4 +1,4 @@
-# $Id: coefFrame.R,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
+# $Id: coefFrame.R,v 1.2 2005/06/09 14:20:26 nj7w Exp $
 
 coefFrame <- 
 function (mod, data, by = NULL, fit.on = TRUE, fitfun, keep.unused.levels = TRUE, 

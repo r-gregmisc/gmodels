@@ -1,4 +1,4 @@
-% $Id: make.contrasts.Rd,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
+% $Id: make.contrasts.Rd,v 1.4 2005/06/09 14:20:26 nj7w Exp $
 %
 \name{make.contrasts}
 \alias{make.contrasts}

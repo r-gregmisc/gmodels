@@ -1,0 +1,9 @@
+CHANGES IN GMODELS 2.0.8
+-----------------------
+
+ - Added DESCRIPTION and removed DESCRIPTION.in
+
+ - Updated CrossTable.R
+
+ - Updated NAMESPACE file
+

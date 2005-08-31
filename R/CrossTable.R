@@ -1,4 +1,15 @@
-# $Id: CrossTable.R,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
+# Revision 2.1 2005/06/26
+# Added 'dnn' argument to enable specification of dimnames
+# as per table()
+# Correct bug in SPSS output for 1d table, where proportions
+# were being printed and not percentages ('%' output)
+
+
+# Revision 2.0 2005/04/27
+# Added 'format = "d"' to all table count output
+# so that large integers do not print in
+# scientific notation
+
 
 CrossTable <- function (x, y,
                         digits = 3,
@@ -16,12 +27,17 @@ CrossTable <- function (x, y,
                         asresid = FALSE,
                         missing.include = FALSE,
                         format=c("SAS","SPSS"),
+                        dnn = NULL,
                         ...
                         )
 {
 
-  format=match.arg(format)
-  
+  format = match.arg(format)
+
+  RowData <- deparse(substitute(x))
+  if (!missing(y))
+    ColData <- deparse(substitute(y))
+
   ## Ensure that max.width >= 1
   if (max.width < 1)
     stop("max.width must be >= 1")
@@ -36,12 +52,12 @@ CrossTable <- function (x, y,
       ## is x a vector?
       if (is.null(dim(x)))
         {
-                                        #TotalN <- length(x)
           if (missing.include)
             x <- factor(x,exclude=NULL)
           else
             ## Remove any unused factor levels
             x <- factor(x)
+          
           t <- t(as.matrix(table(x)))
           vector.x <- TRUE
         }
@@ -68,13 +84,10 @@ CrossTable <- function (x, y,
       if(length(x) != length(y))
         stop("x and y must have the same length")
 
-      ## Create Titles for Table From Vector Names
-      RowData <- deparse(substitute(x))
-      ColData <- deparse(substitute(y))
       if (missing.include)
         {
-          x <- factor(x,exclude=c())
-          y <- factor(y,exclude=c())
+          x <- factor(x, exclude=c())
+          y <- factor(y, exclude=c())
         }
       else
         {
@@ -86,6 +99,22 @@ CrossTable <- function (x, y,
       t <- table(x, y)
     }
 
+  ## Create Titles for Table From Vector Names
+  ## At least 2 x 2 table only (for now)
+  if (all(dim(t) >= 2))
+  {
+    if (!is.null(dnn))
+    {
+      if (length(dnn) != 2)
+        stop("dnn must have length of 2, one element for each table dimension")
+      else
+      {
+        RowData <- dnn[1]
+        ColData <- dnn[2]
+      }
+    }  
+  }
+  
   ## if t is not at least a 2 x 2, do not do stats
   ## even if any set to TRUE. Do not do col/table props
   if (any(dim(t) < 2))
@@ -168,7 +197,7 @@ CrossTable <- function (x, y,
 
       for (i in 1:nrow(t))
         {
-          cat(FirstCol[i], formatC(c(t[i, ], RS[i]), width = CWidth), 
+          cat(FirstCol[i], formatC(c(t[i, ], RS[i]), width = CWidth, format = "d"), 
               sep = " | ", collapse = "\n")
           if (expected) 
             cat(SpaceSep1, formatC(CST$expected[i, ], digits = digits, 
@@ -196,7 +225,7 @@ CrossTable <- function (x, y,
         }
       
       ## Print Column Totals
-      cat(ColTotal, formatC(c(CS, GT), width = CWidth), sep = " | ", 
+      cat(ColTotal, formatC(c(CS, GT), width = CWidth, format = "d"), sep = " | ", 
           collapse = "\n")
       if (prop.c) 
         cat(SpaceSep1, formatC(CS/GT, width = CWidth, digits = digits, 
@@ -228,7 +257,7 @@ CrossTable <- function (x, y,
       for (i in 1:nrow(t))
         {
           cat(cat(FirstCol[i], sep=" | ", collapse=""),
-              cat(formatC(c(t[i, ], RS[i]), width = CWidth-1),
+              cat(formatC(c(t[i, ], RS[i]), width = CWidth-1, format = "d"),
                   sep = "  | ", collapse = "\n"), sep="", collapse="")
 
           if (expected)
@@ -287,7 +316,7 @@ CrossTable <- function (x, y,
 
       ## Print Column Totals
       cat(cat(ColTotal,sep=" | ",collapse=""),
-          cat(formatC(c(CS, GT), width = CWidth-1), sep = "  | ",
+          cat(formatC(c(CS, GT), width = CWidth-1, format = "d"), sep = "  | ",
               collapse = "\n"),sep="",collapse="")
 
       if (prop.c)
@@ -333,7 +362,7 @@ CrossTable <- function (x, y,
               sep = " | ", collapse = "\n")
 
           cat(SpaceSep3, rep(RowSep, (end[i] - start[i]) + 1), sep = "|", collapse = "\n")
-          cat(SpaceSep2, formatC(t[, start[i]:end[i]], width = CWidth), sep = " | ", collapse = "\n")
+          cat(SpaceSep2, formatC(t[, start[i]:end[i]], width = CWidth, format = "d"), sep = " | ", collapse = "\n")
           cat(SpaceSep2, formatC(CPT[, start[i]:end[i]], width = CWidth, digits = digits, format = "f"),
               sep = " | ", collapse = "\n")
           cat(SpaceSep3, rep(RowSep, (end[i] - start[i]) + 1), sep = "|", collapse = "\n")
@@ -380,11 +409,11 @@ CrossTable <- function (x, y,
           cat(SpaceSep3, rep(RowSep, (end[i] - start[i]) +
                              1), sep = "|", collapse = "\n")
           cat(cat(SpaceSep2,sep=" | ",collapse=""),
-              cat(formatC(t[, start[i]:end[i]], width = CWidth-1),
+              cat(formatC(t[, start[i]:end[i]], width = CWidth-1, format = "d"),
                   sep = "  | ", collapse = "\n"),
               sep="",collapse="")
           cat(cat(SpaceSep2, sep=" | ",collapse=""),
-              cat(formatC(CPT[, start[i]:end[i]], width = CWidth-1,
+              cat(formatC(CPT[, start[i]:end[i]] * 100, width = CWidth-1,
                           digits = digits, format = "f"), sep = "% | ",
                   collapse = ""),sep="",collapse="\n")
           cat(SpaceSep3, rep(RowSep, (end[i] - start[i]) +

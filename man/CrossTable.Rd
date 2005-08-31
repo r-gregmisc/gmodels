@@ -1,5 +1,11 @@
-% $Id: CrossTable.Rd,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
-%
+%% Revision 2.1 2005/06/26
+%% Added 'dnn' argument to enable specification of dimnames
+%% names as per table()
+
+%% Revision 2.0 2005/04/27
+%% Added attributions to Nitin Jain and
+%% and Dirk Enzmann for SPSS format
+
 \name{CrossTable}
 \alias{CrossTable}
 \title{Cross Tabulation with Tests for Factor Independence}
@@ -14,14 +20,14 @@ CrossTable(x, y, digits=3, max.width = 5, expected=FALSE, prop.r=TRUE, prop.c=TR
            prop.t=TRUE, prop.chisq=TRUE, chisq = FALSE, fisher=FALSE, mcnemar=FALSE,
            resid=FALSE, sresid=FALSE, asresid=FALSE,
            missing.include=FALSE,
-format=c("SAS","SPSS"),...)
+           format=c("SAS","SPSS"), dnn = NULL, ...)
 }
 \arguments{
   \item{x}{A vector or a matrix. If y is specified, x must be a vector}
   \item{y}{A vector in a matrix or a dataframe}
   \item{digits}{Number of digits after the decimal point for cell
     proportions}
-  \item{max.width}{In the case of a 1 x n table, the default will be
+	\item{max.width}{In the case of a 1 x n table, the default will be
 		to print the output horizontally. If the number of columns exceeds
 		max.width, the table will be wrapped for each successive increment
 		of max.width columns. If you want a single column vertical table,
@@ -45,7 +51,8 @@ format=c("SAS","SPSS"),...)
    \item{missing.include}{If \code{TRUE}, then remove any unused factor levels}
   \item{format}{Either SAS (default) or SPSS, depending on the type of
     output desired.}
-  \item{...}{additional arguments passed on table}
+  \item{dnn}{the names to be given to the dimensions in the result (the dimnames names).}
+\item{\dots}{optional arguments}
 
  }
 \details{
@@ -103,8 +110,11 @@ format=c("SAS","SPSS"),...)
 
   resid/sresid/asresid: Pearson Residuals (from chi-square tests).
 }
-\author{Marc Schwartz \email{mschwartz@medanalytics.com}. Original
-        version posted to r-devel on Jul 27, 2002.}
+\author{Marc Schwartz \email{mschwartz@mn.rr.com}. Original
+        version posted to r-devel on Jul 27, 2002. SPSS format
+        modifications added by Nitin Jain \email{nitin.jain@pfizer.com}
+	based upon code provided by Dirk Enzmann
+	\email{dirk.enzmann@jura.uni-hamburg.de}}
 
 \seealso{\code{\link{xtabs}},
          \code{\link{table}},
@@ -118,6 +128,7 @@ data(infert, package = "datasets")
 CrossTable(infert$education, infert$induced, expected = TRUE)
 CrossTable(infert$education, infert$induced, expected = TRUE, format="SAS")
 CrossTable(infert$education, infert$induced, expected = TRUE, format="SPSS")
+CrossTable(warpbreaks$wool, warpbreaks$tension, dnn = c("Wool", "Tension"))
 }
 \keyword{category}
 \keyword{univar}

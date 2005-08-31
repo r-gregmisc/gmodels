@@ -1,4 +1,4 @@
-# $Id: estimable.R,v 1.1.1.1 2005/05/25 22:13:00 nj7w Exp $
+# $Id: estimable.R,v 1.8 2005/06/09 14:20:26 nj7w Exp $
 
 estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
                            show.beta0)

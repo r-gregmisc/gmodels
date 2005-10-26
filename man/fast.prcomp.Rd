@@ -1,4 +1,4 @@
-% $Id: fast.prcomp.Rd,v 1.5 2005/06/09 14:20:26 nj7w Exp $
+% $Id: fast.prcomp.Rd,v 1.6 2005/09/12 15:43:28 nj7w Exp $
 %
 \name{fast.prcomp}
 \alias{fast.prcomp}
@@ -69,7 +69,7 @@
   \code{\link{svd}} .
 }
 \author{Modifications by Gregory R. Warnes
-  \email{gregory\_r\_warnes@groton.pfizer.com} }
+  \email{gregory.r.warnes@pfizer.com} }
 
 \seealso{
     \code{\link[stats]{prcomp}}, \code{\link{svd}}, \code{\link{La.svd}}

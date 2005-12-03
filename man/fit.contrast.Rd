@@ -1,4 +1,4 @@
-% $Id: fit.contrast.Rd,v 1.6 2005/06/09 14:20:26 nj7w Exp $
+% $Id: fit.contrast.Rd,v 1.7 2005/12/01 16:54:02 nj7w Exp $
 %
 \name{fit.contrast}
 \alias{fit.contrast}
@@ -45,7 +45,7 @@ fit.contrast(model, varname, coeff, ... )
   specified lower and upper confidence limits are also returned.}
 \references{Venables & Ripley, Section 6.2}
   
-\author{ Gregory R. Warnes \email{Gregory\_R\_Warnes@groton.pfizer.com}}
+\author{ Gregory R. Warnes \email{gregory.r.warnes@pfizer.com}}
 
 \seealso{ \code{\link{lm}}, \code{\link{contrasts}},
   \code{\link{contr.treatment}},  \code{\link{contr.poly}},

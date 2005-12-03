@@ -1,10 +1,25 @@
-# $Id: estimable.R,v 1.8 2005/06/09 14:20:26 nj7w Exp $
+# $Id: estimable.R,v 1.9 2005/12/04 06:12:22 warnes Exp $
 
 estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
                            show.beta0)
 {
-  if (!is.matrix(cm) && !is.data.frame(cm))
-    cm <- matrix(cm, nrow=1)
+  if (is.matrix(cm) || is.data.frame(cm))
+    {
+      cm <- t(apply(cm, 1, .to.est, obj=obj)) 
+    }
+  else if(is.list(cm))
+    {
+      cm <- t(sapply(cm,
+                     .to.est, obj=obj)) 
+    }
+  else if(is.vector(cm))
+    {
+      cm <- matrix(.to.est(obj, cm),nrow=1)
+    }
+  else
+    {
+      stop("`cm' argument must be of type vector, list, or matrix.")
+    }
 
   if(missing(show.beta0))
     {
@@ -28,7 +43,23 @@ estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
     }
   else
     {
-      if ("lme" %in% class(obj)) {
+      if ("lmer" %in% class(obj)) {
+        stat.name <- "t.stat"
+        cf <- as.matrix(fixef(obj))
+        vcv <- vcov(obj)
+        tmp <- cm
+        tmp[tmp==0] <- NA
+        df.all <- t(abs(t(tmp) * getFixDF(obj)))
+        df <- apply(df.all, 1, min, na.rm=TRUE)
+        problem <- apply(df.all != df, 1, any, na.rm=TRUE)
+        if (any(problem))
+          warning(paste("Degrees of fredom vary among parameters used to ",
+                        "constrct linear contrast(s): ",
+                        paste((1:nrow(tmp))[problem], collapse=", "),
+                        ". Using the smallest df among the set of parameters.",
+                        sep=""))
+      }
+      else if ("lme" %in% class(obj)) {
         stat.name <- "t.stat"
         cf <- summary(obj)$tTable
         rho <- summary(obj)$cor
@@ -82,7 +113,7 @@ estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
         }
       else
         {
-          stop("obj must be of class 'lm', 'glm', 'aov', 'lme', 'gee', 'geese' or 'nlme'")
+          stop("obj must be of class 'lm', 'glm', 'aov', 'lme', 'lmer', 'gee', 'geese' or 'nlme'")
         }
       if (is.null(cm))
         cm <- diag(dim(cf)[1])
@@ -126,7 +157,7 @@ estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
       if (!is.null(conf.int))
         {
           if (conf.int <=0 || conf.int >=1)
-            stop("conf.int should be betweeon 0 and 1. Usual values are 0.95, 0.90")
+            stop("conf.int should be between 0 and 1. Usual values are 0.95, 0.90")
           alpha <- 1 - conf.int
           switch(stat.name, t.stat={
             quant <- qt(1 - alpha/2, df)
@@ -138,6 +169,7 @@ estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
                           vc * quant)
           colnames(retval) <- nm
         }
+      rownames(retval) <- make.unique(rownames(retval))
       retval <- as.data.frame(retval)
       if(!show.beta0) retval$beta0 <- NULL
       return(retval)
@@ -178,4 +210,17 @@ estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
     retval <- as.data.frame(cbind(W, df, prob))
     names(retval) <- c("X2.stat", "DF", "Pr(>|X^2|)")
     print(as.data.frame(retval))
+}
+
+
+## this is how the DF are caclulated in the Matrix package (for lmer.summary objects)
+## it seems that this is not entirely correct, but will hopfully be improved upon shortly
+## see lmer.R from the Matrix package version 0.99-1
+
+getFixDF <- function(obj)
+{
+          nc <- obj@nc[-seq(along = obj@Omega)]
+          p <- abs(nc[1]) - 1
+          n <- nc[2]
+          rep(n-p, p)
 }

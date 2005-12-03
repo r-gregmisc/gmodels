@@ -1,14 +1,12 @@
-# $Id: fit.contrast.R,v 1.5 2005/06/09 14:20:26 nj7w Exp $
+# $Id: fit.contrast.R,v 1.6 2005/12/04 06:12:22 warnes Exp $
 
 fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
                             conf.int=NULL, df=FALSE, ...)
 {
   # check class of model
-  if( !("lm" %in% class(model) ||
-        "aov" %in% class(model) ||
-        "lme" %in% class(model) ) )
+  if( !(any(class(model) %in% c("lm", "aov", "lme", "lmer") ) ))
     stop("contrast.lm can only be applied to objects inheriting from 'lm'",
-         "and 'lme' (eg: lm,glm,aov,lme).")
+         "and 'lme' (eg: lm,glm,aov,lme,lmer).")
 
   # make sure we have the NAME of the variable
   if(!is.character(varname))
@@ -36,17 +34,37 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
   colnames(cmat) <- cn
 
   # recall fitting method with the specified contrast
-  m <- model$call
+  if(!("lmer" %in% class(model)))
+     m <- model$call
+  else
+     m <- model@call # lmer is class 4
+
   if(is.null(m$contrasts))
     m$contrasts <- list()
   m$contrasts[[varname]] <- cmat
+
   if(is.R())
     r <- eval(m, parent.frame())
   else
     r <- eval(m)
 
   # now return the correct elements ....
-  if( 'lme' %in% class(model) )
+  if( 'lmer' %in% class(model) )
+    {
+      est <- fixef(r) 
+      se  <- sqrt(diag(vcov(r)))
+      tval <- est/se
+      df.lmer   <- getFixDF(r)
+      retval <- cbind(
+                      "Estimate"= est,
+                      "Std. Error"= se,
+                      "t-value"= tval,
+                      "Pr(>|t|)"=  2 * (1 - pt(abs(tval), df.lmer)),
+                      "DF"=df.lmer
+                      )
+
+    }
+  else if( 'lme' %in% class(model) )
     {
       est <- r$coefficients$fixed
       se  <- sqrt(diag(r$varFix))
@@ -81,7 +99,10 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
         }
       else
         {
-          rn <- paste(varname,rownames(coeff),sep="")
+          if(!("lmer" %in% class(model))) # doesn't add this on in lmer
+            rn <- paste(varname,rownames(coeff),sep="")
+          else
+            rn <- varname
           ind <- match(rn,rownames(retval))
           retval <- retval[ind,,drop=FALSE]
         }
@@ -104,8 +125,8 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
     return(retval)
 }
 
-# fit.contrast.lme is necessary because 'lme' objects do not inherit
-# from 'lm'.
+# fit.contrast.lme and fit.contrast.lmer are necessary because
+# 'lme' and 'lmer' objects do not inherit from 'lm'.
 #
 # **Make sure that the argument list *exactly* matches the one
 # for fit.contrast.lm() above.**
@@ -114,6 +135,13 @@ fit.contrast.lme <- function(model, varname, coeff, showall=FALSE,
                             conf.int=NULL, df=FALSE, ...)
   {
     require(nlme)
+    fit.contrast.lm(model, varname, coeff, showall, conf.int, df)
+  }
+
+fit.contrast.lmer <- function(model, varname, coeff, showall=FALSE,
+                            conf.int=NULL, df=FALSE, ...)
+  {
+    require(lme4)
     fit.contrast.lm(model, varname, coeff, showall, conf.int, df)
   }
 

@@ -1,3 +1,20 @@
+CHANGES IN GMODELS 2.2.0
+-------------------------
+
+- Add support for lmer (lme version 4) objects to ci(), estimable(),
+  and fit.contrast() via code contributed by Randall C Johnson.
+
+- Add simplfied coefficient specification to estimable() based on a
+  function provided by Randall C Johnson.  It is now possible to do
+  things like:
+	estimable(reg, c("xB"=1,"xD"=-1))
+  instead of:  
+        estimable(reg, c(    0,   1,	 0,   -1)) 
+  which should make estimable() much easier to use for large models.
+
+CHANGES IN GMODELS 2.1.0
+------------------------
+
 CHANGES IN GMODELS 2.0.8
 -----------------------
 

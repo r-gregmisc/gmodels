@@ -1,24 +1,24 @@
-% $Id: ci.Rd,v 1.10 2005/10/26 13:39:30 warnes Exp $
+% $Id: ci.Rd,v 1.12 2005/12/04 06:12:22 warnes Exp $
 %
 \name{ci}
 \alias{ci}
 \alias{ci.default}
+\alias{ci.binom}
 \alias{ci.lm}
 \alias{ci.lme}
-\alias{ci.binom}
+\alias{ci.lmer}
 \title{Compute Confidence Intervals}
-\description{ Compute and display confidence intervals for vectors and model
+\description{ Compute and display confidence intervals for model
   estimates.  Methods are provided for the mean of a numeric vector
   \code{ci.default}, the probability of a binomial vector
-  \code{ci.binom}, and for model estimates from \code{lm} and \code{lme}
-  objects (\code{ci.lm} and \code{ci.lme}).
-  }
+  \code{ci.binom}, and for \code{lm}, \code{lme}, and \code{lmer} objects are
+  provided. }
 \synopsis{
   ci(x, confidence = 0.95, alpha = 1 - confidence,...)
   \method{ci}{default}(x, confidence = 0.95, alpha = 1 - confidence, na.rm=FALSE)...)
+  \method{ci}{binom}(x, confidence = 0.95, alpha = 1 - confidence,...)
   \method{ci}{lm}(x, confidence = 0.95, alpha = 1 - confidence,...)
-  \method{ci}{lme}(x, confidence = 0.95, alpha = 1 - confidence,...)
-  \method{ci}{binom}(x, confidence = 0.95, alpha = 1 - confidence,...)   
+  \method{ci}{lme}(x, confidence = 0.95, alpha = 1 - confidence,...) 
 }
 \arguments{
   \item{x}{ object from which to compute confidence intervals. }
@@ -32,16 +32,16 @@
 %  ~~ If necessary, more details than the __description__  above ~~
 %}
 \value{
-  vector or matrix with one row per model parameter and columns
+  vector or matrix with one row per model parameter and elements/columns
   \code{Estimate}, \code{CI lower}, \code{CI upper}, \code{Std. Error},
   \code{DF} (for lme objects only), and \code{p-value}.
 }
 \author{ Gregory R. Warnes \email{Gregory\_R\_Warnes\@groton.pfizer.com}
 }
 \seealso{
-  \code{\link[MASS]{confint}},
-  \code{\link{lm}},
-  \code{\link{summary.lm}}
+  \code{\link[stats]{confint}},
+  \code{\link[stats]{lm}},
+  \code{\link[stats]{summary.lm}}
 }
 
 \examples{

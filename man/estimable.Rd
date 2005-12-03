@@ -1,22 +1,22 @@
-% $Id: estimable.Rd,v 1.14 2005/06/09 14:20:26 nj7w Exp $
+% $Id: estimable.Rd,v 1.16 2005/12/04 06:12:22 warnes Exp $
 %
 \name{estimable}
 \alias{estimable}
-\alias{.wald}
-\title{Contrasts and estimable linear functions of model coefficients
-  for lm, glm, lme, and geese objects}
+%\alias{.wald}
+%\alias{.to.est}
+\title{Contrasts and estimable linear functions of model coefficients}
 \description{Compute and test contrasts and other estimable linear
-  functions of model coefficients for for lm, glm, lme, and geese
+  functions of model coefficients for for lm, glm, lme, lmer, and geese
   objects}
 \usage{
 estimable(obj, cm, beta0, conf.int=NULL, joint.test=FALSE, show.beta0)
-.wald(obj, cm,beta0=rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm))))
+%.wald(obj, cm,beta0=rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm))))
+%.to.est(obj, params)
 }
 \arguments{
-   \item{obj}{Regression (lm,glm,lme) object. }
-   \item{cm}{Matrix specifying estimable linear functions or contrasts (one per
-     row). The number of columns must match the number of fitted
-     coefficients in the model.}
+   \item{obj}{Regression (lm,glm,lme,lmer) object. }
+   \item{cm}{Vector, List, or Matrix specifying estimable linear functions or
+     contrasts.  See below for details.}
    \item{beta0}{Vector of null hypothesis values}
    \item{conf.int}{Confidence level.  If provided, confidence intervals
      will be computed.}
@@ -32,10 +32,24 @@ estimable(obj, cm, beta0, conf.int=NULL, joint.test=FALSE, show.beta0)
 \details{
   \code{estimable} computes an estimate, test statitic, significance
   test, and (optional) confidence interval for each linear functions of
-  the model coefficients specified by the rows of \code{cm}.  The
-  estimates and their variances are obtained by applying the matrix
-  \code{cm} to the model estimates variance-covariance matrix.  Degrees
-  of freedom are obtained from the appropriate model terms.
+  the model coefficients specified by \code{cm}.
+
+  The estimable function(s) may be specified via a vector, list, or
+  matrix.  If \code{cm} is a vector, it should contained named elements
+  each of which gives the coefficient to be applied to the
+  corresponding parameter. These coefficients will be used to construct
+  the contrast matrix, with unspecified model parameters assigned zero
+  coefficients. If \code{cm} is a list, it should contain one or more
+  coefficient vectors, which will be used to construct rows of the
+  contrast matrix.  If \code{cm} is a matrix, column names must match (a
+  subset of) the model parameters, and each row should contain the
+  corresponding coefficient to be applied.  Model parameters which are
+  not present in the set of column names of \code{cm} will be set to zero.
+  
+  The estimates and their variances are obtained by applying the
+  contrast matrix (generated from) \code{cm} to the model estimates
+  variance-covariance matrix.  Degrees of freedom are obtained from the
+  appropriate model terms.
   
   The user is responsible for ensuring that the specified
   linear functions are meaningful.
@@ -46,8 +60,8 @@ estimable(obj, cm, beta0, conf.int=NULL, joint.test=FALSE, show.beta0)
   \code{contrast} function in Frank Harrell's Design library may be more
   convenient.
 
-  The \code{.wald} function is called internally by \code{estimable} and
-  is not intended for direct use.
+  %The \code{.wald} function is called internally by \code{estimable} and
+  %is not intended for direct use.
 }
 \note{
   The estimated fixed effect parameter of \code{lme} objects may have
@@ -63,9 +77,12 @@ estimable(obj, cm, beta0, conf.int=NULL, joint.test=FALSE, show.beta0)
   p-values, and the lower and upper endpoints of the
   1-alpha confidence intervals. 
 }
-\author{ BXC (Bendix Carstensen) \email{bxc\@novonordisk.com}, 
-  Gregory R. Warnes \email{Gregory\_R\_Warnes\@groton.pfizer.com}, and
-  Søren Højsgaard \email{sorenh@agrsci.dk}}
+\author{
+  BXC (Bendix Carstensen) \email{bxc\@novonordisk.com}, 
+  Gregory R. Warnes \email{Gregory\_R\_Warnes\@groton.pfizer.com}, 
+  Søren Højsgaard \email{sorenh@agrsci.dk}, and
+  Randall C Johnson \email{rjohnson@ncifcrf.gov}
+}
 \seealso{
   \code{\link{fit.contrast}},
   \code{\link[stats]{lm}}, \code{\link[nlme]{lme}},
@@ -74,31 +91,50 @@ estimable(obj, cm, beta0, conf.int=NULL, joint.test=FALSE, show.beta0)
   }
 
 \examples{
-# simple contrast and confidence interval
+# setup example data
 y <- rnorm(100)
 x <-  cut(rnorm(100, mean=y, sd=0.25),c(-4,-1.5,0,1.5,4))
+levels(x) <- c("A","B","C","D")
+x2 <- rnorm(100, mean=y, sd=0.5)
+
+# simple contrast and confidence interval
 reg <- lm(y ~ x)
-estimable(reg, c(    0,   1,    0,   -1) )
+estimable(reg, c(    0,   1,    0,   -1) )  # full coefficient vector
+estimable(reg, c("xB"=1,"xD"=-1) )          # just the nonzero terms
+
 
 # Fit a spline with a single knot at 0.5 and plot the *pointwise*
 # confidence intervals
 library(gplots)
-x2 <- rnorm(100,mean=y,sd=0.5)
-reg2 <- lm(y ~ x + x2 + pmax(x2-0.5,0) )
-range <- seq(-2,2,,50)
-tmp <- estimable(reg2,cbind(1,0,0,1,range,pmax(range-0.5,0)), conf.int=0.95)
-plotCI(x=range,y=tmp[,1],li=tmp[,6],ui=tmp[,7])
+pm <- pmax(x2-0.5, 0) # knot at 0.5
+reg2 <- lm(y ~ x + x2 + pm )
+
+range <- seq(-2, 2, , 50)
+tmp <- estimable(reg2,
+                 cm=cbind(
+                          '(Intercept)'=1,
+                          'xC'=1,
+                          'x2'=range,
+                          'pm'=pmax(range-0.5, 0)
+                           ),
+                 conf.int=0.95)
+plotCI(x=range, y=tmp[, 1], li=tmp[, 6], ui=tmp[, 7])
 
 # Fit both linear and quasi-Poisson models to iris data, then compute
-# conficence intervals on a contrast.
+# joint confidence intervals on contrasts for the Species and
+# Sepal.Width by Species interaction terms.
 data(iris)
-lm1  <- lm(Sepal.Length~Sepal.Width+Species+Sepal.Width:Species, data=iris)
-glm1 <- glm(Sepal.Length~Sepal.Width+Species+Sepal.Width:Species, data=iris,
+lm1  <- lm (Sepal.Length ~ Sepal.Width + Species + Sepal.Width:Species, data=iris)
+glm1 <- glm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width:Species, data=iris, 
             family=quasipoisson("identity"))
-cm <- rbind( lambda1 = c(1,0,1,0,0,0),
-             lambda2 = c(1,0,0,1,0,0))
-estimable(lm1,cm)
-estimable(glm1,cm)
+
+cm <- rbind(
+            'Setosa vs. Versicolor'   = c(0, 0, 1, 0, 1, 0), 
+            'Setosa vs. Virginica'    = c(0, 0, 0, 1, 0, 1),
+            'Versicolor vs. Virginica'= c(0, 0, 1,-1, 1,-1)
+            )
+estimable(lm1, cm)
+estimable(glm1, cm)
 }
 \keyword{ models }
 \keyword{ regression }

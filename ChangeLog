@@ -1,12 +1,73 @@
-2005-08-31 12:27  nj7w (Nitin Jain)
+2005-12-04 01:12  warnes
+
+	* DESCRIPTION, NAMESPACE, R/ci.R, R/estimable.R, R/fit.contrast.R,
+	  R/to.est.R, man/ci.Rd, man/estimable.Rd: Integration of code
+	  changes suggested by Randall C Johnson to add support for lmer
+	  (lme version 4) objects to ci(), estimable(), and fit.contrast().
+
+	  Addition of simplified coefficient specificaiton for estimable()
+	  based on a function provided by Randall C Johnson.  It is now
+	  possible to do things like:	   estimable(reg, c("xB"=1,"xD"=-1)
+	  ) instead of:  estimable(reg, c(    0,   1,	 0,   -1) ) which
+	  should make estimable much easier to use for large models.
+
+2005-12-01 11:54  nj7w
+
+	* man/: ci.Rd, coefFrame.Rd, estimable.Rd, fit.contrast.Rd,
+	  make.contrasts.Rd: Updated Greg's email address
+
+2005-10-27 07:21  tag RELEASE_2_1_0
+
+2005-10-27 07:21  warnes
+
+	* DESCRIPTION: Update version number.  Bump minor version since we
+	  added functionality.
+
+2005-10-27 06:33  warnes
+
+	* DESCRIPTION, NAMESPACE: Add ci.binom() to NAMESPACE, bump version
+
+2005-10-26 09:39  warnes
+
+	* R/ci.R, man/ci.Rd: Add ci.binom
+
+2005-10-25 17:18  warnes
+
+	* NAMESPACE: Add gdata::nobs to import list.  Needed by ci()
+
+2005-09-12 11:43  nj7w
+
+	* man/: fast.prcomp.Rd, glh.test.Rd: Updated Greg's email
+
+2005-09-07 11:31  nj7w
+
+	* man/CrossTable.Rd: Fixed man page
+
+2005-09-06 17:34  nj7w
+
+	* DESCRIPTION: Updated DESCRIPTION
+
+2005-09-06 17:34  nj7w
+
+	* NEWS: Added NEWS
+
+2005-09-06 12:21  nj7w
+
+	* DESCRIPTION: Fixed the Package name
+
+2005-09-02 19:09  nj7w
+
+	* ChangeLog: Added ChangeLog
+
+2005-08-31 12:27  nj7w
 
 	* DESCRIPTION: Added DESCRIPTION file
 
-2005-08-31 12:26  nj7w (Nitin Jain)
+2005-08-31 12:26  nj7w
 
 	* DESCRIPTION.in: removed DESCRIPTION.in
 
-2005-07-11 17:35  nj7w (Nitin Jain)
+2005-07-11 17:35  nj7w
 
 	* R/CrossTable.R, man/CrossTable.Rd: Revision based on Marc
 	  Schwartz's suggestions: 1) Added 'dnn' argument to enable
@@ -14,7 +75,7 @@
 	  output for 1d table, where proportions were being printed and not
 	  percentages ('%' output)
 
-2005-06-09 10:20  nj7w (Nitin Jain)
+2005-06-09 10:20  nj7w
 
 	* R/ci.R, R/coefFrame.R, R/estimable.R, R/fast.prcomp.R,
 	  R/fit.contrast.R, R/glh.test.R, R/make.contrasts.R,
@@ -24,7 +85,7 @@
 	  help files to synchronize splitting of gregmisc bundle in 4
 	  individual components.
 
-2005-06-09 10:13  nj7w (Nitin Jain)
+2005-06-09 10:13  nj7w
 
 	* R/CrossTable.R: Updates by Marc Schwartz: CrossTable:
 
@@ -32,7 +93,7 @@
 	  count output # so that large integers do not print in #
 	  scientific notation
 
-2005-05-13 14:59  nj7w (Nitin Jain)
+2005-05-13 14:59  nj7w
 
 	* man/CrossTable.Rd: 1) Using dQuote.ascii function in read.xls as
 	  the new version of dQuote doesn't work proprly with UTF-8 locale.
@@ -60,11 +121,8 @@
 
 	* R/CrossTable.R, man/CrossTable.Rd, man/ci.Rd, man/estimable.Rd,
 	  man/fast.prcomp.Rd, man/fit.contrast.Rd, man/glh.test.Rd,
-	  man/make.contrasts.Rd: Ensure that each file has $Id: ChangeLog,v 1.1 2005/09/02 23:09:35 nj7w Exp $ header, and
-	  no $Log: ChangeLog,v $
-	  no Revision 1.1  2005/09/02 23:09:35  nj7w
-	  no Added ChangeLog
-	  no
+	  man/make.contrasts.Rd: Ensure that each file has $Id$ header, and
+	  no $Log$
 
 2005-03-31 13:30  warnes
 
@@ -75,7 +133,7 @@
 
 	* R/CrossTable.R: Removed Windows Line Endings
 
-2005-01-14 16:40  nj7w (Nitin Jain)
+2005-01-14 16:40  nj7w
 
 	* man/CrossTable.Rd: Updated the manual to reflect prop.chisq
 	  change in its R file.
@@ -90,7 +148,7 @@
 	* DESCRIPTION.in: Add dependency on R 1.9.0+ to prevent poeple from
 	  installing on old versions of R which don't support namespaces.
 
-2004-12-23 14:32  nj7w (Nitin Jain)
+2004-12-23 14:32  nj7w
 
 	* R/CrossTable.R, man/CrossTable.Rd: Split the function
 	  print.CrossTable.vector in two parts - for SAS behaiour and SPSS

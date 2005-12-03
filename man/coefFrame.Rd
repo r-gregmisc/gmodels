@@ -1,4 +1,4 @@
-% $Id: coefFrame.Rd,v 1.3 2005/06/09 14:20:26 nj7w Exp $
+% $Id: coefFrame.Rd,v 1.4 2005/12/01 16:54:02 nj7w Exp $
 %
 \name{coefFrame}
 \alias{coefFrame}
@@ -65,7 +65,7 @@ coefFrame(log(Signal) ~ log(Concentration),
 
 
 }
-\author{Jim Rogers \email{james\_a\_rogers@groton.pfizer.com}}
+\author{Jim Rogers \email{james.a.rogers@pfizer.com}}
 \keyword{models}
 
 

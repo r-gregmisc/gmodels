@@ -1,5 +1,7 @@
-CHANGES IN GMODELS 2.2.0
+CHANGES IN GMODELS 2.12.0
 -------------------------
+
+- Updated Greg's email address.
 
 - Add support for lmer (lme version 4) objects to ci(), estimable(),
   and fit.contrast() via code contributed by Randall C Johnson.

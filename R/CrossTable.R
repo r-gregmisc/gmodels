@@ -1,3 +1,9 @@
+# Revision 2.2 2006/05/02
+# Fix a bug when a matrix is passed as the 'x' argument
+# Reported by Prof. Albert Sorribas same day
+# Fix involved creating default values for RowData and ColData
+# when there are no dimnames for the matrix
+
 # Revision 2.1 2005/06/26
 # Added 'dnn' argument to enable specification of dimnames
 # as per table()
@@ -18,7 +24,7 @@ CrossTable <- function (x, y,
                         prop.r = TRUE,
                         prop.c = TRUE,
                         prop.t = TRUE,
-                        prop.chisq=TRUE,
+                        prop.chisq = TRUE,
                         chisq = FALSE,
                         fisher = FALSE,
                         mcnemar = FALSE,
@@ -26,7 +32,7 @@ CrossTable <- function (x, y,
                         sresid = FALSE,
                         asresid = FALSE,
                         missing.include = FALSE,
-                        format=c("SAS","SPSS"),
+                        format = c("SAS", "SPSS"),
                         dnn = NULL,
                         ...
                         )
@@ -67,8 +73,20 @@ CrossTable <- function (x, y,
           if(any(x < 0) || any(is.na(x)))
             stop("all entries of x must be nonnegative and finite")
 
-          ## Add generic dimnames if required
-          ## check each dimname separately, in case user has defined one or the other
+          ## Check to see if x has names(dimnames) defined. If yes, use these for
+          ## 'RowData' and 'ColData' labels, else create blank ones
+          ## This can be overridden by setting 'dnn' values
+          if (is.null(names(dimnames(x))))
+            {
+              RowData <- ""
+              ColData <- ""
+            } else {            
+              RowData <- names(dimnames(x))[1]
+              ColData <- names(dimnames(x))[2]
+            }
+          
+          ## Add generic column and rownames if required
+          ## check each separately, in case user has defined one or the other
           if (is.null(rownames(x)))
             rownames(x) <- paste("[", 1:nrow(x), ",]", sep = "")
           if (is.null(colnames(x)))
@@ -272,7 +290,7 @@ CrossTable <- function (x, y,
                     digits = digits, format = "f",
                             width = CWidth-1), sep="  | ", collapse=""),
                 cat(SpaceSep2, sep = " | ", collapse = "\n"), sep="", collapse="")
-      if (prop.r)
+          if (prop.r)
             cat(cat(SpaceSep1, sep=" | ", collapse=""),
                 cat(formatC(c(CPR[i, ]*100, 100*RS[i] / GT),
                             width = CWidth-1, digits = digits, format = "f"),

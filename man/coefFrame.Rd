@@ -1,4 +1,4 @@
-% $Id: coefFrame.Rd,v 1.4 2005/12/01 16:54:02 nj7w Exp $
+% $Id: coefFrame.Rd 776 2005-12-01 16:54:02Z nj7w $
 %
 \name{coefFrame}
 \alias{coefFrame}

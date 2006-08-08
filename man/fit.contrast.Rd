@@ -1,9 +1,10 @@
-% $Id: fit.contrast.Rd,v 1.7 2005/12/01 16:54:02 nj7w Exp $
+% $Id: fit.contrast.Rd 977 2006-08-02 22:21:49Z warnes $
 %
 \name{fit.contrast}
 \alias{fit.contrast}
 \alias{fit.contrast.lm}
 \alias{fit.contrast.lme}
+\alias{fit.contrast.lmer}
 \title{Compute and test arbitrary contrasts for regression objects}
 \description{
  Compute and test arbitrary contrasts for regression objects.
@@ -14,6 +15,8 @@ fit.contrast(model, varname, coeff, ... )
              conf.int=NULL, df=FALSE, ...)
 \method{fit.contrast}{lme}(model, varname, coeff, showall=FALSE,
              conf.int=NULL, df=FALSE, ...)
+\method{fit.contrast}{lmer}(model, varname, coeff, showall=FALSE,
+             conf.int=NULL, sim.lmer = TRUE, n.sim = 1000, ...)
 }
 \arguments{
   \item{model}{regression (lm,glm,aov,lme) object for which the
@@ -31,6 +34,10 @@ fit.contrast(model, varname, coeff, ... )
   \item{df}{boolean indicating whether to return a column containing the
     degrees of freedom.}
   \item{\dots}{optional arguments provided by methods.}
+  \item{sim.lmer}{Logical value. If TRUE p-values and confidence
+    intervals will be estimated using \code{\Link[Matrix]{mcmcsamp}}. This option only takes effect for lmer
+    objects.}
+  \item{n.sim}{Number of samples to use in \code{\Link[Matrix]{mcmcsamp}}.}
   }
   
 \details{
@@ -45,7 +52,7 @@ fit.contrast(model, varname, coeff, ... )
   specified lower and upper confidence limits are also returned.}
 \references{Venables & Ripley, Section 6.2}
   
-\author{ Gregory R. Warnes \email{gregory.r.warnes@pfizer.com}}
+\author{ Gregory R. Warnes \email{warnes@bst.rochester.edu}}
 
 \seealso{ \code{\link{lm}}, \code{\link{contrasts}},
   \code{\link{contr.treatment}},  \code{\link{contr.poly}},

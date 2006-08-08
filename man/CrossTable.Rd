@@ -1,3 +1,9 @@
+%% Revision 2.2 2006/05/02
+%% Fix a bug when a matrix is passed as the 'x' argument
+%% Reported by Prof. Albert Sorribas same day
+%% Fix involved creating default values for RowData and ColData
+%% when there are no dimnames for the matrix
+
 %% Revision 2.1 2005/06/26
 %% Added 'dnn' argument to enable specification of dimnames
 %% names as per table()

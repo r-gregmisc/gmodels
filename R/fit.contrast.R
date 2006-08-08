@@ -1,12 +1,12 @@
-# $Id: fit.contrast.R,v 1.6 2005/12/04 06:12:22 warnes Exp $
+# $Id: fit.contrast.R 964 2006-06-05 20:59:50Z nj7w $
 
 fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
                             conf.int=NULL, df=FALSE, ...)
 {
   # check class of model
-  if( !(any(class(model) %in% c("lm", "aov", "lme", "lmer") ) ))
-    stop("contrast.lm can only be applied to objects inheriting from 'lm'",
-         "and 'lme' (eg: lm,glm,aov,lme,lmer).")
+  if( !(any(class(model) %in% c("lm", "aov", "lme") ) ))                        ######
+    stop("contrast.lm can only be applied to objects inheriting from 'lm'",     ###### took lmer out of here
+         "and 'lme' (eg: lm,glm,aov,lme).")                                     ######
 
   # make sure we have the NAME of the variable
   if(!is.character(varname))
@@ -34,10 +34,7 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
   colnames(cmat) <- cn
 
   # recall fitting method with the specified contrast
-  if(!("lmer" %in% class(model)))
-     m <- model$call
-  else
-     m <- model@call # lmer is class 4
+  m <- model$call                                     ###### deleted lmer specific/S4 portion
 
   if(is.null(m$contrasts))
     m$contrasts <- list()
@@ -49,22 +46,7 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
     r <- eval(m)
 
   # now return the correct elements ....
-  if( 'lmer' %in% class(model) )
-    {
-      est <- fixef(r) 
-      se  <- sqrt(diag(vcov(r)))
-      tval <- est/se
-      df.lmer   <- getFixDF(r)
-      retval <- cbind(
-                      "Estimate"= est,
-                      "Std. Error"= se,
-                      "t-value"= tval,
-                      "Pr(>|t|)"=  2 * (1 - pt(abs(tval), df.lmer)),
-                      "DF"=df.lmer
-                      )
-
-    }
-  else if( 'lme' %in% class(model) )
+  if( 'lme' %in% class(model) )              ####### took out lmer section
     {
       est <- r$coefficients$fixed
       se  <- sqrt(diag(r$varFix))
@@ -99,10 +81,7 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
         }
       else
         {
-          if(!("lmer" %in% class(model))) # doesn't add this on in lmer
-            rn <- paste(varname,rownames(coeff),sep="")
-          else
-            rn <- varname
+          rn <- paste(varname,rownames(coeff),sep="")       ####### removed lmer portion
           ind <- match(rn,rownames(retval))
           retval <- retval[ind,,drop=FALSE]
         }
@@ -138,12 +117,87 @@ fit.contrast.lme <- function(model, varname, coeff, showall=FALSE,
     fit.contrast.lm(model, varname, coeff, showall, conf.int, df)
   }
 
+# I made rather dramatic changes here and do all calculations in fit.contrast.lmer rather than
+# fit.contrast.lm because of the simulation extras ... added sim.lmer and n.sim to the parameter list
 fit.contrast.lmer <- function(model, varname, coeff, showall=FALSE,
-                            conf.int=NULL, df=FALSE, ...)
+                            conf.int=NULL, sim.lmer=TRUE, n.sim=1000, ...)
+{
+  require(lme4)
+
+  # make sure we have the NAME of the variable
+  if(!is.character(varname))
+     varname <- deparse(substitute(varname))
+
+  # make coeff into a matrix
+  if(!is.matrix(coeff))
+    {
+       coeff <- matrix(coeff, nrow=1)
+     }
+
+  # make sure columns are labeled
+  if (is.null(rownames(coeff)))
+     {
+       rn <- vector(length=nrow(coeff))
+       for(i in 1:nrow(coeff))
+          rn[i] <- paste(" c=(",paste(coeff[i,],collapse=" "), ")")
+       rownames(coeff) <- rn
+     }
+
+  # now convert into the proper form for the contrast matrix
+  cmat <- make.contrasts(coeff, ncol(coeff) )
+  cn <- paste(" C",1:ncol(cmat),sep="")
+  cn[1:nrow(coeff)] <- rownames(coeff)
+  colnames(cmat) <- cn
+
+  m <- model@call
+
+  if(is.null(m$contrasts))
+    m$contrasts <- list()
+  m$contrasts[[varname]] <- cmat
+
+  if(is.R())
+    r <- eval(m, parent.frame())
+  else
+    r <- eval(m)
+  # now return the correct elements ....
+  r.effects <- fixef(r)
+  n <- length(r.effects)
+
+  if(sim.lmer)
   {
-    require(lme4)
-    fit.contrast.lm(model, varname, coeff, showall, conf.int, df)
+    retval <- est.lmer(obj = r, cm = diag(n), beta0 = rep(0, n),
+                       conf.int = conf.int, show.beta0 = FALSE,
+                       n.sim=n.sim)
+    rownames(retval) <- names(r.effects)
+  }else{
+    if(!is.null(conf.int))
+      warning("Confidence interval calculation for lmer objects requires simulation -- use sim.lmer = TRUE")
+
+    est <- fixef(r)
+    se  <- sqrt(diag(as.matrix(vcov(r))))
+    tval <- est/se
+    retval <- cbind(
+                    "Estimate"= est,
+                    "Std. Error"= se,
+                    "t-value"= tval
+                    )
   }
+
+  if( !showall )
+  {
+    if( !is.R() && ncol(cmat)==1 )
+    {
+      retval <- retval[varname,,drop=FALSE]
+      rownames(retval) <- rn
+    }else{
+      rn <- paste(varname,rownames(coeff),sep="")
+      ind <- match(rn,rownames(retval))
+      retval <- retval[ind,,drop=FALSE]
+    }
+  }
+
+  return(retval)
+}
 
 
 fit.contrast <- function(model, varname, coeff, ...)

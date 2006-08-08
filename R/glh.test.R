@@ -1,4 +1,4 @@
-# $Id: glh.test.R,v 1.10 2005/06/09 14:20:26 nj7w Exp $
+# $Id: glh.test.R 625 2005-06-09 14:20:30Z nj7w $
 
 glh.test <- function( reg, cm, d=rep(0, nrow(cm)) )
 {

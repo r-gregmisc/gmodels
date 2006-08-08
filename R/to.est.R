@@ -45,7 +45,10 @@
                   )
         }
 
-      est[names(params)] <- params
+      if(is.list(params))                      #####################
+        est[names(params)] <- unlist(params)   ##################### changed
+      else                                     #####################
+        est[names(params)] <- params           #####################
     }
 
   return(est)

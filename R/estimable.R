@@ -1,7 +1,10 @@
-# $Id: estimable.R 964 2006-06-05 20:59:50Z nj7w $
+# $Id: estimable.R 1026 2006-11-29 00:04:54Z warnes $
+estimable <- function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
+  {
+    UseMethod("estimable")
+  }
 
-estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
-                           show.beta0)
+estimable.default <- function (obj, cm, beta0, conf.int=NULL, show.beta0, joint.test=FALSE, ...)
 {
   if (is.matrix(cm) || is.data.frame(cm))
     {
@@ -197,8 +200,8 @@ estimable <- function (obj, cm, beta0, conf.int=NULL, joint.test=FALSE,
     print(as.data.frame(retval))
 }
 
-estimable.lmer <- function (obj, cm, beta0, conf.int=NULL,
-                            show.beta0, sim.lmer=TRUE, n.sim=1000)
+estimable.lmer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
+                                             sim.lmer=TRUE, n.sim=1000, ...)
 {
   if (is.matrix(cm) || is.data.frame(cm))
     {

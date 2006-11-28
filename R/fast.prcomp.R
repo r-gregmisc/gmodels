@@ -1,4 +1,4 @@
-# $Id: fast.prcomp.R 625 2005-06-09 14:20:30Z nj7w $
+# $Id: fast.prcomp.R 1025 2006-11-28 22:38:11Z warnes $
 
 # The current implementation of the function svd() in S-Plus and R is
 # much slower when operating on a matrix with a large number of
@@ -30,7 +30,7 @@ if(exists("is.R") && is.R()==TRUE)
         s$d <- s$d/sqrt(max(1, nrow(x) - 1))
 
         dimnames(s$vt) <- list(paste("PC", seq(len = nrow(s$vt)), sep = ""),
-                               colnames(x), )
+                               colnames(x) )
         r <- list(sdev = s$d, rotation = t(s$vt) )
         if (retx)
             r$x <- x %*% t(s$vt)

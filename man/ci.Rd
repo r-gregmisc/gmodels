@@ -1,4 +1,4 @@
-% $Id: ci.Rd 966 2006-06-06 19:17:08Z nj7w $
+% $Id: ci.Rd 1012 2006-11-14 22:25:06Z ggorjan $
 %
 \name{ci}
 \alias{ci}

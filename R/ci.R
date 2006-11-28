@@ -1,4 +1,4 @@
-# $Id: ci.R 964 2006-06-05 20:59:50Z nj7w $
+# $Id: ci.R 1025 2006-11-28 22:38:11Z warnes $
 
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")
@@ -12,7 +12,7 @@ ci.default <- function(x, confidence=0.95,alpha=1-confidence,na.rm=FALSE,...) {
                Estimate=est,
                "CI lower"=ci.low,
                "CI upper"=ci.high,
-               "Std. Error"=stderr,
+               "Std. Error"=stderr
                )
 
   retval

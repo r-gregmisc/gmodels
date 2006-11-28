@@ -24,11 +24,11 @@ S3method(fit.contrast, lm)
 S3method(fit.contrast, lme)
 S3method(fit.contrast, lmer)
 
+S3method(estimable, default)
+S3method(estimable, lmer)
+
 S3method(print, glh.test)
 S3method(summary, glh.test)
-
-S3method(fit.contrast,lm)
-S3method(fit.contrast,lme)
 
 importFrom(MASS, ginv)
 importFrom(gdata, frameApply)

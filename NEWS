@@ -1,3 +1,14 @@
+Version 2.13.2
+--------------
+
+Bug Fixes:
+
+- Lower and upper end of confidence interval for lmer objects were
+  reversed in est.lmer().
+
+- Correct Greg's email address in two help files.
+
+
 Version 2.13.1
 --------------
 

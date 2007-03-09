@@ -1,3 +1,29 @@
+2007-03-09 20:07  warnes
+
+	* DESCRIPTION: Update version number
+
+2007-03-09 20:06  warnes
+
+	* R/ci.R: Minor code formatting changes
+
+2007-03-09 20:06  warnes
+
+	* R/est.lmer.R, man/ci.Rd: Flip lower and upper interval in
+	  ci.lmer(). Add example to man page.
+
+2007-03-09 19:43  warnes
+
+	* man/ci.Rd, man/estimable.Rd: Fix some old email addressses that
+	  got missed
+
+2006-11-29 00:11  warnes
+
+	* NEWS: Update for 2.13.1
+
+2006-11-29 00:05  warnes
+
+	* NAMESPACE: Correct declartion of S3 methods for estimable()
+
 2006-11-29 00:05  warnes
 
 	* DESCRIPTION: Add additional suggested packages

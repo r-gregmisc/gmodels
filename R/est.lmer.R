@@ -24,7 +24,8 @@ est.lmer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
   est <- drop(cm %*% samp.summ$statistics[1:n,1])
   stderr <- sd(samp.cm)
   
-  pval <- sapply(1:length(beta0), function(i){percentile(beta0[i], samp.cm[,i])})
+  pval <- sapply(1:length(beta0),
+                 function(i){percentile(beta0[i], samp.cm[,i])})
   pval <- ifelse(pval <= .5, 2*pval, 2*(1-pval))
 
   if(is.null(conf.int))
@@ -33,10 +34,15 @@ est.lmer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
     upper.ci <- NULL
   }else{
     alpha <- 1-conf.int
-    samp.ci <- sapply(1:length(beta0), function(i){quantile(samp.cm[,i], probs=c(alpha/2, 1-alpha/2))})
+    samp.ci <- sapply(1:length(beta0),
+                      function(i)
+                        {
+                          quantile(samp.cm[,i], probs=c(alpha/2, 1-alpha/2))
+                        }
+                      )
 
-    lower.ci <- samp.ci[2,]
-    upper.ci <- samp.ci[1,]
+    lower.ci <- samp.ci[1,]
+    upper.ci <- samp.ci[2,]
   }
 
   # return results

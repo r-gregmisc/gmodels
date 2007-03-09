@@ -1,4 +1,4 @@
-% $Id: ci.Rd 1012 2006-11-14 22:25:06Z ggorjan $
+% $Id: ci.Rd 1075 2007-03-09 20:06:05Z warnes $
 %
 \name{ci}
 \alias{ci}
@@ -42,7 +42,7 @@
   \code{Estimate}, \code{CI lower}, \code{CI upper}, \code{Std. Error},
   \code{DF} (for lme objects only), and \code{p-value}.
 }
-\author{ Gregory R. Warnes \email{Gregory\_R\_Warnes\@groton.pfizer.com}
+\author{ Gregory R. Warnes \email{warnes@bst.rochester.edu}
 }
 \seealso{
   \code{\link[stats]{confint}},
@@ -65,6 +65,14 @@ ci(b)       # indirect call
 data(state)
 reg  <-  lm(Area ~ Population, data=as.data.frame(state.x77))
 ci(reg) 
+
+\dontrun{
+# lmer example
+library(lme4)
+fm2 <- lmer(Reaction ~ Days + (1|Subject) + (0+Days|Subject), sleepstudy)
+ci(fm2)
+}
+
 
 }
 \keyword{ regression }

@@ -1,4 +1,15 @@
-Version 2.13.2
+Version 2.14.1
+--------------
+
+New features:
+
+- Add support for 'lme' objects to estimable().
+
+Other:
+
+- Fix minor typos in manual page for estimable().
+
+Version 2.14.0
 --------------
 
 New Features:

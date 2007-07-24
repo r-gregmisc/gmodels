@@ -1,86 +1,113 @@
+2007-12-07 22:10  warnes
+
+	* [r1231] man/estimable.Rd: Correct minor typos in man page for
+	  estimable()
+
+2007-12-07 22:09  warnes
+
+	* [r1230] R/estimable.R: Add support for lme models to estimable()
+
+2007-12-07 22:07  warnes
+
+	* [r1229] man/estimable.Rd: Replace non-ascii characters in Soren's
+	  name with (equivalent?) ascii character to avoid character
+	  encoding issues.
+
+2007-10-22 02:24  warnes
+
+	* [r1196]
+	  branches/GenerateFORMATSfromFactorObjects/SASxport/DESCRIPTION,
+	  trunk/MSOfficeUtil/DESCRIPTION, trunk/RMCMC/DESCRIPTION,
+	  trunk/Rlsf/DESCRIPTION, trunk/SASxport/DESCRIPTION,
+	  trunk/bwRF/DESCRIPTION, trunk/exp.ssize/DESCRIPTION,
+	  trunk/fork/DESCRIPTION, trunk/gdata/DESCRIPTION, DESCRIPTION,
+	  trunk/gplots/DESCRIPTION, trunk/gregmisc/DESCRIPTION,
+	  trunk/ssize/DESCRIPTION: Clarify GPL version
+
 2007-07-26 00:20  warnes
 
-	* DESCRIPTION, NAMESPACE, NEWS, R/estimable.mlm.R,
+	* [r1105] DESCRIPTION, NAMESPACE, NEWS, R/estimable.mlm.R,
 	  man/estimable.Rd: Add support for mlm to estimable().
 
 2007-07-26 00:10  warnes
 
-	* R/estimable.R, R/estimable.mlm.R: Add estimable method for mlm
-	  objects
+	* [r1104] R/estimable.R, R/estimable.mlm.R: Add estimable method
+	  for mlm objects
 
 2007-03-09 22:35  warnes
 
-	* R/ci.R: Remove stray character
+	* [r1079] R/ci.R: Remove stray character
 
 2007-03-09 20:10  warnes
 
-	* NEWS: Update NEWS file.
+	* [r1078] NEWS: Update NEWS file.
 
 2007-03-09 20:07  warnes
 
-	* DESCRIPTION: Update version number
+	* [r1077] DESCRIPTION: Update version number
 
 2007-03-09 20:06  warnes
 
-	* R/ci.R: Minor code formatting changes
+	* [r1076] R/ci.R: Minor code formatting changes
 
 2007-03-09 20:06  warnes
 
-	* R/est.lmer.R, man/ci.Rd: Flip lower and upper interval in
+	* [r1075] R/est.lmer.R, man/ci.Rd: Flip lower and upper interval in
 	  ci.lmer(). Add example to man page.
 
 2007-03-09 19:43  warnes
 
-	* man/ci.Rd, man/estimable.Rd: Fix some old email addressses that
-	  got missed
+	* [r1074] man/ci.Rd, man/estimable.Rd: Fix some old email
+	  addressses that got missed
 
 2006-11-29 00:11  warnes
 
-	* NEWS: Update for 2.13.1
+	* [r1029] NEWS: Update for 2.13.1
 
 2006-11-29 00:05  warnes
 
-	* NAMESPACE: Correct declartion of S3 methods for estimable()
+	* [r1028] NAMESPACE: Correct declartion of S3 methods for
+	  estimable()
 
 2006-11-29 00:05  warnes
 
-	* DESCRIPTION: Add additional suggested packages
+	* [r1027] DESCRIPTION: Add additional suggested packages
 
 2006-11-29 00:04  warnes
 
-	* R/estimable.R, man/estimable.Rd: - Add generic
+	* [r1026] R/estimable.R, man/estimable.Rd: - Add generic
 	  - Fix code vs. doc inconsistiencies
 
 2006-11-28 22:38  warnes
 
-	* R/ci.R, R/estimable.R, R/fast.prcomp.R: Remove extraneous comma
-	  that causes errors in R 2.5.0
+	* [r1025] R/ci.R, R/estimable.R, R/fast.prcomp.R: Remove extraneous
+	  comma that causes errors in R 2.5.0
 
 2006-11-27 20:45  warnes
 
-	* DESCRIPTION, NEWS: Update for 2.13.1
+	* [r1016] DESCRIPTION, NEWS: Update for 2.13.1
 
 2006-11-27 20:36  warnes
 
-	* DESCRIPTION, NAMESPACE: Add missing export of methods for
+	* [r1015] DESCRIPTION, NAMESPACE: Add missing export of methods for
 	  estimable()
 
 2006-11-14 22:25  ggorjan
 
-	* trunk/gdata/man/combine.Rd, trunk/gdata/man/frameApply.Rd,
-	  R/ci.R, R/fast.prcomp.R, man/ci.Rd, trunk/gplots/R/bandplot.R,
-	  trunk/gplots/R/boxplot.n.R, trunk/gplots/R/lowess.R,
-	  trunk/gplots/R/plot.lm.R, trunk/gplots/R/plotCI.R,
-	  trunk/gplots/R/plotmeans.R, trunk/gplots/R/residplot.R,
-	  trunk/gplots/R/wapply.R, trunk/gplots/man/boxplot.n.Rd,
-	  trunk/gplots/man/plotCI.Rd, trunk/gplots/man/plotmeans.Rd,
-	  trunk/gtools/R/combinations.R, trunk/gtools/R/running.R,
-	  trunk/gtools/man/ELISA.Rd, trunk/gtools/man/combinations.Rd:
-	  Removed executable property
+	* [r1012] trunk/gdata/man/combine.Rd,
+	  trunk/gdata/man/frameApply.Rd, R/ci.R, R/fast.prcomp.R,
+	  man/ci.Rd, trunk/gplots/R/bandplot.R, trunk/gplots/R/boxplot.n.R,
+	  trunk/gplots/R/lowess.R, trunk/gplots/R/plot.lm.R,
+	  trunk/gplots/R/plotCI.R, trunk/gplots/R/plotmeans.R,
+	  trunk/gplots/R/residplot.R, trunk/gplots/R/wapply.R,
+	  trunk/gplots/man/boxplot.n.Rd, trunk/gplots/man/plotCI.Rd,
+	  trunk/gplots/man/plotmeans.Rd, trunk/gtools/R/combinations.R,
+	  trunk/gtools/R/running.R, trunk/gtools/man/ELISA.Rd,
+	  trunk/gtools/man/combinations.Rd: Removed executable property
 
 2006-08-02 22:21  warnes
 
-	* trunk/BalloonPlotPaper/BalloonPlot.pdf,
+	* [r977] trunk/BalloonPlotPaper/BalloonPlot.pdf,
 	  trunk/BalloonPlotPaper/BalloonPlot.tex,
 	  trunk/MSOfficeUtil/DESCRIPTION,
 	  trunk/PathwayModeling/thesispaper/slides.tex,
@@ -128,51 +155,51 @@
 
 2006-06-06 19:17  nj7w
 
-	* man/ci.Rd, man/estimable.Rd, man/fit.contrast.Rd: Updated ci,
-	  estimable and fit.contrast as per Randall Johnson
+	* [r966] man/ci.Rd, man/estimable.Rd, man/fit.contrast.Rd: Updated
+	  ci, estimable and fit.contrast as per Randall Johnson
 
 2006-06-05 21:00  nj7w
 
-	* DESCRIPTION: Additions as per Randall C Johnson
+	* [r965] DESCRIPTION: Additions as per Randall C Johnson
 
 2006-06-05 20:59  nj7w
 
-	* R/ci.R, R/estimable.R, R/fit.contrast.R, R/to.est.R: Additions as
-	  per Randall C Johnson
+	* [r964] R/ci.R, R/estimable.R, R/fit.contrast.R, R/to.est.R:
+	  Additions as per Randall C Johnson
 
 2006-06-05 20:57  nj7w
 
-	* R/est.lmer.R: - New function to estimate CI's and p-values using
-	  mcmcsamp() from the
+	* [r963] R/est.lmer.R: - New function to estimate CI's and p-values
+	  using mcmcsamp() from the
 	  Matrix package
 
 2006-05-05 18:29  nj7w
 
-	* R/CrossTable.R, man/CrossTable.Rd: Fixed an error: According to
-	  Marc Schwartz - there was an error when a matrix without
-	  dimnames(or names(dimnames)) was passed as x argument
+	* [r959] R/CrossTable.R, man/CrossTable.Rd: Fixed an error:
+	  According to Marc Schwartz - there was an error when a matrix
+	  without dimnames(or names(dimnames)) was passed as x argument
 
 2005-12-13 16:03  nj7w
 
-	* ChangeLog: Removed ChangeLog
+	* [r808] ChangeLog: Removed ChangeLog
 
 2005-12-13 16:02  nj7w
 
-	* NEWS: Updated NEWS
+	* [r807] NEWS: Updated NEWS
 
 2005-12-12 21:57  nj7w
 
-	* DESCRIPTION: Updated version number for CRAN
+	* [r796] DESCRIPTION: Updated version number for CRAN
 
 2005-12-04 06:27  warnes
 
-	* NEWS: Update for 2.11.0
+	* [r781] NEWS: Update for 2.11.0
 
 2005-12-04 06:12  warnes
 
-	* DESCRIPTION, NAMESPACE, R/ci.R, R/estimable.R, R/fit.contrast.R,
-	  R/to.est.R, man/ci.Rd, man/estimable.Rd: Integration of code
-	  changes suggested by Randall C Johnson to add
+	* [r780] DESCRIPTION, NAMESPACE, R/ci.R, R/estimable.R,
+	  R/fit.contrast.R, R/to.est.R, man/ci.Rd, man/estimable.Rd:
+	  Integration of code changes suggested by Randall C Johnson to add
 	  support for lmer (lme version 4) objects to ci(), estimable(),
 	  and
 	  fit.contrast().
@@ -187,7 +214,7 @@
 
 2005-12-01 16:54  nj7w
 
-	* man/ci.Rd, man/coefFrame.Rd, man/estimable.Rd,
+	* [r776] man/ci.Rd, man/coefFrame.Rd, man/estimable.Rd,
 	  man/fit.contrast.Rd, man/make.contrasts.Rd,
 	  trunk/gplots/man/balloonplot.Rd, trunk/gplots/man/bandplot.Rd,
 	  trunk/gplots/man/boxplot.n.Rd, trunk/gplots/man/colorpanel.Rd,
@@ -201,24 +228,25 @@
 
 2005-10-27 11:21  warnes
 
-	* DESCRIPTION: Update version number. Bump minor version since we
-	  added functionality.
+	* [r709] DESCRIPTION: Update version number. Bump minor version
+	  since we added functionality.
 
 2005-10-27 10:33  warnes
 
-	* DESCRIPTION, NAMESPACE: Add ci.binom() to NAMESPACE, bump version
+	* [r708] DESCRIPTION, NAMESPACE: Add ci.binom() to NAMESPACE, bump
+	  version
 
 2005-10-26 13:39  warnes
 
-	* R/ci.R, man/ci.Rd: Add ci.binom
+	* [r707] R/ci.R, man/ci.Rd: Add ci.binom
 
 2005-10-25 21:18  warnes
 
-	* NAMESPACE: Add gdata::nobs to import list. Needed by ci()
+	* [r706] NAMESPACE: Add gdata::nobs to import list. Needed by ci()
 
 2005-09-12 15:44  nj7w
 
-	* trunk/gdata/man/aggregate.table.Rd,
+	* [r671] trunk/gdata/man/aggregate.table.Rd,
 	  trunk/gdata/man/interleave.Rd, trunk/gdata/man/matchcols.Rd,
 	  trunk/gdata/man/nobs.Rd, trunk/gdata/man/read.xls.Rd,
 	  trunk/gdata/man/rename.vars.Rd, trunk/gdata/man/trim.Rd,
@@ -232,37 +260,37 @@
 
 2005-09-07 15:31  nj7w
 
-	* man/CrossTable.Rd: Fixed man page
+	* [r667] man/CrossTable.Rd: Fixed man page
 
 2005-09-06 21:34  nj7w
 
-	* DESCRIPTION: Updated DESCRIPTION
+	* [r664] DESCRIPTION: Updated DESCRIPTION
 
 2005-09-06 21:34  nj7w
 
-	* NEWS: Added NEWS
+	* [r663] NEWS: Added NEWS
 
 2005-09-06 16:21  nj7w
 
-	* DESCRIPTION: Fixed the Package name
+	* [r662] DESCRIPTION: Fixed the Package name
 
 2005-09-02 23:10  nj7w
 
-	* ChangeLog, trunk/gplots/ChangeLog: Added ChangeLog
+	* [r655] ChangeLog, trunk/gplots/ChangeLog: Added ChangeLog
 
 2005-08-31 16:28  nj7w
 
-	* trunk/gdata/DESCRIPTION, DESCRIPTION, trunk/gplots/DESCRIPTION:
-	  Added DESCRIPTION file
+	* [r644] trunk/gdata/DESCRIPTION, DESCRIPTION,
+	  trunk/gplots/DESCRIPTION: Added DESCRIPTION file
 
 2005-08-31 16:27  nj7w
 
-	* trunk/gdata/DESCRIPTION.in, DESCRIPTION.in,
+	* [r643] trunk/gdata/DESCRIPTION.in, DESCRIPTION.in,
 	  trunk/gplots/DESCRIPTION.in: removed DESCRIPTION.in
 
 2005-07-11 21:35  nj7w
 
-	* R/CrossTable.R, man/CrossTable.Rd: Revision based on Marc
+	* [r627] R/CrossTable.R, man/CrossTable.Rd: Revision based on Marc
 	  Schwartz's suggestions:
 	  1) Added 'dnn' argument to enable specification of dimnames as
 	  per table()
@@ -271,7 +299,7 @@
 
 2005-06-09 14:20  nj7w
 
-	* trunk/gdata/R/Args.R, trunk/gdata/R/aggregate.table.R,
+	* [r625] trunk/gdata/R/Args.R, trunk/gdata/R/aggregate.table.R,
 	  trunk/gdata/R/combine.R, trunk/gdata/R/elem.R,
 	  trunk/gdata/R/env.R, trunk/gdata/R/frameApply.R,
 	  trunk/gdata/R/interleave.R, trunk/gdata/R/is.what.R,
@@ -328,7 +356,7 @@
 
 2005-06-09 14:13  nj7w
 
-	* R/CrossTable.R: Updates by Marc Schwartz:
+	* [r623] R/CrossTable.R: Updates by Marc Schwartz:
 	  CrossTable:
 	  
 	  # Revision 2.0 2005/04/27
@@ -338,7 +366,7 @@
 
 2005-05-13 18:59  nj7w
 
-	* trunk/gdata/R/read.xls.R, man/CrossTable.Rd,
+	* [r621] trunk/gdata/R/read.xls.R, man/CrossTable.Rd,
 	  trunk/gplots/man/heatmap.2.Rd: 1) Using dQuote.ascii function in
 	  read.xls as the new version of dQuote doesn't work proprly with
 	  UTF-8 locale.
@@ -347,72 +375,72 @@
 
 2005-05-11 13:51  warnes
 
-	* DESCRIPTION.in, NAMESPACE, trunk/gregmisc/DESCRIPTION: Add
+	* [r620] DESCRIPTION.in, NAMESPACE, trunk/gregmisc/DESCRIPTION: Add
 	  dependency on gdata::frameApply.
 
 2005-03-31 20:32  warnes
 
-	* NAMESPACE: Add ceofFrame function to NAMESPACE
+	* [r593] NAMESPACE: Add ceofFrame function to NAMESPACE
 
 2005-03-31 19:05  warnes
 
-	* man/coefFrame.Rd: coefFrame example needs to properly load ELISA
-	  data from gtools package
+	* [r592] man/coefFrame.Rd: coefFrame example needs to properly load
+	  ELISA data from gtools package
 
 2005-03-31 18:31  warnes
 
-	* R/CrossTable.R, man/CrossTable.Rd, man/ci.Rd, man/estimable.Rd,
-	  man/fast.prcomp.Rd, man/fit.contrast.Rd, man/glh.test.Rd,
-	  man/make.contrasts.Rd: Ensure that each file has $Id$ header, and
-	  no $Log$
+	* [r588] R/CrossTable.R, man/CrossTable.Rd, man/ci.Rd,
+	  man/estimable.Rd, man/fast.prcomp.Rd, man/fit.contrast.Rd,
+	  man/glh.test.Rd, man/make.contrasts.Rd: Ensure that each file has
+	  $Id$ header, and no $Log$
 
 2005-03-31 18:30  warnes
 
-	* R/coefFrame.R, man/coefFrame.Rd: Add coefFrame() function
+	* [r587] R/coefFrame.R, man/coefFrame.Rd: Add coefFrame() function
 	  contributed by Jim Rogers
 
 2005-01-18 19:53  warnes
 
-	* R/CrossTable.R: Removed Windows Line Endings
+	* [r521] R/CrossTable.R: Removed Windows Line Endings
 
 2005-01-14 21:40  nj7w
 
-	* man/CrossTable.Rd: Updated the manual to reflect prop.chisq
-	  change in its R file.
+	* [r518] man/CrossTable.Rd: Updated the manual to reflect
+	  prop.chisq change in its R file.
 
 2005-01-14 19:14  warnes
 
-	* R/CrossTable.R: Nitin added display of the Chisquare contribution
-	  of each cell, as suggested
+	* [r517] R/CrossTable.R: Nitin added display of the Chisquare
+	  contribution of each cell, as suggested
 	  by Greg Snow.
 
 2005-01-12 20:50  warnes
 
-	* trunk/gdata/DESCRIPTION.in, DESCRIPTION.in,
+	* [r515] trunk/gdata/DESCRIPTION.in, DESCRIPTION.in,
 	  trunk/gplots/DESCRIPTION.in, trunk/gtools/DESCRIPTION.in: Add
 	  dependency on R 1.9.0+ to prevent poeple from installing on old
 	  versions of R which don't support namespaces.
 
 2004-12-23 19:32  nj7w
 
-	* R/CrossTable.R, man/CrossTable.Rd: Split the function
+	* [r507] R/CrossTable.R, man/CrossTable.Rd: Split the function
 	  print.CrossTable.vector in two parts - for SAS behaiour and SPSS
 	  behaviour. Also put the code of printing statistics in a function
 	  'print.statistics'
 
 2004-12-21 22:38  warnes
 
-	* R/CrossTable.R: Added & extended changes made by Nitin to
+	* [r502] R/CrossTable.R: Added & extended changes made by Nitin to
 	  implement 'SPSS' format, as suggested by
 	  Dirk Enzmann <dirk.enzmann@jura.uni-hamburg.de>.
 
 2004-09-30 21:03  warneg
 
-	* man/glh.test.Rd: Fix typos.
+	* [r464] man/glh.test.Rd: Fix typos.
 
 2004-09-27 21:01  warneg
 
-	* trunk/gdata/DESCRIPTION, trunk/gdata/DESCRIPTION.in,
+	* [r461] trunk/gdata/DESCRIPTION, trunk/gdata/DESCRIPTION.in,
 	  trunk/gdata/NAMESPACE, trunk/gdata/man/.Rhistory, DESCRIPTION,
 	  DESCRIPTION.in, trunk/gplots/DESCRIPTION,
 	  trunk/gplots/DESCRIPTION.in, trunk/gplots/man/sinkplot.Rd,
@@ -423,12 +451,12 @@
 
 2004-09-03 22:44  warneg
 
-	* man/fit.contrast.Rd: Add explicit package to call to quantcut in
-	  example.
+	* [r450] man/fit.contrast.Rd: Add explicit package to call to
+	  quantcut in example.
 
 2004-09-03 17:27  warneg
 
-	* trunk/gdata/DESCRIPTION, trunk/gdata/DESCRIPTION.in,
+	* [r446] trunk/gdata/DESCRIPTION, trunk/gdata/DESCRIPTION.in,
 	  trunk/gdata/NAMESPACE, trunk/gdata/R/Args.R,
 	  trunk/gdata/R/aggregate.table.R, trunk/gdata/R/combine.R,
 	  trunk/gdata/R/elem.R, trunk/gdata/R/env.R,
@@ -462,7 +490,7 @@
 
 2004-09-02 17:14  warneg
 
-	* trunk/gdata/DESCRIPTION, trunk/gdata/DESCRIPTION.in,
+	* [r442] trunk/gdata/DESCRIPTION, trunk/gdata/DESCRIPTION.in,
 	  trunk/gdata/NAMESPACE, trunk/gdata/man/.Rhistory, DESCRIPTION,
 	  DESCRIPTION.in, NAMESPACE, trunk/gplots/DESCRIPTION,
 	  trunk/gplots/DESCRIPTION.in, trunk/gplots/NAMESPACE,
@@ -473,21 +501,22 @@
 
 2004-05-25 02:57  warnes
 
-	* R/CrossTable.R, man/CrossTable.Rd: Updates from Mark Schwartz.
+	* [r327] R/CrossTable.R, man/CrossTable.Rd: Updates from Mark
+	  Schwartz.
 
 2004-04-13 11:41  warnes
 
-	* man/estimable.Rd: Fix latex warning: it doesn't like double
-	  subscripts.
+	* [r314] man/estimable.Rd: Fix latex warning: it doesn't like
+	  double subscripts.
 
 2004-03-26 22:28  warnes
 
-	* man/fast.prcomp.Rd: Reflect movement of code from 'mva' package
-	  to 'stats' in R 1.9.0.
+	* [r306] man/fast.prcomp.Rd: Reflect movement of code from 'mva'
+	  package to 'stats' in R 1.9.0.
 
 2004-03-25 20:09  warnes
 
-	* R/estimable.R, man/estimable.Rd: - Estimable was reporting
+	* [r296] R/estimable.R, man/estimable.Rd: - Estimable was reporting
 	  sqrt(X^2) rather than X^2 in the output.
 	  - Provide latex math markup for linear algebra expressions in
 	  help text.
@@ -495,8 +524,8 @@
 
 2004-03-25 18:17  warnes
 
-	* R/estimable.R, man/estimable.Rd: Add enhancements to estimable()
-	  provided by S�ren H�jsgaard
+	* [r295] R/estimable.R, man/estimable.Rd: Add enhancements to
+	  estimable() provided by S�ren H�jsgaard
 	  \email{sorenh@agrsci.dk}:
 	  
 	  I have made a modified version of the function [..] which
@@ -506,31 +535,31 @@
 
 2003-11-17 21:40  warnes
 
-	* R/fit.contrast.R: - Fix incorrect handling of glm objects by
-	  fit.contrast, as reported
+	* [r221] R/fit.contrast.R: - Fix incorrect handling of glm objects
+	  by fit.contrast, as reported
 	  by Ulrich Halekoh, Phd <ulrich.halekoh@agrsci.dk>.
 	  
 	  - Add regression test code to for this bug.
 
 2003-08-07 03:49  warnes
 
-	* R/ci.R: - Fixed incorrect denominator in standard error for mean
-	  in ci.default.
+	* [r217] R/ci.R: - Fixed incorrect denominator in standard error
+	  for mean in ci.default.
 
 2003-04-22 17:24  warnes
 
-	* R/fit.contrast.R: - the variable 'df' was used within the lme
-	  code section overwriting
+	* [r190] R/fit.contrast.R: - the variable 'df' was used within the
+	  lme code section overwriting
 	  the argument 'df'.
 
 2003-03-12 17:58  warnes
 
-	* man/fit.contrast.Rd: - Fixed a typo in the example
+	* [r173] man/fit.contrast.Rd: - Fixed a typo in the example
 	  - Added to lme example
 
 2003-03-07 15:48  warnes
 
-	* R/fast.prcomp.R, trunk/gplots/R/hist2d.R,
+	* [r168] R/fast.prcomp.R, trunk/gplots/R/hist2d.R,
 	  trunk/gplots/R/qqnorm.aov.R, trunk/gregmisc/DESCRIPTION,
 	  trunk/gtools/R/RSCompat.S: - Minor changes to code to allow the
 	  package to be provided as an
@@ -538,8 +567,8 @@
 
 2003-01-30 21:53  warnes
 
-	* R/fit.contrast.R, man/fit.contrast.Rd: - Renamed 'contrast.lm' to
-	  'fit.contrast'. This new name is more
+	* [r160] R/fit.contrast.R, man/fit.contrast.Rd: - Renamed
+	  'contrast.lm' to 'fit.contrast'. This new name is more
 	  descriptive and makes it easier to create and use methods for
 	  other
 	  classes, eg lme.
@@ -556,8 +585,8 @@
 
 2003-01-30 21:41  warnes
 
-	* R/CrossTable.R, man/CrossTable.Rd: - Removed argument 'correct'
-	  and now print separate corrected values
+	* [r158] R/CrossTable.R, man/CrossTable.Rd: - Removed argument
+	  'correct' and now print separate corrected values
 	  for 2 x 2 tables.
 	  - Added arguments 'prop.r', 'prop.c' and 'prop.t' to toggle
 	  printing
@@ -574,8 +603,8 @@
 
 2003-01-30 14:58  warnes
 
-	* R/make.contrasts.R: - Added explicit check to ensure that the
-	  number of specified
+	* [r157] R/make.contrasts.R: - Added explicit check to ensure that
+	  the number of specified
 	  contrasts is less than or equal to the ncol - 1. Previously, this
 	  failed with an obtuse error message when the contrast matrix had
 	  row
@@ -583,22 +612,22 @@
 
 2002-11-04 14:13  warnes
 
-	* R/CrossTable.R: - Moved fisher.test() to after table is printed,
-	  so that table is
+	* [r142] R/CrossTable.R: - Moved fisher.test() to after table is
+	  printed, so that table is
 	  still printed in the event that fisher.test() results in errors.
 
 2002-10-29 23:06  warnes
 
-	* R/fast.prcomp.R, man/fast.prcomp.Rd: - Fixes to fast.svd to make
-	  it actually work.
+	* [r138] R/fast.prcomp.R, man/fast.prcomp.Rd: - Fixes to fast.svd
+	  to make it actually work.
 	  - Updates to man page to fix mistmatches between code and docs
 	  and to
 	  fix warnings.
 
 2002-10-29 23:00  warnes
 
-	* R/make.contrasts.R, man/make.contrasts.Rd: - Moved make.contrasts
-	  to a separate file.
+	* [r137] R/make.contrasts.R, man/make.contrasts.Rd: - Moved
+	  make.contrasts to a separate file.
 	  - Enhanced make contrasts to better label contrast matrix, to
 	  give
 	  how.many a default value, and to coerce vectors into row
@@ -608,29 +637,30 @@
 
 2002-10-29 19:29  warnes
 
-	* R/fast.prcomp.R, man/fast.prcomp.Rd: Initial checkin for
+	* [r136] R/fast.prcomp.R, man/fast.prcomp.Rd: Initial checkin for
 	  fast.prcomp() and fast.svd().
 
 2002-09-26 12:11  warnes
 
-	* man/glh.test.Rd: - Added note and example code to illustrate how
-	  to properly compute
+	* [r127] man/glh.test.Rd: - Added note and example code to
+	  illustrate how to properly compute
 	  contrasts for the first factor in the model.
 
 2002-09-24 19:12  warnes
 
-	* R/glh.test.R: - Fixed a typo.
+	* [r124] R/glh.test.R: - Fixed a typo.
 
 2002-09-23 14:27  warnes
 
-	* man/CrossTable.Rd, man/glh.test.Rd, trunk/gplots/man/barplot2.Rd:
-	  - Fixed syntax errors in barplot2.Rd and CrossTable.Rd
+	* [r119] man/CrossTable.Rd, man/glh.test.Rd,
+	  trunk/gplots/man/barplot2.Rd: - Fixed syntax errors in
+	  barplot2.Rd and CrossTable.Rd
 	  - Fixed incorrect translation of 'F' (distribution) to 'FALSE' in
 	  glh.test.Rd
 
 2002-09-23 13:59  warnes
 
-	* trunk/gdata/R/aggregate.table.R, trunk/gdata/R/combine.R,
+	* [r117] trunk/gdata/R/aggregate.table.R, trunk/gdata/R/combine.R,
 	  trunk/gdata/R/interleave.R, trunk/gdata/R/nobs.R,
 	  trunk/gdata/man/aggregate.table.Rd, trunk/gdata/man/combine.Rd,
 	  trunk/gdata/man/interleave.Rd, trunk/gdata/man/nobs.Rd,
@@ -646,17 +676,18 @@
 
 2002-09-23 13:38  warnes
 
-	* R/CrossTable.R, man/CrossTable.Rd, trunk/gplots/R/barplot2.R,
-	  trunk/gplots/man/barplot2.Rd, trunk/gregmisc/DESCRIPTION,
-	  trunk/gtools/R/combinations.R: - Added CrossTable() and
-	  barplot2() code and docs contributed by Marc Schwartz.
+	* [r116] R/CrossTable.R, man/CrossTable.Rd,
+	  trunk/gplots/R/barplot2.R, trunk/gplots/man/barplot2.Rd,
+	  trunk/gregmisc/DESCRIPTION, trunk/gtools/R/combinations.R: -
+	  Added CrossTable() and barplot2() code and docs contributed by
+	  Marc Schwartz.
 	  - Permit combinations() to be used when r>n provided
 	  repeat.allowed=TRUE
 	  - Bumped up version number
 
 2002-08-01 19:37  warnes
 
-	* R/ci.R, man/ci.Rd, man/estimable.Rd, man/glh.test.Rd,
+	* [r114] R/ci.R, man/ci.Rd, man/estimable.Rd, man/glh.test.Rd,
 	  trunk/gplots/R/hist2d.R, trunk/gplots/R/wapply.R,
 	  trunk/gregmisc/DESCRIPTION, trunk/gtools/R/running.R: - Corrected
 	  documentation mismatch for ci, ci.default.
@@ -671,7 +702,8 @@
 
 2002-04-09 00:51  warneg
 
-	* trunk/gdata/R/rename.vars.R, trunk/gdata/man/aggregate.table.Rd,
+	* [r109] trunk/gdata/R/rename.vars.R,
+	  trunk/gdata/man/aggregate.table.Rd,
 	  trunk/gdata/man/interleave.Rd, trunk/gdata/man/reorder.Rd,
 	  R/ci.R, R/estimable.R, R/glh.test.R, man/glh.test.Rd,
 	  trunk/gplots/R/bandplot.R, trunk/gplots/R/boxplot.n.R,
@@ -687,75 +719,75 @@
 
 2002-03-26 21:22  warneg
 
-	* trunk/gdata/man/reorder.Rd, R/ci.R, R/glh.test.R, man/ci.Rd,
-	  man/glh.test.Rd, trunk/gplots/R/lowess.R,
+	* [r104] trunk/gdata/man/reorder.Rd, R/ci.R, R/glh.test.R,
+	  man/ci.Rd, man/glh.test.Rd, trunk/gplots/R/lowess.R,
 	  trunk/gplots/man/lowess.Rd: - Changed methods to include '...' to
 	  match the generic.
 	  - Updated for version 0.5.1
 
 2002-03-26 15:30  warneg
 
-	* man/glh.test.Rd: Removed incorrect link to 'contrast' from
+	* [r99] man/glh.test.Rd: Removed incorrect link to 'contrast' from
 	  seealso.
 
 2002-02-20 20:09  warneg
 
-	* trunk/gdata/man/rename.vars.Rd, man/ci.Rd, man/estimable.Rd,
-	  man/glh.test.Rd, trunk/gplots/man/lowess.Rd,
+	* [r81] trunk/gdata/man/rename.vars.Rd, man/ci.Rd,
+	  man/estimable.Rd, man/glh.test.Rd, trunk/gplots/man/lowess.Rd,
 	  trunk/gplots/man/plotCI.Rd, trunk/gplots/man/space.Rd: Minor
 	  changes, typo and formatting fixes.
 
 2002-01-17 23:51  warneg
 
-	* man/estimable.Rd: - Fixed errror in last example by adding
+	* [r70] man/estimable.Rd: - Fixed errror in last example by adding
 	  'conf.int' parameter to
 	  'estimable' call.
 
 2002-01-17 23:42  warneg
 
-	* R/glh.test.R: - Fixed typo in code that resulted in an syntax
-	  error.
+	* [r69] R/glh.test.R: - Fixed typo in code that resulted in an
+	  syntax error.
 
 2002-01-10 17:35  warneg
 
-	* R/glh.test.R: - print.glh.test() was using cat() to printing the
-	  call. This didn't work and
+	* [r68] R/glh.test.R: - print.glh.test() was using cat() to
+	  printing the call. This didn't work and
 	  generated an error.
 
 2001-12-19 20:06  warneg
 
-	* man/glh.test.Rd: - Fixed display of formulae.
+	* [r66] man/glh.test.Rd: - Fixed display of formulae.
 	  - Added description of return value
 
 2001-12-19 20:05  warneg
 
-	* R/glh.test.R: - Removed extra element of return object.
+	* [r65] R/glh.test.R: - Removed extra element of return object.
 
 2001-12-18 22:14  warneg
 
-	* man/estimable.Rd: - Updated documentation to reflect change of
-	  parameters from 'alpha'
+	* [r64] man/estimable.Rd: - Updated documentation to reflect change
+	  of parameters from 'alpha'
 	  to 'conf.int', including the new optional status of the
 	  confidence
 	  intervals.
 
 2001-12-18 22:12  warneg
 
-	* R/estimable.R: - Modified to make confidence intervals optional.
-	  Changed 'alpha'
+	* [r63] R/estimable.R: - Modified to make confidence intervals
+	  optional. Changed 'alpha'
 	  parameter giving significance level to 'conf.int' giving
 	  confidence
 	  level.
 
 2001-12-18 21:36  warneg
 
-	* man/glh.test.Rd: - Added summary.glh.test to alias, usage, and
-	  example sections.
+	* [r62] man/glh.test.Rd: - Added summary.glh.test to alias, usage,
+	  and example sections.
 
 2001-12-18 21:34  warneg
 
-	* R/glh.test.R: - Modified to work correctly when obj is of class
-	  'aov' by specifying
+	* [r61] R/glh.test.R: - Modified to work correctly when obj is of
+	  class 'aov' by specifying
 	  summary.lm instead of summary. This ensures that the summary
 	  object
 	  has the fields we need.
@@ -765,59 +797,61 @@
 
 2001-12-18 21:27  warneg
 
-	* R/estimable.R: - Modified to work correctly when obj is of class
-	  'aov' by specifying
+	* [r60] R/estimable.R: - Modified to work correctly when obj is of
+	  class 'aov' by specifying
 	  summary.lm instead of summary. This ensures that the summary
 	  object
 	  has the fields we need.
 
 2001-12-18 00:45  warneg
 
-	* R/glh.test.R, man/glh.test.Rd: Initial checkin.
+	* [r59] R/glh.test.R, man/glh.test.Rd: Initial checkin.
 
 2001-12-17 18:59  warneg
 
-	* man/estimable.Rd: - Fixed spelling errors.
+	* [r56] man/estimable.Rd: - Fixed spelling errors.
 
 2001-12-17 18:52  warneg
 
-	* man/estimable.Rd: - Fixed the link to contrasts.lm.
+	* [r55] man/estimable.Rd: - Fixed the link to contrasts.lm.
 	  - Rephrased title/description to be more clear.
 
 2001-12-10 19:35  warneg
 
-	* man/estimable.Rd: Renamed 'contrsts.coeff.Rd' to 'estimable.Rd'
-	  corresponding to function rename.
+	* [r49] man/estimable.Rd: Renamed 'contrsts.coeff.Rd' to
+	  'estimable.Rd' corresponding to function rename.
 
 2001-12-10 19:26  warneg
 
-	* R/estimable.R: renamed from contrast.coeff.R to estimable.R
+	* [r48] R/estimable.R: renamed from contrast.coeff.R to estimable.R
 	  (incorrectly via contrast.lm.R)
 
 2001-12-07 19:50  warneg
 
-	* man/ci.Rd: - Added text noting that lme is now supported.
+	* [r37] man/ci.Rd: - Added text noting that lme is now supported.
 
 2001-12-07 19:19  warneg
 
-	* R/ci.R: - Fixed typo: DF column was being filled in with p-value.
+	* [r36] R/ci.R: - Fixed typo: DF column was being filled in with
+	  p-value.
 
 2001-12-07 18:49  warneg
 
-	* R/ci.R: - Added ci.lme method to handle lme objects.
+	* [r35] R/ci.R: - Added ci.lme method to handle lme objects.
 
 2001-10-16 23:15  warneg
 
-	* man/ci.Rd, trunk/gplots/man/wapply.Rd: Fixed unbalanced brace.
+	* [r27] man/ci.Rd, trunk/gplots/man/wapply.Rd: Fixed unbalanced
+	  brace.
 
 2001-08-25 05:52  warneg
 
-	* man/ci.Rd: - Added CVS header.
+	* [r12] man/ci.Rd: - Added CVS header.
 	  - Added my email address.
 
 2001-05-30 13:23  warneg
 
-	* ., R, R/ci.R, man, man/ci.Rd, trunk/gplots, trunk/gplots/R,
+	* [r2] ., R, R/ci.R, man, man/ci.Rd, trunk/gplots, trunk/gplots/R,
 	  trunk/gplots/R/boxplot.n.R, trunk/gplots/R/plotCI.R,
 	  trunk/gplots/R/plotmeans.R, trunk/gplots/man,
 	  trunk/gplots/man/boxplot.n.Rd, trunk/gplots/man/plotCI.Rd,

@@ -1,4 +1,4 @@
-# $Id: estimable.R 1104 2007-07-26 00:10:03Z warnes $
+# $Id: estimable.R 1230 2007-12-07 22:09:13Z warnes $
 estimable <- function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   {
     UseMethod("estimable")
@@ -184,14 +184,21 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL,
     else if ("lm" %in% class(obj))
       {
         cf <- summary.lm(obj)$coefficients[, 1]
-        vcv <- summary.lm(obj)$cov.unscaled * summary.lm(obj)$sigma^2
         if ("glm" %in% class(obj))
-          {
-            vcv <- summary(obj)$cov.scaled
-          }
+          vcv <- summary(obj)$cov.scaled
+        else
+          vcv <- summary.lm(obj)$cov.unscaled * summary.lm(obj)$sigma^2
+      }
+    else if ("lme" %in% class(obj))
+      {
+        s.o <- summary(obj)
+        cf <- s.o$tTable[,1]
+        se <- s.o$tTable[, 2]
+        rho <- s.o$cor
+        vcv <- rho * outer(se, se)
       }
     else
-      stop("obj must be of class 'lm', 'glm', 'aov', 'gee' or 'geese'")
+      stop("obj must be of class 'lm', 'glm', 'aov', 'gee', 'geese', or 'lme'.")
     u <- (cm %*% cf)-beta0
     vcv.u <- cm %*% vcv %*% t(cm)
     W <- t(u) %*% solve(vcv.u) %*% u

@@ -1,4 +1,4 @@
-% $Id: estimable.Rd 1105 2007-07-26 00:20:00Z warnes $
+% $Id: estimable.Rd 1231 2007-12-07 22:10:30Z warnes $
 %
 \name{estimable}
 \alias{estimable}
@@ -23,7 +23,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 %.to.est(obj, params)
 }
 \arguments{
-   \item{obj}{Regression (lm,glm,lme,lmer,mlm) object. }
+   \item{obj}{Regression (lm, glm, lme, lmer, mlm) object. }
    \item{cm}{Vector, List, or Matrix specifying estimable linear functions or
      contrasts.  See below for details.}
    \item{beta0}{Vector of null hypothesis values}
@@ -80,7 +80,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   %is not intended for direct use.
 }
 \note{
-  The estimated fixed effect parameter of \code{lme} objects may have
+  The estimated fixed effect parameters of \code{lme} objects may have
   different degrees of freedom.  If a specified contrast includes
   nonzero coefficients for parameters with differing degrees of freedom,
   the smallest number of degrees of freedom is used and a warning
@@ -96,7 +96,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 \author{
   BXC (Bendix Carstensen) \email{bxc\@novonordisk.com}, 
   Gregory R. Warnes \email{warnes@bst.rochester.edu},
-  Søren Højsgaard \email{sorenh@agrsci.dk}, and
+  Soren Hojsgaard \email{sorenh@agrsci.dk}, and
   Randall C Johnson \email{rjohnson@ncifcrf.gov}
 }
 \seealso{

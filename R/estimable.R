@@ -1,10 +1,11 @@
-# $Id: estimable.R 1026 2006-11-29 00:04:54Z warnes $
+# $Id: estimable.R 1104 2007-07-26 00:10:03Z warnes $
 estimable <- function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   {
     UseMethod("estimable")
   }
 
-estimable.default <- function (obj, cm, beta0, conf.int=NULL, show.beta0, joint.test=FALSE, ...)
+estimable.default <- function (obj, cm, beta0, conf.int=NULL,
+                               show.beta0, joint.test=FALSE, ...)
 {
   if (is.matrix(cm) || is.data.frame(cm))
     {
@@ -12,8 +13,8 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL, show.beta0, joint.
     }
   else if(is.list(cm))
     {
-      cm <- matrix(.to.est(obj, cm), nrow=1) ################### changed 
-    }                                        ################### it seems that the names are lost with the way it used to be...
+      cm <- matrix(.to.est(obj, cm), nrow=1)
+    }
   else if(is.vector(cm))
     {
       cm <- matrix(.to.est(obj, cm), nrow=1)
@@ -122,7 +123,7 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL, show.beta0, joint.
              },
              X2.stat={
                prob <- 1 - pchisq((ct.diff/vc)^2, df=1)
-             })                                                      ##################
+             })
 
       if (stat.name=="X2.stat")
         {

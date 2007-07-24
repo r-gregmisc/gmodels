@@ -26,6 +26,7 @@ S3method(fit.contrast, lmer)
 
 S3method(estimable, default)
 S3method(estimable, lmer)
+S3method(estimable, mlm)
 
 S3method(print, glh.test)
 S3method(summary, glh.test)

@@ -1,3 +1,21 @@
+2007-07-26 00:20  warnes
+
+	* DESCRIPTION, NAMESPACE, NEWS, R/estimable.mlm.R,
+	  man/estimable.Rd: Add support for mlm to estimable().
+
+2007-07-26 00:10  warnes
+
+	* R/estimable.R, R/estimable.mlm.R: Add estimable method for mlm
+	  objects
+
+2007-03-09 22:35  warnes
+
+	* R/ci.R: Remove stray character
+
+2007-03-09 20:10  warnes
+
+	* NEWS: Update NEWS file.
+
 2007-03-09 20:07  warnes
 
 	* DESCRIPTION: Update version number

@@ -1,6 +1,14 @@
 Version 2.13.2
 --------------
 
+New Features:
+
+- Add support for 'mlm' objects to estimable
+
+
+Version 2.13.2
+--------------
+
 Bug Fixes:
 
 - Lower and upper end of confidence interval for lmer objects were

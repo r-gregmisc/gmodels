@@ -1,29 +1,29 @@
-% $Id: estimable.Rd 1231 2007-12-07 22:10:30Z warnes $
+% $Id: estimable.Rd 1329 2009-05-09 04:00:15Z warnes $
 %
 \name{estimable}
 \alias{estimable}
 \alias{estimable.default}
-\alias{estimable.lmer}
+\alias{estimable.mer}
 \alias{estimable.mlm}
 %\alias{.wald}
 %\alias{.to.est}
 \title{Contrasts and estimable linear functions of model coefficients}
 \description{
   Compute and test contrasts and other estimable linear
-  functions of model coefficients for for lm, glm, lme, lmer, and geese
+  functions of model coefficients for for lm, glm, lme, mer, and geese
   objects
 }
 \usage{
 estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 \method{estimable}{default} (obj, cm, beta0, conf.int=NULL, show.beta0, joint.test=FALSE, ...)
-\method{estimable}{lmer}(obj, cm, beta0, conf.int=NULL,
-               show.beta0, sim.lmer=TRUE, n.sim=1000, ...) 
+\method{estimable}{mer}(obj, cm, beta0, conf.int=NULL,
+               show.beta0, sim.mer=TRUE, n.sim=1000, ...) 
 \method{estimable}{mlm}(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 %.wald(obj, cm,beta0=rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm))))
 %.to.est(obj, params)
 }
 \arguments{
-   \item{obj}{Regression (lm, glm, lme, lmer, mlm) object. }
+   \item{obj}{Regression (lm, glm, lme, mer, mlm) object. }
    \item{cm}{Vector, List, or Matrix specifying estimable linear functions or
      contrasts.  See below for details.}
    \item{beta0}{Vector of null hypothesis values}
@@ -37,7 +37,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
    \item{show.beta0}{Logical value. If TRUE a column for beta0 will be
      included in the output table.  Defaults to TRUE when beta0 is
      specified, FALSE otherwise.}
-   \item{sim.lmer}{Logical value. If TRUE p-values and confidence
+   \item{sim.mer}{Logical value. If TRUE p-values and confidence
      intervals will be estimated using \code{\Link[Matrix]{mcmcsamp}}.
    }
    \item{n.sim}{Number of MCMC samples to take in
@@ -95,7 +95,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 }
 \author{
   BXC (Bendix Carstensen) \email{bxc\@novonordisk.com}, 
-  Gregory R. Warnes \email{warnes@bst.rochester.edu},
+  Gregory R. Warnes \email{greg@random-technologies-llc.com},
   Soren Hojsgaard \email{sorenh@agrsci.dk}, and
   Randall C Johnson \email{rjohnson@ncifcrf.gov}
 }

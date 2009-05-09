@@ -1,4 +1,4 @@
-% $Id: fast.prcomp.Rd 977 2006-08-02 22:21:49Z warnes $
+% $Id: fast.prcomp.Rd 1329 2009-05-09 04:00:15Z warnes $
 %
 \name{fast.prcomp}
 \alias{fast.prcomp}
@@ -69,7 +69,7 @@
   \code{\link{svd}} .
 }
 \author{Modifications by Gregory R. Warnes
-  \email{warnes@bst.rochester.edu} }
+  \email{greg@random-technologies-llc.com} }
 
 \seealso{
     \code{\link[stats]{prcomp}}, \code{\link{svd}}, \code{\link{La.svd}}

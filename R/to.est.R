@@ -5,7 +5,7 @@
 
 .to.est <- function(obj, params)
 {
-  if('lme' %in% class(obj) | 'lmer' %in% class(obj))
+  if('lme' %in% class(obj) | 'mer' %in% class(obj))
     {
       eff.obj <- fixef(obj)
     }
@@ -30,7 +30,7 @@
         if(length(params)==length(est))
           names(params) <- names(est)
         else
-          stop("`param' has no names and does not match number of coefficients of model. Unable to construct coefficient vector")
+          stop("'param' has no names and does not match number of coefficients of model. Unable to construct coefficient vector")
       else
         {
           matches <- names(params) %in% names(est)
@@ -45,10 +45,10 @@
                   )
         }
 
-      if(is.list(params))                      #####################
-        est[names(params)] <- unlist(params)   ##################### changed
-      else                                     #####################
-        est[names(params)] <- params           #####################
+      if(is.list(params))                    
+        est[names(params)] <- unlist(params) 
+      else                                   
+        est[names(params)] <- params         
     }
 
   return(est)

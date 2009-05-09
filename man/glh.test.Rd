@@ -1,15 +1,13 @@
-% $Id: glh.test.Rd 977 2006-08-02 22:21:49Z warnes $
+% $Id: glh.test.Rd 1332 2009-05-09 04:53:47Z warnes $
 %
 \name{glh.test}
 \alias{glh.test}
 \alias{print.glh.test}
 \alias{summary.glh.test}
-
 \title{ Test a General Linear Hypothesis for a Regression Model }
 \description{
-Test, print, or summarize a general linear hypothesis for a regression model }
+  Test, print, or summarize a general linear hypothesis for a regression model
 }
-
 \usage{
 glh.test(reg, cm, d=rep(0, nrow(cm)) )
 print.glh.test(x, digits=4,...)
@@ -67,7 +65,7 @@ summary.glh.test(object, digits=4,...)
 }
 \references{ R.H. Myers, Classical and Modern Regression with
   Applications,  2nd Ed, 1990, p. 105}
-\author{Gregory R. Warnes \email{warnes@bst.rochester.edu} }
+\author{Gregory R. Warnes \email{greg@random-technologies-llc.com} }
 \seealso{\code{\link{fit.contrast}}, \code{\link{estimable}},
   \code{\link{contrasts}} }
 \examples{

@@ -116,11 +116,10 @@ CrossTable(x, y, digits=3, max.width = 5, expected=FALSE, prop.r=TRUE, prop.c=TR
 
   resid/sresid/asresid: Pearson Residuals (from chi-square tests).
 }
-\author{Marc Schwartz \email{mschwartz@mn.rr.com}. Original
+\author{Marc Schwartz \email{marc_schwartz@comcast.net}. Original
         version posted to r-devel on Jul 27, 2002. SPSS format
-        modifications added by Nitin Jain \email{nitin.jain@pfizer.com}
-	based upon code provided by Dirk Enzmann
-	\email{dirk.enzmann@jura.uni-hamburg.de}}
+        modifications added by Nitin Jain based upon code provided
+	by Dirk Enzmann \email{dirk.enzmann@jura.uni-hamburg.de}}
 
 \seealso{\code{\link{xtabs}},
          \code{\link{table}},

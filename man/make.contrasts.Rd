@@ -1,4 +1,4 @@
-% $Id: make.contrasts.Rd 977 2006-08-02 22:21:49Z warnes $
+% $Id: make.contrasts.Rd 1329 2009-05-09 04:00:15Z warnes $
 %
 \name{make.contrasts}
 \alias{make.contrasts}
@@ -31,7 +31,7 @@ make.contrasts(contr, how.many = ncol(contr))
   \code{\link{contrasts}} or to the \code{contrasts} argument of model
   functions (eg, \code{\link{lm}}).
 }
-\author{ Gregory R. Warnes \email{warnes@bst.rochester.edu}}
+\author{ Gregory R. Warnes \email{greg@random-technologies-llc.com}}
 \seealso{ \code{\link{lm}}, \code{\link{contrasts}},
   \code{\link{contr.treatment}},  \code{\link{contr.poly}},
   Computation and testing of General Linear Hypothesis:

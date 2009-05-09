@@ -1,12 +1,12 @@
-# $Id: fit.contrast.R 964 2006-06-05 20:59:50Z nj7w $
+# $Id: fit.contrast.R 1333 2009-05-09 05:00:47Z warnes $
 
 fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
                             conf.int=NULL, df=FALSE, ...)
 {
   # check class of model
-  if( !(any(class(model) %in% c("lm", "aov", "lme") ) ))                        ######
-    stop("contrast.lm can only be applied to objects inheriting from 'lm'",     ###### took lmer out of here
-         "and 'lme' (eg: lm,glm,aov,lme).")                                     ######
+  if( !(any(class(model) %in% c("lm", "aov", "lme") ) ))
+    stop("contrast.lm can only be applied to objects inheriting from 'lm'",
+         "and 'lme' (eg: lm,glm,aov,lme).")
 
   # make sure we have the NAME of the variable
   if(!is.character(varname))
@@ -34,7 +34,7 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
   colnames(cmat) <- cn
 
   # recall fitting method with the specified contrast
-  m <- model$call                                     ###### deleted lmer specific/S4 portion
+  m <- model$call
 
   if(is.null(m$contrasts))
     m$contrasts <- list()
@@ -46,7 +46,7 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
     r <- eval(m)
 
   # now return the correct elements ....
-  if( 'lme' %in% class(model) )              ####### took out lmer section
+  if( 'lme' %in% class(model) )
     {
       est <- r$coefficients$fixed
       se  <- sqrt(diag(r$varFix))
@@ -81,7 +81,7 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
         }
       else
         {
-          rn <- paste(varname,rownames(coeff),sep="")       ####### removed lmer portion
+          rn <- paste(varname,rownames(coeff),sep="")
           ind <- match(rn,rownames(retval))
           retval <- retval[ind,,drop=FALSE]
         }
@@ -104,8 +104,8 @@ fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
     return(retval)
 }
 
-# fit.contrast.lme and fit.contrast.lmer are necessary because
-# 'lme' and 'lmer' objects do not inherit from 'lm'.
+# fit.contrast.lme and fit.contrast.mer are necessary because
+# 'lme' and 'mer' objects do not inherit from 'lm'.
 #
 # **Make sure that the argument list *exactly* matches the one
 # for fit.contrast.lm() above.**
@@ -117,10 +117,10 @@ fit.contrast.lme <- function(model, varname, coeff, showall=FALSE,
     fit.contrast.lm(model, varname, coeff, showall, conf.int, df)
   }
 
-# I made rather dramatic changes here and do all calculations in fit.contrast.lmer rather than
-# fit.contrast.lm because of the simulation extras ... added sim.lmer and n.sim to the parameter list
-fit.contrast.lmer <- function(model, varname, coeff, showall=FALSE,
-                            conf.int=NULL, sim.lmer=TRUE, n.sim=1000, ...)
+# I made rather dramatic changes here and do all calculations in fit.contrast.mer rather than
+# fit.contrast.lm because of the simulation extras ... added sim.mer and n.sim to the parameter list
+fit.contrast.mer <- function(model, varname, coeff, showall=FALSE,
+                            conf.int=NULL, sim.mer=TRUE, n.sim=1000, ...)
 {
   require(lme4)
 
@@ -163,15 +163,15 @@ fit.contrast.lmer <- function(model, varname, coeff, showall=FALSE,
   r.effects <- fixef(r)
   n <- length(r.effects)
 
-  if(sim.lmer)
+  if(sim.mer)
   {
-    retval <- est.lmer(obj = r, cm = diag(n), beta0 = rep(0, n),
+    retval <- est.mer(obj = r, cm = diag(n), beta0 = rep(0, n),
                        conf.int = conf.int, show.beta0 = FALSE,
                        n.sim=n.sim)
     rownames(retval) <- names(r.effects)
   }else{
     if(!is.null(conf.int))
-      warning("Confidence interval calculation for lmer objects requires simulation -- use sim.lmer = TRUE")
+      warning("Confidence interval calculation for mer objects requires simulation -- use sim.mer = TRUE")
 
     est <- fixef(r)
     se  <- sqrt(diag(as.matrix(vcov(r))))

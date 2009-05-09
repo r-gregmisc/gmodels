@@ -18,14 +18,14 @@ S3method(ci, default)
 S3method(ci, binom)
 S3method(ci, lm)
 S3method(ci, lme)
-S3method(ci, lmer)
+S3method(ci, mer)
 
 S3method(fit.contrast, lm)
 S3method(fit.contrast, lme)
-S3method(fit.contrast, lmer)
+S3method(fit.contrast, mer)
 
 S3method(estimable, default)
-S3method(estimable, lmer)
+S3method(estimable, mer)
 S3method(estimable, mlm)
 
 S3method(print, glh.test)

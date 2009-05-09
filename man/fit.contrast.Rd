@@ -1,10 +1,10 @@
-% $Id: fit.contrast.Rd 977 2006-08-02 22:21:49Z warnes $
+% $Id: fit.contrast.Rd 1329 2009-05-09 04:00:15Z warnes $
 %
 \name{fit.contrast}
 \alias{fit.contrast}
 \alias{fit.contrast.lm}
 \alias{fit.contrast.lme}
-\alias{fit.contrast.lmer}
+\alias{fit.contrast.mer}
 \title{Compute and test arbitrary contrasts for regression objects}
 \description{
  Compute and test arbitrary contrasts for regression objects.
@@ -15,8 +15,8 @@ fit.contrast(model, varname, coeff, ... )
              conf.int=NULL, df=FALSE, ...)
 \method{fit.contrast}{lme}(model, varname, coeff, showall=FALSE,
              conf.int=NULL, df=FALSE, ...)
-\method{fit.contrast}{lmer}(model, varname, coeff, showall=FALSE,
-             conf.int=NULL, sim.lmer = TRUE, n.sim = 1000, ...)
+\method{fit.contrast}{mer}(model, varname, coeff, showall=FALSE,
+             conf.int=NULL, sim.mer = TRUE, n.sim = 1000, ...)
 }
 \arguments{
   \item{model}{regression (lm,glm,aov,lme) object for which the
@@ -34,8 +34,8 @@ fit.contrast(model, varname, coeff, ... )
   \item{df}{boolean indicating whether to return a column containing the
     degrees of freedom.}
   \item{\dots}{optional arguments provided by methods.}
-  \item{sim.lmer}{Logical value. If TRUE p-values and confidence
-    intervals will be estimated using \code{\Link[Matrix]{mcmcsamp}}. This option only takes effect for lmer
+  \item{sim.mer}{Logical value. If TRUE p-values and confidence
+    intervals will be estimated using \code{\Link[Matrix]{mcmcsamp}}. This option only takes effect for mer
     objects.}
   \item{n.sim}{Number of samples to use in \code{\Link[Matrix]{mcmcsamp}}.}
   }
@@ -52,7 +52,7 @@ fit.contrast(model, varname, coeff, ... )
   specified lower and upper confidence limits are also returned.}
 \references{Venables & Ripley, Section 6.2}
   
-\author{ Gregory R. Warnes \email{warnes@bst.rochester.edu}}
+\author{ Gregory R. Warnes \email{greg@random-technologies-llc.com}}
 
 \seealso{ \code{\link{lm}}, \code{\link{contrasts}},
   \code{\link{contr.treatment}},  \code{\link{contr.poly}},

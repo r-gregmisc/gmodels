@@ -1,4 +1,4 @@
-# $Id: estimable.R 1230 2007-12-07 22:09:13Z warnes $
+## $Id: estimable.R 1333 2009-05-09 05:00:47Z warnes $
 estimable <- function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   {
     UseMethod("estimable")
@@ -163,53 +163,53 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL,
       if(!show.beta0) retval$beta0 <- NULL
       return(retval)
     }
-  }
+}
 
 .wald <- function (obj, cm,
                    beta0=rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm))))
 {
-    if (!is.matrix(cm) && !is.data.frame(cm))
-        cm <- matrix(cm, nrow=1)
-    df <- nrow(cm)
-    if ("geese" %in% class(obj))
-      {
-        cf <- obj$beta
-        vcv <- obj$vbeta
-      }
-    else if ("gee" %in% class(obj))
-      {
-        cf <- summary(obj)$coef
-        vcv <- obj$robust.variance
-      }
-    else if ("lm" %in% class(obj))
-      {
-        cf <- summary.lm(obj)$coefficients[, 1]
-        if ("glm" %in% class(obj))
-          vcv <- summary(obj)$cov.scaled
-        else
-          vcv <- summary.lm(obj)$cov.unscaled * summary.lm(obj)$sigma^2
-      }
-    else if ("lme" %in% class(obj))
-      {
-        s.o <- summary(obj)
-        cf <- s.o$tTable[,1]
-        se <- s.o$tTable[, 2]
-        rho <- s.o$cor
-        vcv <- rho * outer(se, se)
-      }
-    else
-      stop("obj must be of class 'lm', 'glm', 'aov', 'gee', 'geese', or 'lme'.")
-    u <- (cm %*% cf)-beta0
-    vcv.u <- cm %*% vcv %*% t(cm)
-    W <- t(u) %*% solve(vcv.u) %*% u
-    prob <- 1 - pchisq(W, df=df)
-    retval <- as.data.frame(cbind(W, df, prob))
-    names(retval) <- c("X2.stat", "DF", "Pr(>|X^2|)")
-    print(as.data.frame(retval))
+  if (!is.matrix(cm) && !is.data.frame(cm))
+    cm <- matrix(cm, nrow=1)
+  df <- nrow(cm)
+  if ("geese" %in% class(obj))
+    {
+      cf <- obj$beta
+      vcv <- obj$vbeta
+    }
+  else if ("gee" %in% class(obj))
+    {
+      cf <- summary(obj)$coef
+      vcv <- obj$robust.variance
+    }
+  else if ("lm" %in% class(obj))
+    {
+      cf <- summary.lm(obj)$coefficients[, 1]
+      if ("glm" %in% class(obj))
+        vcv <- summary(obj)$cov.scaled
+      else
+        vcv <- summary.lm(obj)$cov.unscaled * summary.lm(obj)$sigma^2
+    }
+  else if ("lme" %in% class(obj))
+    {
+      s.o <- summary(obj)
+      cf <- s.o$tTable[,1]
+      se <- s.o$tTable[, 2]
+      rho <- s.o$cor
+      vcv <- rho * outer(se, se)
+    }
+  else
+    stop("obj must be of class 'lm', 'glm', 'aov', 'gee', 'geese', or 'lme'.")
+  u <- (cm %*% cf)-beta0
+  vcv.u <- cm %*% vcv %*% t(cm)
+  W <- t(u) %*% solve(vcv.u) %*% u
+  prob <- 1 - pchisq(W, df=df)
+  retval <- as.data.frame(cbind(W, df, prob))
+  names(retval) <- c("X2.stat", "DF", "Pr(>|X^2|)")
+  print(as.data.frame(retval))
 }
 
-estimable.lmer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
-                                             sim.lmer=TRUE, n.sim=1000, ...)
+estimable.mer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
+                           sim.mer=TRUE, n.sim=1000, ...)
 {
   if (is.matrix(cm) || is.data.frame(cm))
     {
@@ -225,7 +225,7 @@ estimable.lmer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
     }
   else
     {
-      stop("`cm' argument must be of type vector, list, or matrix.")
+      stop("'cm' argument must be of type vector, list, or matrix.")
     }
 
   if(missing(show.beta0))
@@ -243,30 +243,36 @@ estimable.lmer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
 
     }
 
-    if ("lmer" %in% class(obj)) {                                      
-      if(!require(Matrix, quietly=TRUE))                               
-        stop("Matrix package required for lmer objects")               
-                                                                       
-      if(sim.lmer)                                                     
-        return(est.lmer(obj=obj, cm=cm, beta0=beta0, conf.int=conf.int,
-                        show.beta0=show.beta0, n.sim=n.sim))           
-                                                                       
-      stat.name <- "lmer"                                              
-      cf <- as.matrix(fixef(obj))                                      
-      vcv <- as.matrix(vcov(obj))                                      
-      df <- NA                                                         
-    }
-    else {
-      stop("obj is not of class lmer")
-    }
+  if ("mer" %in% class(obj)) {                                      
+    if(sim.mer)                                                     
+      return(est.mer(obj=obj, cm=cm, beta0=beta0, conf.int=conf.int,
+                     show.beta0=show.beta0, n.sim=n.sim))           
+    
+    stat.name <- "mer"                                              
+    cf <- as.matrix(fixef(obj))                                      
+    vcv <- as.matrix(vcov(obj))                                      
+    df <- NA                                                         
+  }
+  else {
+    stop("obj is not of class mer")
+  }
 
-    retval <- cbind(hyp=beta0, est=ct, stderr=vc, "t value"=ct.diff/vc)
-    dimnames(retval) <- list(rn, c("beta0", "Estimate", "Std. Error",  
-                                   "t value"))
+  if (is.null(rownames(cm)))
+    rn <- paste("(", apply(cm, 1, paste, collapse=" "),
+                ")", sep="")
+  else rn <- rownames(cm)
+  
+  ct <- cm %*% cf[, 1]
+  ct.diff <- cm %*% cf[, 1] - beta0
+  vc <- sqrt(diag(cm %*% vcv %*% t(cm)))
+  
+  retval <- cbind(hyp=beta0, est=ct, stderr=vc, "t value"=ct.diff/vc)
+  dimnames(retval) <- list(rn, c("beta0", "Estimate", "Std. Error",  
+                                 "t value"))
 
-    rownames(retval) <- make.unique(rownames(retval))
-    retval <- as.data.frame(retval)
-    if(!show.beta0) retval$beta0 <- NULL
-    return(retval)
+  rownames(retval) <- make.unique(rownames(retval))
+  retval <- as.data.frame(retval)
+  if(!show.beta0) retval$beta0 <- NULL
+  return(retval)
 
 }

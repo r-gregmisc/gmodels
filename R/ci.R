@@ -1,4 +1,4 @@
-# $Id: ci.R 1079 2007-03-09 22:35:13Z warnes $
+# $Id: ci.R 1333 2009-05-09 05:00:47Z warnes $
 
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")
@@ -68,21 +68,21 @@ ci.lme <- function(x,confidence=0.95,alpha=1-confidence,...)
     retval
   }
 
-ci.lmer <- function(x,
+ci.mer <- function(x,
                     confidence=0.95,
                     alpha=1-confidence,
-                    sim.lmer=TRUE,
+                    sim.mer=TRUE,
                     n.sim=1000,
                     ...
                     )
 {
-  if(!(require(coda, quietly=TRUE) & require(Matrix, quietly=TRUE)))
-    stop("coda and Matrix packages required for ci.lmer")
+##   if(!(require(coda, quietly=TRUE) & require(Matrix, quietly=TRUE)))
+##     stop("coda and Matrix packages required for ci.mer")
   
   x.effects <- fixef(x)
   n <- length(x.effects)
   
-  retval <- est.lmer(obj = x, cm = diag(n), beta0 = rep(0, n),
+  retval <- est.mer(obj = x, cm = diag(n), beta0 = rep(0, n),
                      conf.int = confidence, show.beta0 = FALSE,
                      n.sim = n.sim)[,c("Estimate", "Lower.CI", "Upper.CI",
                                      "Std. Error", "p value")]

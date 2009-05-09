@@ -1,17 +1,17 @@
-# est.lmer.R
-# generate estimable output for lmer objects using mcmcsamp()
+# est.mer.R
+# generate estimable output for mer objects using mcmcsamp()
 # Randall Johnson
 # Laboratory of Genomic Diversity at NCI Frederick
 # SAIC Frederick, Inc
 # Created April 25, 2006
 
-est.lmer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
+est.mer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
 {
-##  if(!require(coda, quietly=TRUE))
-##    stop("coda package required when sim.lmer == TRUE")
+##   if(!require(coda, quietly=TRUE))
+##     stop("coda package required when sim.mer == TRUE")
 
   samp <- mcmcsamp(obj, n.sim)
-  samp.summ <- summary(samp)
+##  samp.summ <- summary(samp)
 
   if(is.null(dim(cm)))
     n <- length(cm)
@@ -21,7 +21,7 @@ est.lmer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
   samp.cm <- as.matrix(samp)[, 1:n] %*% t(cm)
 
   # calculate requested statistics
-  est <- drop(cm %*% samp.summ$statistics[1:n,1])
+  est <- apply(samp.cm, 2, mean)
   stderr <- sd(samp.cm)
   
   pval <- sapply(1:length(beta0),

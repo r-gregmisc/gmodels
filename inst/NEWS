@@ -1,3 +1,11 @@
+Version 2.15.1
+--------------
+
+Bug fixes:
+
+- Fix warnings reported by new versions of R CMD check.
+
+
 Version 2.15.0
 --------------
 

@@ -1,4 +1,4 @@
-% $Id: fit.contrast.Rd 1329 2009-05-09 04:00:15Z warnes $
+% $Id: fit.contrast.Rd 1466 2011-01-16 22:17:17Z warnes $
 %
 \name{fit.contrast}
 \alias{fit.contrast}
@@ -35,9 +35,9 @@ fit.contrast(model, varname, coeff, ... )
     degrees of freedom.}
   \item{\dots}{optional arguments provided by methods.}
   \item{sim.mer}{Logical value. If TRUE p-values and confidence
-    intervals will be estimated using \code{\Link[Matrix]{mcmcsamp}}. This option only takes effect for mer
+    intervals will be estimated using \code{mcmcsamp}. This option only takes effect for mer
     objects.}
-  \item{n.sim}{Number of samples to use in \code{\Link[Matrix]{mcmcsamp}}.}
+  \item{n.sim}{Number of samples to use in \code{mcmcsamp}.}
   }
   
 \details{
@@ -52,7 +52,7 @@ fit.contrast(model, varname, coeff, ... )
   specified lower and upper confidence limits are also returned.}
 \references{Venables & Ripley, Section 6.2}
   
-\author{ Gregory R. Warnes \email{greg@random-technologies-llc.com}}
+\author{ Gregory R. Warnes \email{greg@warnes.net}}
 
 \seealso{ \code{\link{lm}}, \code{\link{contrasts}},
   \code{\link{contr.treatment}},  \code{\link{contr.poly}},

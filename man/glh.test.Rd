@@ -1,4 +1,4 @@
-% $Id: glh.test.Rd 1332 2009-05-09 04:53:47Z warnes $
+% $Id: glh.test.Rd 1466 2011-01-16 22:17:17Z warnes $
 %
 \name{glh.test}
 \alias{glh.test}
@@ -65,7 +65,7 @@ summary.glh.test(object, digits=4,...)
 }
 \references{ R.H. Myers, Classical and Modern Regression with
   Applications,  2nd Ed, 1990, p. 105}
-\author{Gregory R. Warnes \email{greg@random-technologies-llc.com} }
+\author{Gregory R. Warnes \email{greg@warnes.net} }
 \seealso{\code{\link{fit.contrast}}, \code{\link{estimable}},
   \code{\link{contrasts}} }
 \examples{

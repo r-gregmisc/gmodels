@@ -1,4 +1,4 @@
-% $Id: ci.Rd 1466 2011-01-16 22:17:17Z warnes $
+% $Id: ci.Rd 1523 2012-04-19 17:50:20Z warnes $
 %
 \name{ci}
 \alias{ci}
@@ -20,7 +20,7 @@
   \method{ci}{lm}(x, confidence = 0.95, alpha = 1 - confidence,...)
   \method{ci}{lme}(x, confidence = 0.95, alpha = 1 - confidence,...)
   \method{ci}{mer}(x, confidence = 0.95, alpha = 1 - confidence,
-                    sim.mer=TRUE, n.sim=1000, ...) 
+                    sim.mer=TRUE, n.sim=10000, ...) 
 }
 \arguments{
   \item{x}{ object from which to compute confidence intervals. }

@@ -1,4 +1,4 @@
-# $Id: ci.R 1333 2009-05-09 05:00:47Z warnes $
+# $Id: ci.R 1525 2012-04-19 22:05:48Z warnes $
 
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")
@@ -68,26 +68,29 @@ ci.lme <- function(x,confidence=0.95,alpha=1-confidence,...)
     retval
   }
 
-ci.mer <- function(x,
-                    confidence=0.95,
-                    alpha=1-confidence,
-                    sim.mer=TRUE,
-                    n.sim=1000,
-                    ...
-                    )
+ci.mer <- function (x, 
+                    confidence = 0.95, 
+                    alpha = 1 - confidence, 
+                    sim.mer = TRUE, 
+                    n.sim = 1e4,
+                    ...) 
 {
-##   if(!(require(coda, quietly=TRUE) & require(Matrix, quietly=TRUE)))
-##     stop("coda and Matrix packages required for ci.mer")
-  
-  x.effects <- fixef(x)
-  n <- length(x.effects)
-  
-  retval <- est.mer(obj = x, cm = diag(n), beta0 = rep(0, n),
-                     conf.int = confidence, show.beta0 = FALSE,
-                     n.sim = n.sim)[,c("Estimate", "Lower.CI", "Upper.CI",
-                                     "Std. Error", "p value")]
-  
-  colnames(retval)[c(2:3, 5)] <- c("CI lower", "CI upper", "p-value")
-  rownames(retval) <- names(x.effects)
-  retval
+    x.effects <- x@fixef
+    n <- length(x.effects)
+
+    retval <- gmodels:::est.mer(obj = x, 
+                                cm = diag(n),
+                                beta0 = rep(0, n), 
+                                conf.int = confidence,
+                                show.beta0 = FALSE,
+                                n.sim = n.sim)
+
+    retval <- retval[,
+                     c("Estimate", "Lower.CI", "Upper.CI", "Std. Error", "p value"),
+                     drop=FALSE
+                     ]
+    colnames(retval)[c(2:3, 5)] <- c("CI lower", "CI upper", "p-value")
+    rownames(retval) <- names(x.effects)
+    
+    retval
 }

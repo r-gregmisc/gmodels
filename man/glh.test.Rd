@@ -1,4 +1,4 @@
-% $Id: glh.test.Rd 1466 2011-01-16 22:17:17Z warnes $
+% $Id: glh.test.Rd 1523 2012-04-19 17:50:20Z warnes $
 %
 \name{glh.test}
 \alias{glh.test}
@@ -10,8 +10,8 @@
 }
 \usage{
 glh.test(reg, cm, d=rep(0, nrow(cm)) )
-print.glh.test(x, digits=4,...)
-summary.glh.test(object, digits=4,...)
+\method{print}{glh.test}(x, digits=4,...)
+\method{summary}{glh.test}(object, digits=4,...)
 }
 
 \arguments{

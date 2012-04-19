@@ -1,4 +1,4 @@
-% $Id: estimable.Rd 1466 2011-01-16 22:17:17Z warnes $
+% $Id: estimable.Rd 1526 2012-04-19 22:06:49Z warnes $
 %
 \name{estimable}
 \alias{estimable}
@@ -71,10 +71,10 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   linear functions are meaningful.
 
   For computing contrasts among levels of a single factor,
-  \code{fit.contrast} may be more convenient.  For computing
-  contrasts between two specific combinations of model parameters, the
-  \code{contrast} function in Frank Harrell's Design library may be more
-  convenient.
+  \code{fit.contrast} may be more convenient.  For computing contrasts
+  between two specific combinations of model parameters, the
+  \code{contrast} function in Frank Harrell's 'rms' library
+  (formerly 'Design') may be more convenient.
 
   %The \code{.wald} function is called internally by \code{estimable} and
   %is not intended for direct use.
@@ -104,7 +104,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   \code{\link[stats]{lm}},
   \code{\link[nlme]{lme}},
   \code{\link[stats]{contrasts}},
-  \code{\link[Design]{contrast}},
+  \code{\link[rms]{contrast.rms}},
   }
 
 \examples{

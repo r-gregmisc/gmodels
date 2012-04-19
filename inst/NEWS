@@ -1,5 +1,19 @@
-Version 2.15.1
---------------
+Version 2.15.2 - 2012-04-19
+---------------------------
+
+Bug fixes:
+
+- Update est.mer() to work with recent versions of lme4  which changed
+  'mer' objects from S3 to S4 class 
+
+- Changes to pass new R CMD check tests
+
+- The 'Design' package has been replaced my 'rms', so update man page
+  references.
+
+
+Version 2.15.1 - 2011-01-16
+---------------------------
 
 Bug fixes:
 

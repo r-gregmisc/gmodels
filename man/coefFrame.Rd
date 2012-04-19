@@ -1,4 +1,4 @@
-% $Id: coefFrame.Rd 776 2005-12-01 16:54:02Z nj7w $
+% $Id: coefFrame.Rd 1524 2012-04-19 21:13:28Z warnes $
 %
 \name{coefFrame}
 \alias{coefFrame}
@@ -8,7 +8,9 @@
   parameter.
 }
 \usage{
-coefFrame(mod, data, by = NULL, fit.on = TRUE, fitfun, keep.unused.levels = TRUE, byvar.sep = "\001", ...) 
+coefFrame(mod, data, by = NULL, fit.on = TRUE, fitfun,
+          keep.unused.levels = TRUE, byvar.sep = "\001", ...)
+
 }
 \arguments{
   \item{mod}{a model formula, to be passed to by \code{fitfun}.}

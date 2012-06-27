@@ -78,7 +78,7 @@ ci.mer <- function (x,
     x.effects <- x@fixef
     n <- length(x.effects)
 
-    retval <- gmodels:::est.mer(obj = x, 
+    retval <- est.mer(obj = x, 
                                 cm = diag(n),
                                 beta0 = rep(0, n), 
                                 conf.int = confidence,

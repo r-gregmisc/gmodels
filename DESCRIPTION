@@ -1,5 +1,5 @@
 Package: gmodels
-Version: 2.15.3
+Version: 2.15.4
 Date: 2012-06-27
 Title: Various R programming tools for model fitting
 Author: Gregory R. Warnes. Includes R source code and/or documentation
@@ -16,6 +16,7 @@ Imports: MASS, gdata
 License: GPL-2
 URL: http://cran.r-project.org/src/contrib/PACKAGES.html
         http://www.sf.net/projects/r-gregmisc
-Packaged: 2012-06-28 00:50:06 UTC; warnegr1
+Packaged: 2013-04-28 13:52:54 UTC; ripley
 Repository: CRAN
-Date/Publication: 2012-06-28 05:21:23
+Date/Publication: 2013-04-28 16:05:44
+NeedsCompilation: no

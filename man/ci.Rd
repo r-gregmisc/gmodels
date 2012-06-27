@@ -13,9 +13,10 @@
   \code{ci.default}, the probability of a binomial vector
   \code{ci.binom}, and for \code{lm}, \code{lme}, and \code{mer} objects are
   provided. }
-\synopsis{
+\usage{
   ci(x, confidence = 0.95, alpha = 1 - confidence,...)
-  \method{ci}{default}(x, confidence = 0.95, alpha = 1 - confidence, na.rm=FALSE)...)
+  \method{ci}{default}(x, confidence = 0.95, alpha = 1 - confidence,
+     na.rm = FALSE, ...)
   \method{ci}{binom}(x, confidence = 0.95, alpha = 1 - confidence,...)
   \method{ci}{lm}(x, confidence = 0.95, alpha = 1 - confidence,...)
   \method{ci}{lme}(x, confidence = 0.95, alpha = 1 - confidence,...)

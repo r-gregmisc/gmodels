@@ -1,3 +1,21 @@
+2012-06-28 00:41  warnes
+
+	* [r1575] R/est.lmer.R, R/est.mer.R: Update est.mer() to support
+	  new S4 "mer" class.
+
+2012-06-28 00:40  warnes
+
+	* [r1574] man/ci.Rd: Make lme4 example executable.
+
+2012-06-27 22:42  warnes
+
+	* [r1573] test/lme-test.R: Add test code submitted by
+	  Ariel.Muldoon@oregonstate.edu.
+
+2012-04-19 22:09  warnes
+
+	* [r1528] inst/NEWS: Update for release 2.15.2
+
 2012-04-19 22:07  warnes
 
 	* [r1527] DESCRIPTION: Update version and date.

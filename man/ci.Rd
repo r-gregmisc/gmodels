@@ -1,4 +1,4 @@
-% $Id: ci.Rd 1523 2012-04-19 17:50:20Z warnes $
+% $Id: ci.Rd 1574 2012-06-28 00:40:29Z warnes $
 %
 \name{ci}
 \alias{ci}
@@ -66,12 +66,12 @@ data(state)
 reg  <-  lm(Area ~ Population, data=as.data.frame(state.x77))
 ci(reg) 
 
-\dontrun{
+%\dontrun{
 # mer example
 library(lme4)
 fm2 <- lmer(Reaction ~ Days + (1|Subject) + (0+Days|Subject), sleepstudy)
 ci(fm2)
-}
+%}
 
 
 }

@@ -9,16 +9,10 @@
 est.mer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
 {
 
-  samp <- mcmcsamp(obj, n.sim)
+  samp <- lme4:::mcmcsamp(obj, n.sim)
   ##  samp.summ <- summary(samp)
 
-  if(is.null(dim(cm)))
-    n <- length(cm)
-  else
-    n <- dim(cm)[2]
-
-  ## drop extra information on end
-  samp.cm <- t(samp@fixef)[1:n,, drop=FALSE] %*% cm
+  samp.cm <- t(cm %*% samp@fixef)
 
   # calculate requested statistics
   est <- apply(samp.cm, 2, mean)
@@ -64,12 +58,3 @@ est.mer <- function(obj, cm, beta0, conf.int, show.beta0, n.sim)
   return(samp.stats)
 }
 
-percentile <- function(x, distn, include.observed=FALSE)
-{
-  if(include.observed)
-    distn <- c(x, distn)
-  
-  n <- length(distn)
-    
-  return(findInterval(x, distn[order(distn)]) / n)
-}

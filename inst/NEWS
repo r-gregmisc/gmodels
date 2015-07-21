@@ -1,3 +1,46 @@
+Version 2.16.1 - 2015-07-18
+---------------------------
+
+Bug fixes:
+
+- ci.binom() was using an incorrect method for calcuating binomial
+  conficence intervals.  It now calculates the Clopper-Pearson 'exect'
+  interval, which is *conservative* due to the discrete nature of the
+  binomial distribution.
+
+Other Changes:
+
+- Support for lme4 objects has been removed due to incompatible
+  changes to the lme4 package.
+
+Version 2.16.0 - 2014-07-24
+---------------------------
+
+New features:
+
+- The estimable() function now returns objects that are of class
+  'estimable'.
+
+- The confidence interval function ci() now has a method for
+  'estimable' objects, with the same layout as for 'lm' objects,
+  making it easier to combine confidence information about model
+  parameters and estimable functions into a single table.
+
+
+Version 2.15.5 - 2013-07-18
+---------------------------
+
+Bug fixes:
+
+- Correct error in estimable.mlm() that caused it to always fail.  Added
+  test code to prevent future issues.
+
+Other Changes:
+
+- Update man page file for ci() to current Rd syntax.
+- Remove unused argument to ci.mer()
+
+
 Version 2.15.3 - 2012-06-27
 ---------------------------
 
@@ -13,7 +56,7 @@ Version 2.15.2 - 2012-04-19
 Bug fixes:
 
 - Update est.mer() to work with recent versions of lme4  which changed
-  'mer' objects from S3 to S4 class 
+  'mer' objects from S3 to S4 class
 
 - Changes to pass new R CMD check tests
 
@@ -85,7 +128,7 @@ Bug Fixes:
 	- fix various code/doc inconsistencies
 
 - Problem: estimable() was failing for lmer objects.
-  Solution: 
+  Solution:
 	- Create a generic estimable()
 	- Move old function to estimable.default()
 	- Add  estimable.lmer() to the exported methods list in NAMESPACE
@@ -107,8 +150,8 @@ Version 2.12.0
   function provided by Randall C Johnson.  It is now possible to do
   things like:
 	estimable(reg, c("xB"=1,"xD"=-1))
-  instead of:  
-        estimable(reg, c(    0,   1,	 0,   -1)) 
+  instead of:
+        estimable(reg, c(    0,   1,	 0,   -1))
   which should make estimable() much easier to use for large models.
 
 Version 2.1.0

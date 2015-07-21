@@ -1,4 +1,4 @@
-## $Id: estimable.R 1333 2009-05-09 05:00:47Z warnes $
+## $Id: estimable.R 2060 2015-07-19 03:22:30Z warnes $
 estimable <- function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   {
     UseMethod("estimable")
@@ -9,7 +9,7 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL,
 {
   if (is.matrix(cm) || is.data.frame(cm))
     {
-      cm <- t(apply(cm, 1, .to.est, obj=obj)) 
+      cm <- t(apply(cm, 1, .to.est, obj=obj))
     }
   else if(is.list(cm))
     {
@@ -140,7 +140,7 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL,
           dimnames(retval) <- list(rn, c("beta0", "Estimate", "Std. Error",
                                          "t value", "DF", "Pr(>|t|)"))
         }
-      
+
       if (!is.null(conf.int))
         {
           if (conf.int <=0 || conf.int >=1)
@@ -161,6 +161,9 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL,
       rownames(retval) <- make.unique(rownames(retval))
       retval <- as.data.frame(retval)
       if(!show.beta0) retval$beta0 <- NULL
+
+      class(retval) <- c("estimable", class(retval))
+
       return(retval)
     }
 }
@@ -208,71 +211,74 @@ estimable.default <- function (obj, cm, beta0, conf.int=NULL,
   print(as.data.frame(retval))
 }
 
-estimable.mer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
-                           sim.mer=TRUE, n.sim=1000, ...)
-{
-  if (is.matrix(cm) || is.data.frame(cm))
-    {
-      cm <- t(apply(cm, 1, .to.est, obj=obj)) 
-    }
-  else if(is.list(cm))
-    {
-      cm <- matrix(.to.est(obj, cm), nrow=1)
-    }                                       
-  else if(is.vector(cm))
-    {
-      cm <- matrix(.to.est(obj, cm), nrow=1)
-    }
-  else
-    {
-      stop("'cm' argument must be of type vector, list, or matrix.")
-    }
+## estimable.mer <- function (obj, cm, beta0, conf.int=NULL, show.beta0,
+##                            sim.mer=TRUE, n.sim=1000, ...)
+## {
+##   if (is.matrix(cm) || is.data.frame(cm))
+##     {
+##       cm <- t(apply(cm, 1, .to.est, obj=obj))
+##     }
+##   else if(is.list(cm))
+##     {
+##       cm <- matrix(.to.est(obj, cm), nrow=1)
+##     }
+##   else if(is.vector(cm))
+##     {
+##       cm <- matrix(.to.est(obj, cm), nrow=1)
+##     }
+##   else
+##     {
+##       stop("'cm' argument must be of type vector, list, or matrix.")
+##     }
 
-  if(missing(show.beta0))
-    {
-      if(!missing(beta0))
-        show.beta0=TRUE
-      else
-        show.beta0=FALSE
-    }
+##   if(missing(show.beta0))
+##     {
+##       if(!missing(beta0))
+##         show.beta0=TRUE
+##       else
+##         show.beta0=FALSE
+##     }
 
 
-  if (missing(beta0))
-    {
-      beta0 = rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm)))
+##   if (missing(beta0))
+##     {
+##       beta0 = rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm)))
 
-    }
+##     }
 
-  if ("mer" %in% class(obj)) {                                      
-    if(sim.mer)                                                     
-      return(est.mer(obj=obj, cm=cm, beta0=beta0, conf.int=conf.int,
-                     show.beta0=show.beta0, n.sim=n.sim))           
-    
-    stat.name <- "mer"                                              
-    cf <- as.matrix(fixef(obj))                                      
-    vcv <- as.matrix(vcov(obj))                                      
-    df <- NA                                                         
-  }
-  else {
-    stop("obj is not of class mer")
-  }
+##   if ("mer" %in% class(obj)) {
+##     if(sim.mer)
+##       return(est.mer(obj=obj, cm=cm, beta0=beta0, conf.int=conf.int,
+##                      show.beta0=show.beta0, n.sim=n.sim))
 
-  if (is.null(rownames(cm)))
-    rn <- paste("(", apply(cm, 1, paste, collapse=" "),
-                ")", sep="")
-  else rn <- rownames(cm)
-  
-  ct <- cm %*% cf[, 1]
-  ct.diff <- cm %*% cf[, 1] - beta0
-  vc <- sqrt(diag(cm %*% vcv %*% t(cm)))
-  
-  retval <- cbind(hyp=beta0, est=ct, stderr=vc, "t value"=ct.diff/vc)
-  dimnames(retval) <- list(rn, c("beta0", "Estimate", "Std. Error",  
-                                 "t value"))
+##     stat.name <- "mer"
+##     cf <- as.matrix(fixef(obj))
+##     vcv <- as.matrix(vcov(obj))
+##     df <- NA
+##   }
+##   else {
+##     stop("obj is not of class mer")
+##   }
 
-  rownames(retval) <- make.unique(rownames(retval))
-  retval <- as.data.frame(retval)
-  if(!show.beta0) retval$beta0 <- NULL
-  return(retval)
+##   if (is.null(rownames(cm)))
+##     rn <- paste("(", apply(cm, 1, paste, collapse=" "),
+##                 ")", sep="")
+##   else rn <- rownames(cm)
 
-}
+##   ct <- cm %*% cf[, 1]
+##   ct.diff <- cm %*% cf[, 1] - beta0
+##   vc <- sqrt(diag(cm %*% vcv %*% t(cm)))
+
+##   retval <- cbind(hyp=beta0, est=ct, stderr=vc, "t value"=ct.diff/vc)
+##   dimnames(retval) <- list(rn, c("beta0", "Estimate", "Std. Error",
+##                                  "t value"))
+
+##   rownames(retval) <- make.unique(rownames(retval))
+##   retval <- as.data.frame(retval)
+##   if(!show.beta0) retval$beta0 <- NULL
+
+##   class(retval) <- c("estimable", class(retval))
+
+##   return(retval)
+
+## }

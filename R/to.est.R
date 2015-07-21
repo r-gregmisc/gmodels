@@ -5,11 +5,12 @@
 
 .to.est <- function(obj, params)
 {
-  if('lme' %in% class(obj) | 'mer' %in% class(obj))
-    {
-      eff.obj <- fixef(obj)
-    }
-  else if('geese' %in% class(obj))
+  ## if('lme' %in% class(obj) | 'mer' %in% class(obj))
+  ##   {
+  ##     eff.obj <- fixef(obj)
+  ##   }
+  ## else
+  if('geese' %in% class(obj))
     {
       eff.obj <- obj$beta
     }
@@ -45,10 +46,10 @@
                   )
         }
 
-      if(is.list(params))                    
-        est[names(params)] <- unlist(params) 
-      else                                   
-        est[names(params)] <- params         
+      if(is.list(params))
+        est[names(params)] <- unlist(params)
+      else
+        est[names(params)] <- params
     }
 
   return(est)

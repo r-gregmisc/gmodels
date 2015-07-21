@@ -1,9 +1,9 @@
-# $Id: ci.R 1525 2012-04-19 22:05:48Z warnes $
+# $Id: ci.R 2060 2015-07-19 03:22:30Z warnes $
 
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")
 
-ci.default <- function(x, confidence=0.95,alpha=1-confidence,na.rm=FALSE,...)
+ci.numeric <- function(x, confidence=0.95,alpha=1-confidence,na.rm=FALSE,...)
   {
     est <- mean(x, na.rm=na.rm)
     stderr <-  sd(x, na.rm=na.rm)/sqrt(nobs(x));
@@ -15,19 +15,23 @@ ci.default <- function(x, confidence=0.95,alpha=1-confidence,na.rm=FALSE,...)
                  "CI upper"=ci.high,
                  "Std. Error"=stderr
                  )
-    
+
     retval
   }
 
 ci.binom <- function(x, confidence=0.95,alpha=1-confidence,...)
   {
-    if( !(all(x) %in% c(0,1)) ) stop("Binomial values must be either 0 or 1.")
+      if( !(all(x %in% c(0,1))) ) stop("Binomial values must be either 0 or 1.")
+      if( all(x==0) || all(x==1) )
+          warning("All observed values are ", as.numeric(x[1]), ", so estimated Std. Error is 0.")
 
     est  <-  mean(x, na.rm=TRUE)
     n <- nobs(x)
+    x <- sum(x)
     stderr <- sqrt(est*(1-est)/n)
-    ci.low  <- qbinom(p=alpha/2, prob=est, size=n)/n
-    ci.high <- qbinom(p=1-alpha/2, prob=est, size=n)/n
+
+    ci.low  <- qbeta(   alpha/2, x  , n + 1 - x)
+    ci.high <- qbeta(1- alpha/2, x+1, n-x      )
 
     retval  <- cbind(Estimate=est,
                      "CI lower"=ci.low,
@@ -48,7 +52,7 @@ ci.lm  <-  function(x,confidence=0.95,alpha=1-confidence,...)
                      "CI upper"=ci.high,
                      "Std. Error"= coef(x)[,2],
                      "p-value" = coef(x)[,4])
-    
+
     retval
   }
 
@@ -68,29 +72,44 @@ ci.lme <- function(x,confidence=0.95,alpha=1-confidence,...)
     retval
   }
 
-ci.mer <- function (x, 
-                    confidence = 0.95, 
-                    alpha = 1 - confidence, 
-                    sim.mer = TRUE, 
-                    n.sim = 1e4,
-                    ...) 
-{
-    x.effects <- x@fixef
-    n <- length(x.effects)
+## ci.mer <- function (x,
+##                     confidence = 0.95,
+##                     alpha = 1 - confidence,
+##                     n.sim = 1e4,
+##                     ...)
+## {
+##     x.effects <- x@fixef
+##     n <- length(x.effects)
 
-    retval <- est.mer(obj = x, 
-                                cm = diag(n),
-                                beta0 = rep(0, n), 
-                                conf.int = confidence,
-                                show.beta0 = FALSE,
-                                n.sim = n.sim)
+##     retval <- gmodels::est.mer(obj = x,
+##                                 cm = diag(n),
+##                                 beta0 = rep(0, n),
+##                                 conf.int = confidence,
+##                                 show.beta0 = FALSE,
+##                                 n.sim = n.sim)
 
-    retval <- retval[,
-                     c("Estimate", "Lower.CI", "Upper.CI", "Std. Error", "p value"),
-                     drop=FALSE
-                     ]
-    colnames(retval)[c(2:3, 5)] <- c("CI lower", "CI upper", "p-value")
-    rownames(retval) <- names(x.effects)
-    
+##     retval <- retval[,
+##                      c("Estimate", "Lower.CI", "Upper.CI", "Std. Error", "p value"),
+##                      drop=FALSE
+##                      ]
+##     colnames(retval)[c(2:3, 5)] <- c("CI lower", "CI upper", "p-value")
+##     rownames(retval) <- names(x.effects)
+
+##     retval
+## }
+
+
+ci.estimable  <-  function(x,confidence=0.95,alpha=1-confidence,...)
+  {
+    ci.low  <- x$Estimate + qt(alpha/2, x$DF) * x$"Std. Error"
+    ci.high <- x$Estimate - qt(alpha/2, x$DF) * x$"Std. Error"
+    retval  <- cbind(Estimate=x$Estimate,
+                     "CI lower"=ci.low,
+                     "CI upper"=ci.high,
+                     "Std. Error"= x$"Std. Error",
+                     "p-value" = x$"Pr(>|t|)"
+                     )
+    rownames(retval) <- rownames(x)
+
     retval
-}
+  }

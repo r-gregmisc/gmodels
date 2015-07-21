@@ -1,29 +1,31 @@
-% $Id: estimable.Rd 1526 2012-04-19 22:06:49Z warnes $
+% $Id: estimable.Rd 2060 2015-07-19 03:22:30Z warnes $
 %
 \name{estimable}
 \alias{estimable}
 \alias{estimable.default}
-\alias{estimable.mer}
+%\alias{estimable.mer}
 \alias{estimable.mlm}
 %\alias{.wald}
 %\alias{.to.est}
 \title{Contrasts and estimable linear functions of model coefficients}
 \description{
   Compute and test contrasts and other estimable linear
-  functions of model coefficients for for lm, glm, lme, mer, and geese
-  objects
+  functions of model coefficients for for lm, glm, lme, %mer,
+  and geese objects
 }
 \usage{
 estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 \method{estimable}{default} (obj, cm, beta0, conf.int=NULL, show.beta0, joint.test=FALSE, ...)
-\method{estimable}{mer}(obj, cm, beta0, conf.int=NULL,
-               show.beta0, sim.mer=TRUE, n.sim=1000, ...) 
+%\method{estimable}{mer}(obj, cm, beta0, conf.int=NULL,
+%               show.beta0, sim.mer=TRUE, n.sim=1000, ...)
 \method{estimable}{mlm}(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 %.wald(obj, cm,beta0=rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm))))
 %.to.est(obj, params)
 }
 \arguments{
-   \item{obj}{Regression (lm, glm, lme, mer, mlm) object. }
+  \item{obj}{Regression (lm, glm, lme,
+    %mer,
+    mlm) object. }
    \item{cm}{Vector, List, or Matrix specifying estimable linear functions or
      contrasts.  See below for details.}
    \item{beta0}{Vector of null hypothesis values}
@@ -37,12 +39,12 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
    \item{show.beta0}{Logical value. If TRUE a column for beta0 will be
      included in the output table.  Defaults to TRUE when beta0 is
      specified, FALSE otherwise.}
-   \item{sim.mer}{Logical value. If TRUE p-values and confidence
-     intervals will be estimated using \code{mcmcsamp}.
-   }
-   \item{n.sim}{Number of MCMC samples to take in
-     \code{mcmcsamp}.
-   }
+   %% \item{sim.mer}{Logical value. If TRUE p-values and confidence
+   %%   intervals will be estimated using \code{mcmcsamp}.
+   %% }
+   %% \item{n.sim}{Number of MCMC samples to take in
+   %%   \code{mcmcsamp}.
+   %% }
    \item{...}{ignored}
 }
 \details{
@@ -61,12 +63,12 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   subset of) the model parameters, and each row should contain the
   corresponding coefficient to be applied.  Model parameters which are
   not present in the set of column names of \code{cm} will be set to zero.
-  
+
   The estimates and their variances are obtained by applying the
   contrast matrix (generated from) \code{cm} to the model estimates
   variance-covariance matrix.  Degrees of freedom are obtained from the
   appropriate model terms.
-  
+
   The user is responsible for ensuring that the specified
   linear functions are meaningful.
 
@@ -91,10 +93,10 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   the beta0 value (optional, see \code{show.beta0} above), estimated
   coefficients, standard errors, t values, degrees of freedom, two-sided
   p-values, and the lower and upper endpoints of the
-  1-alpha confidence intervals. 
+  1-alpha confidence intervals.
 }
 \author{
-  BXC (Bendix Carstensen) \email{bxc\@novonordisk.com}, 
+  BXC (Bendix Carstensen) \email{bxc\@novonordisk.com},
   Gregory R. Warnes \email{greg@warnes.net},
   Soren Hojsgaard \email{sorenh@agrsci.dk}, and
   Randall C Johnson \email{rjohnson@ncifcrf.gov}
@@ -104,7 +106,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   \code{\link[stats]{lm}},
   \code{\link[nlme]{lme}},
   \code{\link[stats]{contrasts}},
-  \code{\link[rms]{contrast.rms}},
+  \code{\link[rms]{contrast}}
   }
 
 \examples{
@@ -142,11 +144,11 @@ plotCI(x=range, y=tmp[, 1], li=tmp[, 6], ui=tmp[, 7])
 # Sepal.Width by Species interaction terms.
 data(iris)
 lm1  <- lm (Sepal.Length ~ Sepal.Width + Species + Sepal.Width:Species, data=iris)
-glm1 <- glm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width:Species, data=iris, 
+glm1 <- glm(Sepal.Length ~ Sepal.Width + Species + Sepal.Width:Species, data=iris,
             family=quasipoisson("identity"))
 
 cm <- rbind(
-            'Setosa vs. Versicolor'   = c(0, 0, 1, 0, 1, 0), 
+            'Setosa vs. Versicolor'   = c(0, 0, 1, 0, 1, 0),
             'Setosa vs. Virginica'    = c(0, 0, 0, 1, 0, 1),
             'Versicolor vs. Virginica'= c(0, 0, 1,-1, 1,-1)
             )

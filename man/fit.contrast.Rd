@@ -1,10 +1,10 @@
-% $Id: fit.contrast.Rd 1466 2011-01-16 22:17:17Z warnes $
+% $Id: fit.contrast.Rd 2060 2015-07-19 03:22:30Z warnes $
 %
 \name{fit.contrast}
 \alias{fit.contrast}
 \alias{fit.contrast.lm}
 \alias{fit.contrast.lme}
-\alias{fit.contrast.mer}
+%\alias{fit.contrast.mer}
 \title{Compute and test arbitrary contrasts for regression objects}
 \description{
  Compute and test arbitrary contrasts for regression objects.
@@ -15,12 +15,12 @@ fit.contrast(model, varname, coeff, ... )
              conf.int=NULL, df=FALSE, ...)
 \method{fit.contrast}{lme}(model, varname, coeff, showall=FALSE,
              conf.int=NULL, df=FALSE, ...)
-\method{fit.contrast}{mer}(model, varname, coeff, showall=FALSE,
-             conf.int=NULL, sim.mer = TRUE, n.sim = 1000, ...)
+%\method{fit.contrast}{mer}(model, varname, coeff, showall=FALSE,
+%             conf.int=NULL, sim.mer = TRUE, n.sim = 1000, ...)
 }
 \arguments{
   \item{model}{regression (lm,glm,aov,lme) object for which the
-    contrast(s) will be computed.} 
+    contrast(s) will be computed.}
   \item{varname}{variable name}
   \item{coeff}{vector or matrix specifying contrasts (one per row).}
   \item{showall}{return all regression coefficients. If \code{TRUE}, all
@@ -34,12 +34,12 @@ fit.contrast(model, varname, coeff, ... )
   \item{df}{boolean indicating whether to return a column containing the
     degrees of freedom.}
   \item{\dots}{optional arguments provided by methods.}
-  \item{sim.mer}{Logical value. If TRUE p-values and confidence
-    intervals will be estimated using \code{mcmcsamp}. This option only takes effect for mer
-    objects.}
-  \item{n.sim}{Number of samples to use in \code{mcmcsamp}.}
+%  \item{sim.mer}{Logical value. If TRUE p-values and confidence
+%    intervals will be estimated using \code{mcmcsamp}. This option only takes effect for mer
+%    objects.}
+%  \item{n.sim}{Number of samples to use in \code{mcmcsamp}.}
   }
-  
+
 \details{
   Computes the specified contrast(s) by re-fitting the model with the
   appropriate arguments.  A contrast of the form \code{c(1,0,0,-1)}
@@ -51,7 +51,7 @@ fit.contrast(model, varname, coeff, ... )
   containing the degrees of freedom is included.  If \code{conf.int} is
   specified lower and upper confidence limits are also returned.}
 \references{Venables & Ripley, Section 6.2}
-  
+
 \author{ Gregory R. Warnes \email{greg@warnes.net}}
 
 \seealso{ \code{\link{lm}}, \code{\link{contrasts}},
@@ -83,7 +83,7 @@ fit.contrast(reg, x, c( -1/2, -1/2,  1/2,  1/2) )
 sum(-1/2*gm[1], -1/2*gm[2], 1/2*gm[3], 1/2*gm[4])
 
 # mean of 1st group vs mean of 2nd, 3rd and 4th groups
-fit.contrast(reg, x, c( -3/3,  1/3,  1/3,  1/3) ) 
+fit.contrast(reg, x, c( -3/3,  1/3,  1/3,  1/3) )
 # estimate should be equal to:
 sum(-3/3*gm[1], 1/3*gm[2], 1/3*gm[3], 1/3*gm[4])
 
@@ -138,10 +138,10 @@ summary(model, split=list( Genotype=list( "KO vs WT"=1 ),
                                         "2 vs 3" = 2 ) ) )
 
 
-# example for lme 
+# example for lme
 library(nlme)
 data(Orthodont)
-fm1 <- lme(distance ~ Sex, data = Orthodont,random=~1|Subject) 
+fm1 <- lme(distance ~ Sex, data = Orthodont,random=~1|Subject)
 
 # Contrast for sex.  This example is equivalent to standard treatment
 # contrast.

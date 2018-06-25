@@ -1,182 +1,394 @@
-2015-07-19  warnes
+2018-06-25 14:53  warnes
 
-	* [r2058] R/ci.R, man/ci.Rd: ci.binom() was using an incorrect
-	  method for calculating binomial confidence interval. The revised
-	  code calculates the Clopper-Pearson 'exect' interval, which is
+	* ChangeLog, NEWS, inst/ChangeLog, inst/NEWS: Move NEWS and
+	  ChangeLog to top level.
+
+2018-06-25 14:52  warnes
+
+	* ChangeLog, NEWS: Remove NEWS and ChangeLog soft links
+
+2018-06-20 21:06  warnes
+
+	* inst/ChangeLog: Update ChangeLog for gmodels 2.18.0.
+
+2018-06-20 21:04  warnes
+
+	* DESCRIPTION, inst/NEWS: Update DESCRIPTION and NEWS for gmodels
+	  2.18.0.
+
+2018-06-20 21:02  warnes
+
+	* NAMESPACE: Add imports from stats package.
+
+2018-06-20 20:51  warnes
+
+	* DESCRIPTION, inst/ChangeLog: Update DESCRIPTION and ChangeLog for
+	  gmodels 2.16.1
+
+2018-06-20 20:50  warnes
+
+	* NAMESPACE: Remove obsolete functions.
+
+2018-06-20 20:46  warnes
+
+	* R/fit.contrast.R, man/ci.Rd, man/estimable.Rd,
+	  man/fit.contrast.Rd: Fix R CMD check issues.
+
+2018-06-20 20:42  warnes
+
+	* R/ci.R: Remove trailing whitespace
+
+2018-06-20 20:40  warnes
+
+	* R/est_p_ci.R: Use base::trimws() instead of gdata::trim()
+
+2018-06-20 20:35  warnes
+
+	* test: Remove duplicated/incorrect 'test' directory.
+
+2017-06-12 23:53  warnes
+
+	* DESCRIPTION: Update imports
+
+2017-06-12 23:53  warnes
+
+	* NAMESPACE: Add imports for base R packages to NAMESPACE
+
+2017-06-05 21:27  warnes
+
+	* inst/NEWS: Update NEWS and ChangeLog files for 2.18.0.
+
+2016-08-15 19:11  warnes
+
+	* test, test/lme-test.R, test/test_estimable_mlm.R: Add tests for
+	  mlm and (obsolete) lme
+
+2016-08-15 19:05  warnes
+
+	* R/est_p_ci.R: Add est_p_ci generic and lm method
+
+2016-08-12 17:15  warnes
+
+	* DESCRIPTION, NAMESPACE, R/ci.R, R/fit.contrast.R, inst/ChangeLog,
+	  inst/NEWS, man/ci.Rd, man/estimable.Rd, man/fit.contrast.Rd:
+	  Updates...
+
+2015-07-22 00:53  warnes
+
+	* DESCRIPTION: Update gmodels DESCRIPTION
+
+2015-07-22 00:48  warnes
+
+	* test, tests, tests/lme-test.R: Renamed 'test' directory to
+	  'tests', commented out tests for lme4 which has a changed API
+
+2015-07-20 23:38  warnes
+
+	* DESCRIPTION, NAMESPACE: Changs to squash new R CMD check warnings
+
+2015-07-19 03:22  warnes
+
+	* DESCRIPTION, NAMESPACE, R/ci.R, R/est.mer.R, R/estimable.R,
+	  R/fit.contrast.R, R/to.est.R, inst/NEWS, man/ci.Rd,
+	  man/estimable.Rd, man/fit.contrast.Rd: - Removed references to
+	  'mer' objects, sincel the nlme4 update is not backwards
+	  compatible with my code.
+	  - Removed 'require' calls.
+
+2015-07-19 02:34  warnes
+
+	* DESCRIPTION, inst/ChangeLog, inst/NEWS: Update DESCRIPTION,
+	  ChangeLog, and NEWS for gmodels 2.16.1
+
+2015-07-19 02:30  warnes
+
+	* R/ci.R, man/ci.Rd: ci.binom() was using an incorrect method for
+	  calculating binomial confidence interval. The revised code
+	  calculates the Clopper-Pearson 'exect' interval, which is
 	  *conservative* due to the discrete nature of the binomial
 	  distribution.
 
-2015-05-02  warnes
+2015-05-02 17:38  warnes
 
-	* [r2018] Rename 'trunk' to 'pkg' for compatibility with R-forge
+	* Rename 'trunk' to 'pkg' for compatibility with R-forge
 
-2015-04-06  warnes
+2015-04-06 21:52  warnes
 
-	* [r1916] Add ChangeLog files to repository
+	* Add ChangeLog files to repository
 
-2014-07-24  warnes
+2014-07-24 15:18  warnes
 
-	* [r1869] Update NEWS for gmodels 2.16.0
-	* [r1868] - Estimable now adds the class 'estimable' to returned
-	  objects.
+	* Update NEWS for gmodels 2.16.0
+
+2014-07-24 15:14  warnes
+
+	* - Estimable now adds the class 'estimable' to returned objects.
 	  - New ci() method for estimable objects.
 	  - Minor improvemets to man page formatting.
 
-2013-07-18  warnes
+2013-07-18 14:09  warnes
 
-	* [r1710] Looks like Brian Ripley repackaged for R 3.0.0 and bumped
-	  version number, so change it to 2.15.5
-	* [r1709] Update for gmodels 2.15.4
-	* [r1708] Update to current Rd syntax
-	* [r1707] Correct bug in estimable.mlm
+	* Looks like Brian Ripley repackaged for R 3.0.0 and bumped version
+	  number, so change it to 2.15.5
 
-2013-07-15  warnes
+2013-07-18 13:57  warnes
 
-	* [r1706] Remove unused argument to ci.mer
+	* Update for gmodels 2.15.4
 
-2012-06-28  warnes
+2013-07-18 13:54  warnes
 
-	* [r1577] Update for gmodels version 2.15.3.
-	* [r1576] Move percentile() function to a separate file.
-	* [r1575] Update est.mer() to support new S4 "mer" class.
-	* [r1574] Make lme4 example executable.
+	* Update to current Rd syntax
 
-2012-06-27  warnes
+2013-07-18 13:46  warnes
 
-	* [r1573] Add test code submitted by Ariel.Muldoon@oregonstate.edu.
+	* Correct bug in estimable.mlm
 
-2012-04-19  warnes
+2013-07-15 18:13  warnes
 
-	* [r1528] Update for release 2.15.2
-	* [r1527] Update version and date.
-	* [r1526] The 'Design' package has been replaced my 'rms', so
-	  update man page references.
-	* [r1525] More fixes for support of S4 'mer' class from lme4
-	  package.
-	* [r1524] Split long line.
-	* [r1523] Changes to pass R CMD check
+	* Remove unused argument to ci.mer
 
-2011-12-14  warnes
+2012-06-28 00:49  warnes
 
-	* [r1521] Improve formatting of ci.mer().
-	* [r1520] Modify est.mer to work with recent lme4 'mer' S4 objects.
+	* Update for gmodels version 2.15.3.
 
-2011-01-16  warnes
+2012-06-28 00:47  warnes
 
-	* [r1466] Fix warnings reported by R CMD check. Update version
-	  number to 2.15.1.
+	* Move percentile() function to a separate file.
 
-2009-05-09  warnes
+2012-06-28 00:41  warnes
 
-	* [r1337] Add tests for lme4 'mer' objects
-	* [r1336] Update for 2.15.0
-	* [r1335] Update description for 2.15.0
-	* [r1334] Add support for lme4's 'mer' objects
-	* [r1333] Add support for lme4's 'mer' objects
-	* [r1332] Fix .Rd syntax error
-	* [r1331] Add softlinks for ChangeLog and NEWS to top level dir for
+	* Update est.mer() to support new S4 "mer" class.
+
+2012-06-28 00:40  warnes
+
+	* Make lme4 example executable.
+
+2012-06-27 22:42  warnes
+
+	* Add test code submitted by Ariel.Muldoon@oregonstate.edu.
+
+2012-04-19 22:09  warnes
+
+	* Update for release 2.15.2
+
+2012-04-19 22:07  warnes
+
+	* Update version and date.
+
+2012-04-19 22:06  warnes
+
+	* The 'Design' package has been replaced my 'rms', so update man
+	  page references.
+
+2012-04-19 22:05  warnes
+
+	* More fixes for support of S4 'mer' class from lme4 package.
+
+2012-04-19 21:13  warnes
+
+	* Split long line.
+
+2012-04-19 17:50  warnes
+
+	* Changes to pass R CMD check
+
+2011-12-14 18:17  warnes
+
+	* Improve formatting of ci.mer().
+
+2011-12-14 18:14  warnes
+
+	* Modify est.mer to work with recent lme4 'mer' S4 objects.
+
+2011-01-16 22:17  warnes
+
+	* Fix warnings reported by R CMD check. Update version number to
+	  2.15.1.
+
+2009-05-09 05:29  warnes
+
+	* Add tests for lme4 'mer' objects
+
+2009-05-09 05:04  warnes
+
+	* Update for 2.15.0
+
+2009-05-09 05:02  warnes
+
+	* Update description for 2.15.0
+
+2009-05-09 05:01  warnes
+
+	* Add support for lme4's 'mer' objects
+
+2009-05-09 05:00  warnes
+
+	* Add support for lme4's 'mer' objects
+
+2009-05-09 04:53  warnes
+
+	* Fix .Rd syntax error
+
+2009-05-09 04:37  warnes
+
+	* Add softlinks for ChangeLog and NEWS to top level dir for
 	  convenience
-	* [r1330] Move ChangeLog and NEWS files into inst directory
-	* [r1329] Update Greg's email address
 
-2008-04-10  warnes
+2009-05-09 04:36  warnes
 
-	* [r1255] Improve languages a bit
+	* Move ChangeLog and NEWS files into inst directory
 
-2008-01-02  warnes
+2009-05-09 04:00  warnes
 
-	* [r1236] Update Marc's email address
+	* Update Greg's email address
 
-2007-12-12  warnes
+2008-04-10 14:05  warnes
 
-	* [r1233] Move copyright notice for Randall's contributions from
-	  License section to Author section of the DESCRIPTION file.
+	* Improve languages a bit
 
-2007-12-07  warnes
+2008-01-02 16:56  warnes
 
-	* [r1232] Update DESCRIPTION and NEWS for release 2.14.1
-	* [r1231] Correct minor typos in man page for estimable()
-	* [r1230] Add support for lme models to estimable()
-	* [r1229] Replace non-ascii characters in Soren's name with
-	  (equivalent?) ascii character to avoid character encoding issues.
+	* Update Marc's email address
 
-2007-10-22  warnes
+2007-12-12 21:16  warnes
 
-	* [r1196] Clarify GPL version
+	* Move copyright notice for Randall's contributions from License
+	  section to Author section of the DESCRIPTION file.
 
-2007-07-26  warnes
+2007-12-07 22:21  warnes
 
-	* [r1105] Add support for mlm to estimable().
-	* [r1104] Add estimable method for mlm objects
+	* Update DESCRIPTION and NEWS for release 2.14.1
 
-2007-03-09  warnes
+2007-12-07 22:10  warnes
 
-	* [r1079] Remove stray character
-	* [r1078] Update NEWS file.
-	* [r1077] Update version number
-	* [r1076] Minor code formatting changes
-	* [r1075] Flip lower and upper interval in ci.lmer(). Add example
-	  to man page.
-	* [r1074] Fix some old email addressses that got missed
+	* Correct minor typos in man page for estimable()
 
-2006-11-29  warnes
+2007-12-07 22:09  warnes
 
-	* [r1029] Update for 2.13.1
-	* [r1028] Correct declartion of S3 methods for estimable()
-	* [r1027] Add additional suggested packages
-	* [r1026] - Add generic
+	* Add support for lme models to estimable()
+
+2007-12-07 22:07  warnes
+
+	* Replace non-ascii characters in Soren's name with (equivalent?)
+	  ascii character to avoid character encoding issues.
+
+2007-10-22 02:24  warnes
+
+	* Clarify GPL version
+
+2007-07-26 00:20  warnes
+
+	* Add support for mlm to estimable().
+
+2007-07-26 00:10  warnes
+
+	* Add estimable method for mlm objects
+
+2007-03-09 22:35  warnes
+
+	* Remove stray character
+
+2007-03-09 20:10  warnes
+
+	* Update NEWS file.
+
+2007-03-09 20:07  warnes
+
+	* Update version number
+
+2007-03-09 20:06  warnes
+
+	* Minor code formatting changes
+
+2007-03-09 20:06  warnes
+
+	* Flip lower and upper interval in ci.lmer(). Add example to man
+	  page.
+
+2007-03-09 19:43  warnes
+
+	* Fix some old email addressses that got missed
+
+2006-11-29 00:11  warnes
+
+	* Update for 2.13.1
+
+2006-11-29 00:05  warnes
+
+	* Correct declartion of S3 methods for estimable()
+
+2006-11-29 00:05  warnes
+
+	* Add additional suggested packages
+
+2006-11-29 00:04  warnes
+
+	* - Add generic
 	  - Fix code vs. doc inconsistiencies
 
-2006-11-28  warnes
+2006-11-28 22:38  warnes
 
-	* [r1025] Remove extraneous comma that causes errors in R 2.5.0
+	* Remove extraneous comma that causes errors in R 2.5.0
 
-2006-11-27  warnes
+2006-11-27 20:45  warnes
 
-	* [r1016] Update for 2.13.1
-	* [r1015] Add missing export of methods for estimable()
+	* Update for 2.13.1
 
-2006-11-14  ggorjan
+2006-11-27 20:36  warnes
 
-	* [r1012] Removed executable property
+	* Add missing export of methods for estimable()
 
-2006-08-02  warnes
+2006-11-14 22:25  ggorjan
 
-	* [r977] Update my email address
+	* Removed executable property
 
-2006-06-06  nj7w
+2006-08-02 22:21  warnes
 
-	* [r966] Updated ci, estimable and fit.contrast as per Randall
-	  Johnson
+	* Update my email address
 
-2006-06-05  nj7w
+2006-06-06 19:17  nj7w
 
-	* [r965] Additions as per Randall C Johnson
-	* [r964] Additions as per Randall C Johnson
-	* [r963] - New function to estimate CI's and p-values using
-	  mcmcsamp() from the
+	* Updated ci, estimable and fit.contrast as per Randall Johnson
+
+2006-06-05 21:00  nj7w
+
+	* Additions as per Randall C Johnson
+
+2006-06-05 20:59  nj7w
+
+	* Additions as per Randall C Johnson
+
+2006-06-05 20:57  nj7w
+
+	* - New function to estimate CI's and p-values using mcmcsamp()
+	  from the
 	  Matrix package
 
-2006-05-05  nj7w
+2006-05-05 18:29  nj7w
 
-	* [r959] Fixed an error: According to Marc Schwartz - there was an
-	  error when a matrix without dimnames(or names(dimnames)) was
-	  passed as x argument
+	* Fixed an error: According to Marc Schwartz - there was an error
+	  when a matrix without dimnames(or names(dimnames)) was passed as
+	  x argument
 
-2005-12-13  nj7w
+2005-12-13 16:03  nj7w
 
-	* [r808] Removed ChangeLog
-	* [r807] Updated NEWS
+	* Removed ChangeLog
 
-2005-12-12  nj7w
+2005-12-13 16:02  nj7w
 
-	* [r796] Updated version number for CRAN
+	* Updated NEWS
 
-2005-12-04  warnes
+2005-12-12 21:57  nj7w
 
-	* [r781] Update for 2.11.0
-	* [r780] Integration of code changes suggested by Randall C Johnson
-	  to add
+	* Updated version number for CRAN
+
+2005-12-04 06:27  warnes
+
+	* Update for 2.11.0
+
+2005-12-04 06:12  warnes
+
+	* Integration of code changes suggested by Randall C Johnson to add
 	  support for lmer (lme version 4) objects to ci(), estimable(),
 	  and
 	  fit.contrast().
@@ -189,61 +401,76 @@
 	  estimable(reg, c( 0, 1, 0, -1) )
 	  which should make estimable much easier to use for large models.
 
-2005-12-01  nj7w
+2005-12-01 16:54  nj7w
 
-	* [r776] Updated Greg's email address
+	* Updated Greg's email address
 
-2005-10-27  warnes
+2005-10-27 11:21  warnes
 
-	* [r709] Update version number. Bump minor version since we added
+	* Update version number. Bump minor version since we added
 	  functionality.
-	* [r708] Add ci.binom() to NAMESPACE, bump version
 
-2005-10-26  warnes
+2005-10-27 10:33  warnes
 
-	* [r707] Add ci.binom
+	* Add ci.binom() to NAMESPACE, bump version
 
-2005-10-25  warnes
+2005-10-26 13:39  warnes
 
-	* [r706] Add gdata::nobs to import list. Needed by ci()
+	* Add ci.binom
 
-2005-09-12  nj7w
+2005-10-25 21:18  warnes
 
-	* [r671] Updated Greg's email
+	* Add gdata::nobs to import list. Needed by ci()
 
-2005-09-07  nj7w
+2005-09-12 15:44  nj7w
 
-	* [r667] Fixed man page
+	* Updated Greg's email
 
-2005-09-06  nj7w
+2005-09-07 15:31  nj7w
 
-	* [r664] Updated DESCRIPTION
-	* [r663] Added NEWS
-	* [r662] Fixed the Package name
+	* Fixed man page
 
-2005-09-02  nj7w
+2005-09-06 21:34  nj7w
 
-	* [r655] Added ChangeLog
+	* Updated DESCRIPTION
 
-2005-08-31  nj7w
+2005-09-06 21:34  nj7w
 
-	* [r644] Added DESCRIPTION file
-	* [r643] removed DESCRIPTION.in
+	* Added NEWS
 
-2005-07-11  nj7w
+2005-09-06 16:21  nj7w
 
-	* [r627] Revision based on Marc Schwartz's suggestions:
+	* Fixed the Package name
+
+2005-09-02 23:10  nj7w
+
+	* Added ChangeLog
+
+2005-08-31 16:28  nj7w
+
+	* Added DESCRIPTION file
+
+2005-08-31 16:27  nj7w
+
+	* removed DESCRIPTION.in
+
+2005-07-11 21:35  nj7w
+
+	* Revision based on Marc Schwartz's suggestions:
 	  1) Added 'dnn' argument to enable specification of dimnames as
 	  per table()
 	  2) Corrected bug in SPSS output for 1d table, where proportions
 	  were being printed and not percentages ('%' output)
 
-2005-06-09  nj7w
+2005-06-09 14:20  nj7w
 
-	* [r625] Updating the version number, and various help files to
+	* Updating the version number, and various help files to
 	  synchronize splitting of gregmisc bundle in 4 individual
 	  components.
-	* [r623] Updates by Marc Schwartz:
+
+2005-06-09 14:13  nj7w
+
+	* Updates by Marc Schwartz:
 	  CrossTable:
 	  
 	  # Revision 2.0 2005/04/27
@@ -251,97 +478,110 @@
 	  # so that large integers do not print in
 	  # scientific notation
 
-2005-05-13  nj7w
+2005-05-13 18:59  nj7w
 
-	* [r621] 1) Using dQuote.ascii function in read.xls as the new
-	  version of dQuote doesn't work proprly with UTF-8 locale.
+	* 1) Using dQuote.ascii function in read.xls as the new version of
+	  dQuote doesn't work proprly with UTF-8 locale.
 	  2) Modified CrossTable.Rd usage in gmodels
 	  3) Modified heatmap.2 usage in gplots.
 
-2005-05-11  warnes
+2005-05-11 13:51  warnes
 
-	* [r620] Add dependency on gdata::frameApply.
+	* Add dependency on gdata::frameApply.
 
-2005-03-31  warnes
+2005-03-31 20:32  warnes
 
-	* [r593] Add ceofFrame function to NAMESPACE
-	* [r592] coefFrame example needs to properly load ELISA data from
-	  gtools package
-	* [r588] Ensure that each file has $Id$ header, and no $Log$
-	* [r587] Add coefFrame() function contributed by Jim Rogers
+	* Add ceofFrame function to NAMESPACE
 
-2005-01-18  warnes
+2005-03-31 19:05  warnes
 
-	* [r521] Removed Windows Line Endings
+	* coefFrame example needs to properly load ELISA data from gtools
+	  package
 
-2005-01-14  nj7w
+2005-03-31 18:31  warnes
 
-	* [r518] Updated the manual to reflect prop.chisq change in its R
-	  file.
+	* Ensure that each file has $Id$ header, and no $Log$
 
-2005-01-14  warnes
+2005-03-31 18:30  warnes
 
-	* [r517] Nitin added display of the Chisquare contribution of each
-	  cell, as suggested
+	* Add coefFrame() function contributed by Jim Rogers
+
+2005-01-18 19:53  warnes
+
+	* Removed Windows Line Endings
+
+2005-01-14 21:40  nj7w
+
+	* Updated the manual to reflect prop.chisq change in its R file.
+
+2005-01-14 19:14  warnes
+
+	* Nitin added display of the Chisquare contribution of each cell,
+	  as suggested
 	  by Greg Snow.
 
-2005-01-12  warnes
+2005-01-12 20:50  warnes
 
-	* [r515] Add dependency on R 1.9.0+ to prevent poeple from
-	  installing on old
+	* Add dependency on R 1.9.0+ to prevent poeple from installing on
+	  old
 	  versions of R which don't support namespaces.
 
-2004-12-23  nj7w
+2004-12-23 19:32  nj7w
 
-	* [r507] Split the function print.CrossTable.vector in two parts -
-	  for SAS behaiour and SPSS behaviour. Also put the code of
-	  printing statistics in a function 'print.statistics'
+	* Split the function print.CrossTable.vector in two parts - for SAS
+	  behaiour and SPSS behaviour. Also put the code of printing
+	  statistics in a function 'print.statistics'
 
-2004-12-21  warnes
+2004-12-21 22:38  warnes
 
-	* [r502] Added & extended changes made by Nitin to implement 'SPSS'
+	* Added & extended changes made by Nitin to implement 'SPSS'
 	  format, as suggested by
 	  Dirk Enzmann <dirk.enzmann@jura.uni-hamburg.de>.
 
-2004-09-30  warneg
+2004-09-30 21:03  warneg
 
-	* [r464] Fix typos.
+	* Fix typos.
 
-2004-09-27  warneg
+2004-09-27 21:01  warneg
 
-	* [r461] Updated to pass R CMD check.
+	* Updated to pass R CMD check.
 
-2004-09-03  warneg
+2004-09-03 22:44  warneg
 
-	* [r450] Add explicit package to call to quantcut in example.
-	* [r446] initial bundle checkin
+	* Add explicit package to call to quantcut in example.
 
-2004-09-02  warneg
+2004-09-03 17:27  warneg
 
-	* [r442] Initial revision
+	* initial bundle checkin
 
-2004-05-25  warnes
+2004-09-02 17:14  warneg
 
-	* [r327] Updates from Mark Schwartz.
+	* Initial revision
 
-2004-04-13  warnes
+2004-05-25 02:57  warnes
 
-	* [r314] Fix latex warning: it doesn't like double subscripts.
+	* Updates from Mark Schwartz.
 
-2004-03-26  warnes
+2004-04-13 11:41  warnes
 
-	* [r306] Reflect movement of code from 'mva' package to 'stats' in
-	  R 1.9.0.
+	* Fix latex warning: it doesn't like double subscripts.
 
-2004-03-25  warnes
+2004-03-26 22:28  warnes
 
-	* [r296] - Estimable was reporting sqrt(X^2) rather than X^2 in the
+	* Reflect movement of code from 'mva' package to 'stats' in R
+	  1.9.0.
+
+2004-03-25 20:09  warnes
+
+	* - Estimable was reporting sqrt(X^2) rather than X^2 in the
 	  output.
 	  - Provide latex math markup for linear algebra expressions in
 	  help text.
 	  - Other clarifications in help text
-	* [r295] Add enhancements to estimable() provided by S�ren
-	  H�jsgaard
+
+2004-03-25 18:17  warnes
+
+	* Add enhancements to estimable() provided by S�ren H�jsgaard
 	  \email{sorenh@agrsci.dk}:
 	  
 	  I have made a modified version of the function [..] which
@@ -349,40 +589,38 @@
 	  2) can test hypotheses af the forb L * beta = beta0 both as a
 	  single Wald test and row-wise for each row in L.
 
-2003-11-17  warnes
+2003-11-17 21:40  warnes
 
-	* [r221] - Fix incorrect handling of glm objects by fit.contrast,
-	  as reported
+	* - Fix incorrect handling of glm objects by fit.contrast, as
+	  reported
 	  by Ulrich Halekoh, Phd <ulrich.halekoh@agrsci.dk>.
 	  
 	  - Add regression test code to for this bug.
 
-2003-08-07  warnes
+2003-08-07 03:49  warnes
 
-	* [r217] - Fixed incorrect denominator in standard error for mean
-	  in ci.default.
+	* - Fixed incorrect denominator in standard error for mean in
+	  ci.default.
 
-2003-04-22  warnes
+2003-04-22 17:24  warnes
 
-	* [r190] - the variable 'df' was used within the lme code section
+	* - the variable 'df' was used within the lme code section
 	  overwriting
 	  the argument 'df'.
 
-2003-03-12  warnes
+2003-03-12 17:58  warnes
 
-	* [r173] - Fixed a typo in the example
+	* - Fixed a typo in the example
 	  - Added to lme example
 
-2003-03-07  warnes
+2003-03-07 15:48  warnes
 
-	* [r168] - Minor changes to code to allow the package to be
-	  provided as an
+	* - Minor changes to code to allow the package to be provided as an
 	  S-Plus chapter.
 
-2003-01-30  warnes
+2003-01-30 21:53  warnes
 
-	* [r160] - Renamed 'contrast.lm' to 'fit.contrast'. This new name
-	  is more
+	* - Renamed 'contrast.lm' to 'fit.contrast'. This new name is more
 	  descriptive and makes it easier to create and use methods for
 	  other
 	  classes, eg lme.
@@ -396,8 +634,11 @@
 	  calls fit.contrast
 	  
 	  - Updated help text to match changes.
-	* [r158] - Removed argument 'correct' and now print separate
-	  corrected values
+
+2003-01-30 21:41  warnes
+
+	* - Removed argument 'correct' and now print separate corrected
+	  values
 	  for 2 x 2 tables.
 	  - Added arguments 'prop.r', 'prop.c' and 'prop.t' to toggle
 	  printing
@@ -411,59 +652,72 @@
 	  table
 	  counts, proportions and the results of the appropriate
 	  statistical tests.
-	* [r157] - Added explicit check to ensure that the number of
-	  specified
+
+2003-01-30 14:58  warnes
+
+	* - Added explicit check to ensure that the number of specified
 	  contrasts is less than or equal to the ncol - 1. Previously, this
 	  failed with an obtuse error message when the contrast matrix had
 	  row
 	  names, and silently dropped contrasts over ncol-1.
 
-2002-11-04  warnes
+2002-11-04 14:13  warnes
 
-	* [r142] - Moved fisher.test() to after table is printed, so that
-	  table is
+	* - Moved fisher.test() to after table is printed, so that table is
 	  still printed in the event that fisher.test() results in errors.
 
-2002-10-29  warnes
+2002-10-29 23:06  warnes
 
-	* [r138] - Fixes to fast.svd to make it actually work.
+	* - Fixes to fast.svd to make it actually work.
 	  - Updates to man page to fix mistmatches between code and docs
 	  and to
 	  fix warnings.
-	* [r137] - Moved make.contrasts to a separate file.
+
+2002-10-29 23:00  warnes
+
+	* - Moved make.contrasts to a separate file.
 	  - Enhanced make contrasts to better label contrast matrix, to
 	  give
 	  how.many a default value, and to coerce vectors into row
 	  matrixes.
 	  - Added help page for make.contrasts.
 	  - Added link from contrasts.lm seealso to make.contrasts.
-	* [r136] Initial checkin for fast.prcomp() and fast.svd().
 
-2002-09-26  warnes
+2002-10-29 19:29  warnes
 
-	* [r127] - Added note and example code to illustrate how to
-	  properly compute
+	* Initial checkin for fast.prcomp() and fast.svd().
+
+2002-09-26 12:11  warnes
+
+	* - Added note and example code to illustrate how to properly
+	  compute
 	  contrasts for the first factor in the model.
 
-2002-09-24  warnes
+2002-09-24 19:12  warnes
 
-	* [r124] - Fixed a typo.
+	* - Fixed a typo.
 
-2002-09-23  warnes
+2002-09-23 14:27  warnes
 
-	* [r119] - Fixed syntax errors in barplot2.Rd and CrossTable.Rd
+	* - Fixed syntax errors in barplot2.Rd and CrossTable.Rd
 	  - Fixed incorrect translation of 'F' (distribution) to 'FALSE' in
 	  glh.test.Rd
-	* [r117] - Modified all files to include CVS Id and Log tags.
-	* [r116] - Added CrossTable() and barplot2() code and docs
-	  contributed by Marc Schwartz.
+
+2002-09-23 13:59  warnes
+
+	* - Modified all files to include CVS Id and Log tags.
+
+2002-09-23 13:38  warnes
+
+	* - Added CrossTable() and barplot2() code and docs contributed by
+	  Marc Schwartz.
 	  - Permit combinations() to be used when r>n provided
 	  repeat.allowed=TRUE
 	  - Bumped up version number
 
-2002-08-01  warnes
+2002-08-01 19:37  warnes
 
-	* [r114] - Corrected documentation mismatch for ci, ci.default.
+	* - Corrected documentation mismatch for ci, ci.default.
 	  
 	  - Replaced all occurences of '_' for assignment with '<-'.
 	  
@@ -473,54 +727,69 @@
 	  
 	  - Updaded version number and date.
 
-2002-04-09  warneg
+2002-04-09 00:51  warneg
 
-	* [r109] Checkin for version 0.5.3
+	* Checkin for version 0.5.3
 
-2002-03-26  warneg
+2002-03-26 21:22  warneg
 
-	* [r104] - Changed methods to include '...' to match the generic.
+	* - Changed methods to include '...' to match the generic.
 	  - Updated for version 0.5.1
-	* [r99] Removed incorrect link to 'contrast' from seealso.
 
-2002-02-20  warneg
+2002-03-26 15:30  warneg
 
-	* [r81] Minor changes, typo and formatting fixes.
+	* Removed incorrect link to 'contrast' from seealso.
 
-2002-01-17  warneg
+2002-02-20 20:09  warneg
 
-	* [r70] - Fixed errror in last example by adding 'conf.int'
-	  parameter to
+	* Minor changes, typo and formatting fixes.
+
+2002-01-17 23:51  warneg
+
+	* - Fixed errror in last example by adding 'conf.int' parameter to
 	  'estimable' call.
-	* [r69] - Fixed typo in code that resulted in an syntax error.
 
-2002-01-10  warneg
+2002-01-17 23:42  warneg
 
-	* [r68] - print.glh.test() was using cat() to printing the call.
-	  This didn't work and
+	* - Fixed typo in code that resulted in an syntax error.
+
+2002-01-10 17:35  warneg
+
+	* - print.glh.test() was using cat() to printing the call. This
+	  didn't work and
 	  generated an error.
 
-2001-12-19  warneg
+2001-12-19 20:06  warneg
 
-	* [r66] - Fixed display of formulae.
+	* - Fixed display of formulae.
 	  - Added description of return value
-	* [r65] - Removed extra element of return object.
 
-2001-12-18  warneg
+2001-12-19 20:05  warneg
 
-	* [r64] - Updated documentation to reflect change of parameters
-	  from 'alpha'
+	* - Removed extra element of return object.
+
+2001-12-18 22:14  warneg
+
+	* - Updated documentation to reflect change of parameters from
+	  'alpha'
 	  to 'conf.int', including the new optional status of the
 	  confidence
 	  intervals.
-	* [r63] - Modified to make confidence intervals optional. Changed
-	  'alpha'
+
+2001-12-18 22:12  warneg
+
+	* - Modified to make confidence intervals optional. Changed 'alpha'
 	  parameter giving significance level to 'conf.int' giving
 	  confidence
 	  level.
-	* [r62] - Added summary.glh.test to alias, usage, and example
-	  sections.
-	* [r61] - Modified to work correctly when obj is of class 'aov' by
+
+2001-12-18 21:36  warneg
+
+	* - Added summary.glh.test to alias, usage, and example sections.
+
+2001-12-18 21:34  warneg
+
+	* - Modified to work correctly when obj is of class 'aov' by
 	  specifying
 	  summary.lm instead of summary. This ensures that the summary
 	  object
@@ -528,42 +797,60 @@
 	  
 	  - Moved detailed reporting of results from 'print' to 'summary'
 	  function and added a simpler report to 'print'
-	* [r60] - Modified to work correctly when obj is of class 'aov' by
+
+2001-12-18 21:27  warneg
+
+	* - Modified to work correctly when obj is of class 'aov' by
 	  specifying
 	  summary.lm instead of summary. This ensures that the summary
 	  object
 	  has the fields we need.
-	* [r59] Initial checkin.
 
-2001-12-17  warneg
+2001-12-18 00:45  warneg
 
-	* [r56] - Fixed spelling errors.
-	* [r55] - Fixed the link to contrasts.lm.
+	* Initial checkin.
+
+2001-12-17 18:59  warneg
+
+	* - Fixed spelling errors.
+
+2001-12-17 18:52  warneg
+
+	* - Fixed the link to contrasts.lm.
 	  - Rephrased title/description to be more clear.
 
-2001-12-10  warneg
+2001-12-10 19:35  warneg
 
-	* [r49] Renamed 'contrsts.coeff.Rd' to 'estimable.Rd' corresponding
-	  to function rename.
-	* [r48] renamed from contrast.coeff.R to estimable.R (incorrectly
-	  via contrast.lm.R)
+	* Renamed 'contrsts.coeff.Rd' to 'estimable.Rd' corresponding to
+	  function rename.
 
-2001-12-07  warneg
+2001-12-10 19:26  warneg
 
-	* [r37] - Added text noting that lme is now supported.
-	* [r36] - Fixed typo: DF column was being filled in with p-value.
-	* [r35] - Added ci.lme method to handle lme objects.
+	* renamed from contrast.coeff.R to estimable.R (incorrectly via
+	  contrast.lm.R)
 
-2001-10-16  warneg
+2001-12-07 19:50  warneg
 
-	* [r27] Fixed unbalanced brace.
+	* - Added text noting that lme is now supported.
 
-2001-08-25  warneg
+2001-12-07 19:19  warneg
 
-	* [r12] - Added CVS header.
+	* - Fixed typo: DF column was being filled in with p-value.
+
+2001-12-07 18:49  warneg
+
+	* - Added ci.lme method to handle lme objects.
+
+2001-10-16 23:15  warneg
+
+	* Fixed unbalanced brace.
+
+2001-08-25 05:52  warneg
+
+	* - Added CVS header.
 	  - Added my email address.
 
-2001-05-30  warneg
+2001-05-30 13:23  warneg
 
-	* [r2] Initial revision
+	* Initial revision
 

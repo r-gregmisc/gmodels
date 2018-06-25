@@ -1,4 +1,12 @@
-Version 2.16.1 - 2015-07-18
+Version 2.18.1 - 2018-06-25
+---------------------------
+
+Other Changes:
+
+- Remove soft-links for NEWS and ChangeLog files for platform portability.
+
+
+Version 2.18.0 - 2018-06-19
 ---------------------------
 
 Bug fixes:

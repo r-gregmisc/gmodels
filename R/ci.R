@@ -1,10 +1,11 @@
-# $Id: ci.R 2060 2015-07-19 03:22:30Z warnes $
+# $Id: ci.R 2183 2018-06-20 20:42:45Z warnes $
 
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")
 
 ci.numeric <- function(x, confidence=0.95,alpha=1-confidence,na.rm=FALSE,...)
   {
+    warning("No class or unkown class.  Using default calcuation.")
     est <- mean(x, na.rm=na.rm)
     stderr <-  sd(x, na.rm=na.rm)/sqrt(nobs(x));
     ci.low  <- est + qt(alpha/2, nobs(x)-1) * stderr
@@ -113,3 +114,14 @@ ci.estimable  <-  function(x,confidence=0.95,alpha=1-confidence,...)
 
     retval
   }
+
+
+ci.fit_contrast <- function (x, confidence = 0.95, alpha = 1 - confidence, ...)
+{
+  if( !all(c("lower CI", "upper CI") %in% colnames(x) ) )
+    stop("object does not contain confidence interval information.")
+  colnames(x) <- c("Estimate", "Std. Error", "Delete",
+                   "p-value",
+                   "CI lower", "CI upper")
+  x[, c(1, 5:6, 2, 4), drop=FALSE]
+}

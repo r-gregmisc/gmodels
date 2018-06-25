@@ -1,31 +1,29 @@
-% $Id: estimable.Rd 2060 2015-07-19 03:22:30Z warnes $
+% $Id: estimable.Rd 2184 2018-06-20 20:46:34Z warnes $
 %
 \name{estimable}
 \alias{estimable}
 \alias{estimable.default}
-%\alias{estimable.mer}
+%%\alias{estimable.mer}
 \alias{estimable.mlm}
 %\alias{.wald}
 %\alias{.to.est}
 \title{Contrasts and estimable linear functions of model coefficients}
 \description{
   Compute and test contrasts and other estimable linear
-  functions of model coefficients for for lm, glm, lme, %mer,
-  and geese objects
+  functions of model coefficients for for lm, glm, lme, mer, and geese
+  objects
 }
 \usage{
 estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 \method{estimable}{default} (obj, cm, beta0, conf.int=NULL, show.beta0, joint.test=FALSE, ...)
-%\method{estimable}{mer}(obj, cm, beta0, conf.int=NULL,
-%               show.beta0, sim.mer=TRUE, n.sim=1000, ...)
+%%\method{estimable}{mer}(obj, cm, beta0, conf.int=NULL,
+%%               show.beta0, sim.mer=TRUE, n.sim=1000, ...)
 \method{estimable}{mlm}(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 %.wald(obj, cm,beta0=rep(0, ifelse(is.null(nrow(cm)), 1, nrow(cm))))
 %.to.est(obj, params)
 }
 \arguments{
-  \item{obj}{Regression (lm, glm, lme,
-    %mer,
-    mlm) object. }
+   \item{obj}{Regression (lm, glm, lme, mer, mlm) object. }
    \item{cm}{Vector, List, or Matrix specifying estimable linear functions or
      contrasts.  See below for details.}
    \item{beta0}{Vector of null hypothesis values}
@@ -39,12 +37,12 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
    \item{show.beta0}{Logical value. If TRUE a column for beta0 will be
      included in the output table.  Defaults to TRUE when beta0 is
      specified, FALSE otherwise.}
-   %% \item{sim.mer}{Logical value. If TRUE p-values and confidence
-   %%   intervals will be estimated using \code{mcmcsamp}.
-   %% }
-   %% \item{n.sim}{Number of MCMC samples to take in
-   %%   \code{mcmcsamp}.
-   %% }
+%%   \item{sim.mer}{Logical value. If TRUE p-values and confidence
+%%     intervals will be estimated using \code{mcmcsamp}.
+%%   }
+%%   \item{n.sim}{Number of MCMC samples to take in
+%%     \code{mcmcsamp}.
+%%   }
    \item{...}{ignored}
 }
 \details{

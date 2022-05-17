@@ -94,7 +94,7 @@ estimable(obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
   1-alpha confidence intervals.
 }
 \author{
-  BXC (Bendix Carstensen) \email{bxc\@novonordisk.com},
+  BXC (Bendix Carstensen) \email{b@bxc.dk},
   Gregory R. Warnes \email{greg@warnes.net},
   Soren Hojsgaard \email{sorenh@agrsci.dk}, and
   Randall C Johnson \email{rjohnson@ncifcrf.gov}

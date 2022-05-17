@@ -1,5 +1,5 @@
 6c30613b05ff46b1df9f94bd953eeea3 *ChangeLog
-64f60f8afbf37364c8a94f51a58de296 *DESCRIPTION
+c5b453c141e5ae7f4ae0d40912c28f37 *DESCRIPTION
 326d4ca8b6323bfbd06dff740bdb78ca *NAMESPACE
 efd43a92b287a6dfb90fa0aa35cc68ec *NEWS
 8463467f912f147197c631c44c69cabc *R/CrossTable.R
@@ -18,7 +18,7 @@ a933949605212bc73ee12b956a463305 *R/fit.contrast.R
 667645516f753372ad42643c9daf70e2 *man/CrossTable.Rd
 2e8cb6445a07ac0a7a7a347982388216 *man/ci.Rd
 a9d48eaa6a14aee6fc61c2b069413956 *man/coefFrame.Rd
-37706af7c3874c855f3cb4ff98c4bf7d *man/estimable.Rd
+dffb226eef9188e5debbb74005df489e *man/estimable.Rd
 3fa12153ebe28c142881ae5b1dcf5c08 *man/fast.prcomp.Rd
 13f14204ff7f6a222f146988f20a09ac *man/fit.contrast.Rd
 1553aa5a3761899641049bed1aa12316 *man/glh.test.Rd

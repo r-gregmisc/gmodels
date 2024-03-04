@@ -1,3 +1,4 @@
+#' @export
 percentile <- function(x, distn, include.observed=FALSE)
 {
   if(include.observed)

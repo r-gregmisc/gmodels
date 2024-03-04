@@ -1,3 +1,5 @@
+#' @exportS3Method gmodels::estimable
+#' @importFrom stats coef
 `estimable.mlm` <-
   function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
 {

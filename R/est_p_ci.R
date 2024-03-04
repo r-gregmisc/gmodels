@@ -1,6 +1,8 @@
+#' @export
 est_p_ci <- function(model, term, mult=1, digits=2, ...)
   UseMethod("est_p_ci")
 
+#' @exportS3Method gmodels::est_p_ci
 est_p_ci.lm <- function(model, term, mult=1, digits=2, ...)
 {
   info <- ci(model)
@@ -22,6 +24,7 @@ est_p_ci.lm <- function(model, term, mult=1, digits=2, ...)
   )
 }
 
+#' @exportS3Method gmodels::est_p_ci
 est_p_ci.fit_contrast <- function(model, term, mult=1, digits=2, ...)
 {
   if( !all(c("lower CI", "upper CI") %in% colnames(model) ) )

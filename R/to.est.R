@@ -1,8 +1,10 @@
-# to.est.R
-# return a vector for cm in estimable()
-# Randy Johnson
-# Laboratory of Genomic Diversity at NCI-Frederick
+#' Return a vector for cm in estimable()
+#' @param obj    estimable object
+#' @param params character vector of names or logical vector with one element per model parameter selecting desrired parameter(s).
+#' @author Randy Johnson, Laboratory of Genomic Diversity at NCI-Frederick
 
+#' @importFrom stats coef
+#' @export
 .to.est <- function(obj, params)
 {
   ## if('lme' %in% class(obj) | 'mer' %in% class(obj))

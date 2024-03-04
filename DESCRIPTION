@@ -4,7 +4,7 @@ Date: 2024-03-01
 Title: Various R Programming Tools for Model Fitting
 URL: https://github.com/r-gregmisc/gmodels
 BugReports: https://github.com/r-gregmisc/gmodels/issues
-Author: c(
+Authors@R: c(
   person(c('Gregory', 'R.'), 'Warnes', email='greg@warnes.net', role=c('aut', 'cre')),
   person('Ben', 'Bolker', role='aut'),
   person('Thomas', 'Lumley', role='aut'),

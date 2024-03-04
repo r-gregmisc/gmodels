@@ -199,10 +199,7 @@ fit.contrast.lm <- function(model,
     m$contrasts <- list()
   m$contrasts[[varname]] <- cmat
   
-  if(is.R())
-    r <- eval(m, parent.frame())
-  else
-    r <- eval(m)
+  r <- eval(m, parent.frame())
   
   # now return the correct elements ....
   if( 'lme' %in% class(model) )
@@ -233,18 +230,9 @@ fit.contrast.lm <- function(model,
   
   if( !showall )
   {
-    if( !is.R() && ncol(cmat)==1 )
-    {
-      retval <- retval[varname,,drop=FALSE]
-      rownames(retval) <- rn
-    }
-    else
-    {
-      rn <- paste(varname,rownames(coeff),sep="")
-      ind <- match(rn,rownames(retval))
-      retval <- retval[ind,,drop=FALSE]
-    }
-    
+    rn <- paste(varname,rownames(coeff),sep="")
+    ind <- match(rn,rownames(retval))
+    retval <- retval[ind,,drop=FALSE]
   }
   
   if(!missing(conf.int) && !is.null(conf.int)) # add confidence intervals

@@ -2,7 +2,7 @@
 % Please edit documentation in R/est_p_ci.R
 \name{est_p_ci}
 \alias{est_p_ci}
-\title{Display Confidence interval and p-value for one model term}
+\title{Display estimate, confidence interval and p-value for one model term}
 \usage{
 est_p_ci(model, term, mult = 1, digits = 2, ...)
 }
@@ -18,5 +18,31 @@ est_p_ci(model, term, mult = 1, digits = 2, ...)
 \item{...}{optional arguments}
 }
 \description{
-Display Confidence interval and p-value for one model term
+Display estimate, confidence interval and p-value for one model term
+}
+\examples{
+
+set.seed(42)
+
+# fit an example model with 3 groups
+y <- rnorm(100)
+x <-  cut(rnorm(100, mean=y, sd=0.25),c(-4,-1.5,0,1.5,4))
+reg <- lm(y ~ x)
+reg
+
+# show model estimate, p-value, and confidence interval
+# for the first group
+est_p_ci(reg, 2)
+
+# estimate some group contrasts
+cmat <- rbind( "1 vs 4"    =c(-1, 0, 0, 1),
+               "1+2 vs 3+4"=c(-1/2,-1/2, 1/2, 1/2),
+               "1 vs 2+3+4"=c(-3/3, 1/3, 1/3, 1/3))
+cont <- fit.contrast(reg, x, cmat, conf.int = 0.95)
+cont
+
+# show the contrast estimate, p-value, and confidence interval
+# for the first contrast
+est_p_ci(cont, 2:3)
+
 }

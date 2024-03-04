@@ -46,6 +46,8 @@ compare the mean of the first group with the mean of the fourth group.
 }
 \examples{
 
+set.seed(42)
+
 y <- rnorm(100)
 x <-  cut(rnorm(100, mean=y, sd=0.25),c(-4,-1.5,0,1.5,4))
 reg <- lm(y ~ x)

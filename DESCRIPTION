@@ -1,12 +1,21 @@
 Package: gmodels
-Version: 2.19
+Version: 2.19.0
 Date: 2024-03-01
 Title: Various R Programming Tools for Model Fitting
-Author: Gregory R. Warnes, Ben Bolker, Thomas Lumley, and Randall C
-        Johnson. Contributions from Randall C. Johnson are Copyright
-        (2005) SAIC-Frederick, Inc. Funded by the Intramural Research
-        Program, of the NIH, National Cancer Institute, Center for
-        Cancer Research under NCI Contract NO1-CO-12400.
+Author: c(
+  person(c('Gregory', 'R.'), 'Warnes', email='greg@warnes.net', role=c('aut', 'cre')),
+  person('Ben', 'Bolker', role='aut'),
+  person('Thomas', 'Lumley', role='aut'),
+  person(c('Randall', 'C.'), 'Johnson', role='aut', comment='Contributions from Randall C. Johnson are Copyright (2005) SAIC-Frederick, Inc. Funded by the Intramural Research
+        Program, of the NIH, National Cancer Institute, Center for Cancer Research under NCI Contract NO1-CO-12400'),
+  person('Airel', 'Muldoon', role='ctb',  email='Ariel.Muldoon@oregonstate.edu'),
+  person('Nitin', 'Jain', role='aut'),
+  person('Dirk', 'Enzmann', role='ctb', email='dirk.enzmann@jura.uni-hamburg.de'),
+  person('Søren', 'Højsgaards', role='ctb', email='sorenh@agrsci.dk'),
+  person('Ulrich', 'Halekoh', role='ctb', email='ulrich.halekoh@agrsci.dk'),
+  person('Mark', 'Schwartz', role='aut'),
+  person('Jim', 'Rogers', role='aut')
+  )
 Maintainer: Gregory R. Warnes <greg@warnes.net>
 Description: Various R programming tools for model fitting.
 Depends: R (>= 1.9.0)

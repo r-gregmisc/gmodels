@@ -1,8 +1,16 @@
-# gmodels Version 2.19  - 2024-04-04
+# gmodels Version 2.19.0  - 2024-04-04
+
+New features:
+  - Expose (and fix) `est_p_ci` which formats the estimate, p-value, and confidence interval into text.
+
 Other Changes:
-  - Added a `NEWS.md` file to track changes to the package.
+  - Upgrade to current package development tooling, including:
+  - Use `roxygen2` for documentation and NAMESPACE
+  - Use `NEWS.md` instead of `NEWS`
+  - Add additional contributors to Authors list.
 
 # gmodels Version 2.18.1 - 2018-06-25
+
 Other Changes:
   - Remove soft-links for NEWS and ChangeLog files for platform portability.
 

@@ -20,7 +20,6 @@ Author: c(
   )
 Maintainer: Gregory R. Warnes <greg@warnes.net>
 Description: Various R programming tools for model fitting.
-Depends: R
 Suggests: gplots, gtools, Matrix, nlme, lme4
 Imports: MASS, gdata, stats
 License: GPL-2

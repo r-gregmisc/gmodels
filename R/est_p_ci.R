@@ -1,3 +1,10 @@
+#' Display Confidence interval and p-value for one model term
+#' 
+#' @param model model object
+#' @param term model term 
+#' @param mult  scale (multiply) the parameter by this factor 
+#' @param digits number of significant digits to display
+#' @param ... optional arguments
 #' @export
 est_p_ci <- function(model, term, mult=1, digits=2, ...)
   UseMethod("est_p_ci")

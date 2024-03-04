@@ -40,9 +40,6 @@
 #' @param beta0 Vector of null hypothesis values
 #' @param conf.int Confidence level.  If provided, confidence intervals will be
 #' computed.
-#' @param joint.test Logical value. If TRUE a 'joint' Wald test for the
-#'   hypothesis \eqn{L \beta=\beta_0} is performed.  
-#'   Otherwise 'row-wise' tests are performed, i.e. \eqn{(L \beta)[i]=\beta_0[i]}.
 #' @param show.beta0 Logical value. If TRUE a column for beta0 will be included
 #' in the output table.  Defaults to TRUE when beta0 is specified, FALSE
 #' otherwise.
@@ -116,6 +113,10 @@ estimable <- function (obj, cm, beta0, conf.int=NULL,  show.beta0, ...)
     UseMethod("estimable")
   }
 
+#' @rdname estimable
+#' @param joint.test Logical value. If TRUE a 'joint' Wald test for the
+#'   hypothesis \eqn{L \beta=\beta_0} is performed.  
+#'   Otherwise 'row-wise' tests are performed, i.e. \eqn{(L \beta)[i]=\beta_0[i]}.
 #' @exportS3Method gmodels::estimable
 #' @importFrom stats coef
 #' @importFrom stats family

@@ -10,8 +10,6 @@
 #' @param x object from which to compute confidence intervals.
 #' @param confidence confidence level. Defaults to 0.95.
 #' @param alpha type one error rate.  Defaults to 1.0-\code{confidence}
-#' @param na.rm boolean indicating whether missing values should be removed.
-#' Defaults to \code{FALSE}.
 #' @param \dots Arguments for methods
 #' @return vector or matrix with one row per model parameter and
 #' elements/columns \code{Estimate}, \code{CI lower}, \code{CI upper},
@@ -38,18 +36,12 @@
 #' reg  <-  lm(Area ~ Population, data=as.data.frame(state.x77))
 #' ci(reg)
 #' 
-#' %\dontrun{
-#' %# mer example
-#' %library(lme4)
-#' %fm2 <- lmer(Reaction ~ Days + (1|Subject) + (0+Days|Subject), sleepstudy)
-#' %ci(fm2)
-#' %}
-#' 
-#' 
 #' @export
 ci  <-  function(x, confidence=0.95,alpha=1-confidence,...)
   UseMethod("ci")
 
+#' @rdname ci
+#' @param na.rm `logical` indicating whether missing values should be removed.
 #' @exportS3Method gmodels::ci
 #' @importFrom stats qt
 #' @importFrom stats sd
@@ -70,6 +62,7 @@ ci.numeric <- function(x, confidence=0.95,alpha=1-confidence,na.rm=FALSE,...)
   retval
 }
 
+#' @export ci.binom
 #' @exportS3Method gmodels::ci
 #' @importFrom gdata nobs
 #' @importFrom stats qbeta

@@ -11,6 +11,8 @@
 \title{Compute Confidence Intervals}
 \usage{
 ci(x, confidence = 0.95, alpha = 1 - confidence, ...)
+
+\method{ci}{numeric}(x, confidence = 0.95, alpha = 1 - confidence, na.rm = FALSE, ...)
 }
 \arguments{
 \item{x}{object from which to compute confidence intervals.}
@@ -21,8 +23,7 @@ ci(x, confidence = 0.95, alpha = 1 - confidence, ...)
 
 \item{\dots}{Arguments for methods}
 
-\item{na.rm}{boolean indicating whether missing values should be removed.
-Defaults to \code{FALSE}.}
+\item{na.rm}{`logical` indicating whether missing values should be removed.}
 }
 \value{
 vector or matrix with one row per model parameter and
@@ -51,14 +52,6 @@ ci(b)       # indirect call
 data(state)
 reg  <-  lm(Area ~ Population, data=as.data.frame(state.x77))
 ci(reg)
-
-\%\dontrun{
-\%# mer example
-\%library(lme4)
-\%fm2 <- lmer(Reaction ~ Days + (1|Subject) + (0+Days|Subject), sleepstudy)
-\%ci(fm2)
-\%}
-
 
 }
 \seealso{

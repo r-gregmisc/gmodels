@@ -134,9 +134,9 @@
 #'                                     "Change-Point at 11"=c(-1,-1,1,1)),
 #'                               conf.int=0.95)
 #' 
-#' 
+#'
 #' @export
-fit.contrast <- function(model, varname, coeff, ...)
+fit.contrast <- function(model, varname, coeff, showall, conf.int, df, ...)
   UseMethod("fit.contrast")
 
 #' @exportS3Method stats::coef
@@ -144,8 +144,8 @@ coef.fit_contrast <- function(object, ...)
   object
 
 #' @exportS3Method base::print
-print.fit_contrast <- function(object, ...)
-  print(unclass(object))
+print.fit_contrast <- function(x, ...)
+  print(unclass(x))
 
 #' @exportS3Method gmodels::fit.contrast
 #' @importFrom stats coef
@@ -153,7 +153,10 @@ print.fit_contrast <- function(object, ...)
 #' @importFrom stats qt
 #' @importFrom stats summary.glm
 #' @importFrom stats summary.lm
-fit.contrast.lm <- function(model, varname, coeff, showall=FALSE,
+fit.contrast.lm <- function(model, 
+                            varname, 
+                            coeff, 
+                            showall=FALSE,
                             conf.int=NULL,
                             df=FALSE,
                             ...)

@@ -6,7 +6,7 @@
 \alias{fit.contrast.lme}
 \title{Compute and test arbitrary contrasts for regression objects}
 \usage{
-fit.contrast(model, varname, coeff, ...)
+fit.contrast(model, varname, coeff, showall, conf.int, df, ...)
 }
 \arguments{
 \item{model}{regression (lm,glm,aov,lme) object for which the contrast(s)
@@ -15,8 +15,6 @@ will be computed.}
 \item{varname}{variable name}
 
 \item{coeff}{vector or matrix specifying contrasts (one per row).}
-
-\item{\dots}{optional arguments provided by methods.}
 
 \item{showall}{return all regression coefficients. If \code{TRUE}, all model
 cofficients will be returned.  If \code{FALSE} (the default), only the
@@ -29,6 +27,8 @@ not be computed.}
 
 \item{df}{boolean indicating whether to return a column containing the
 degrees of freedom.}
+
+\item{\dots}{optional arguments provided by methods.}
 }
 \value{
 Returns a matrix containing estimated coefficients, standard errors,

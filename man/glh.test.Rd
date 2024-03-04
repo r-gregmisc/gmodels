@@ -11,43 +11,42 @@ glh.test(reg, cm, d = rep(0, nrow(cm)))
 \arguments{
 \item{reg}{Regression model}
 
-\item{cm}{matrix .  Each row specifies a linear combination of the
+\item{cm}{contrast matrix `C` .  Each row specifies a linear combination of the
 coefficients}
 
-\item{d}{vector specifying the null hypothis values for each linear
+\item{d}{vector `d` specifying the null hypothesis values for each linear
 combination}
-
-\item{x, object}{glh.test object}
-
-\item{digits}{number of digits}
-
-\item{...}{optional parameters (ignored)}
 }
 \value{
 Object of class \code{c("glh.test","htest")} with elements:
-\item{call }{Function call that created the object} \item{statistic }{F
-statistic} \item{parameter}{ vector containing the numerator (r) and
-denominator (n-p) degrees of freedom } \item{p.value}{ p-value}
-\item{estimate}{ computed estimate for each row of \code{cm} }
-\item{null.value}{ d } \item{method}{ description of the method }
-\item{data.name}{ name of the model given for \code{reg} } \item{matrix}{
-matrix specifying the general linear hypotheis (\code{cm}) }
+\item{call }{Function call that created the object}
+\item{statistic }{F statistic} 
+\item{parameter}{vector containing the numerator (r) and 
+ denominator (n-p) degrees of freedom} 
+\item{p.value}{p-value}
+\item{estimate}{computed estimate for each row of \code{cm}}
+\item{null.value}{d} 
+\item{method}{description of the method}
+\item{data.name}{name of the model given for \code{reg}}
+\item{matrix}{matrix specifying the general linear hypotheis (\code{cm})}
 }
 \description{
 Test, print, or summarize a general linear hypothesis for a regression model
 }
 \details{
-Test the general linear hypothesis \eqn{ C \hat{beta} = d }{C %*% \hat{beta}
-== d } for the regression model \code{reg}.
+Test the general linear hypothesis \eqn{C \hat{\beta} = d } for the regression model \code{reg}.
 
-The test statistic is obtained from the formula: \deqn{f = \frac{(C
-\hat{\beta} - d)' ( C (X'X)^{-1} C' ) (C \hat{\beta} }{ F = (C Beta-hat -
-d)' ( C (X'X)^-1 C' ) (C Beta-hat - d) / r / ( SSE / (n-p) ) }\deqn{ - d) /
-r }{ SSE / (n-p) } }{ F = (C Beta-hat - d)' ( C (X'X)^-1 C' ) (C Beta-hat -
-d) / r / ( SSE / (n-p) ) }
-
-Under the null hypothesis, f will follow a F-distribution with r and n-p
-degrees of freedom.
+The test statistic is obtained from the formula: 
+\deqn{
+ f = \frac{(C \hat{\beta} - d)' ( C (X'X)^{-1} C' ) (C \hat{\beta} - d) / r }{ 
+     SSE / (n-p) } 
+ }
+where
+* `r` is the number of contrasts contained in `C`, and
+* `n-p` is the model degrees of freedom.
+ 
+Under the null hypothesis, `f` will follow a F-distribution with `r` and `n-p`
+degrees of freedom
 }
 \note{
 When using treatment contrasts (the default) the first level of the

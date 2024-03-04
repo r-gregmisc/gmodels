@@ -7,6 +7,8 @@
 \title{Contrasts and estimable linear functions of model coefficients}
 \usage{
 estimable(obj, cm, beta0, conf.int = NULL, show.beta0, ...)
+
+\method{estimable}{default}(obj, cm, beta0, conf.int = NULL, show.beta0, joint.test = FALSE, ...)
 }
 \arguments{
 \item{obj}{Regression (lm, glm, lme, mer, mlm) object.}

@@ -1,22 +1,22 @@
 #' Compute Confidence Intervals
 #' 
 #' Compute and display confidence intervals for model estimates.  Methods are
-#' provided for the mean of a numeric vector \code{ci.default}, the probability
-#' of a binomial vector \code{ci.binom}, and for \code{lm}, \code{lme}, and
-#' \code{mer} objects are provided.
+#' provided for the mean of a numeric vector `ci.default`, the probability
+#' of a binomial vector `ci.binom`, and for `lm`, `lme`, and
+#' `mer` objects are provided.
 #' 
 #' 
 #' @aliases ci ci.numeric ci.binom ci.lm ci.lme ci.estimable ci.fit_contrast
 #' @param x object from which to compute confidence intervals.
 #' @param confidence confidence level. Defaults to 0.95.
-#' @param alpha type one error rate.  Defaults to 1.0-\code{confidence}
+#' @param alpha type one error rate.  Defaults to 1.0-`confidence`
 #' @param \dots Arguments for methods
 #' @return vector or matrix with one row per model parameter and
-#' elements/columns \code{Estimate}, \code{CI lower}, \code{CI upper},
-#' \code{Std. Error}, \code{DF} (for lme objects only), and \code{p-value}.
+#' elements/columns `Estimate`, `CI lower`, `CI upper`,
+#' `Std. Error`, `DF` (for lme objects only), and `p-value`.
 #' @author Gregory R. Warnes \email{greg@@warnes.net}
-#' @seealso \code{\link[stats]{confint}}, \code{\link[stats]{lm}},
-#' \code{\link[stats]{summary.lm}}
+#' @seealso [stats::confint()], [stats::lm()],
+#' [stats::summary.lm()]
 #' @keywords regression
 #' 
 #' @examples

@@ -3,7 +3,7 @@
 #' Compute and test arbitrary contrasts for regression objects.
 #' 
 #' Computes the specified contrast(s) by re-fitting the model with the
-#' appropriate arguments.  A contrast of the form \code{c(1,0,0,-1)} would
+#' appropriate arguments.  A contrast of the form `c(1,0,0,-1)` would
 #' compare the mean of the first group with the mean of the fourth group.
 #' 
 #' @aliases fit.contrast fit.contrast.lm fit.contrast.lme
@@ -11,26 +11,25 @@
 #' will be computed.
 #' @param varname variable name
 #' @param coeff vector or matrix specifying contrasts (one per row).
-#' @param showall return all regression coefficients. If \code{TRUE}, all model
-#' cofficients will be returned.  If \code{FALSE} (the default), only the
+#' @param showall return all regression coefficients. If `TRUE`, all model
+#' cofficients will be returned.  If `FALSE` (the default), only the
 #' coefficients corresponding to the specified contrast will be returned.
 #' @param conf.int numeric value on (0,1) or NULL.  If a numeric value is
 #' specified, confidence intervals with nominal coverage probability
-#' \code{conf.int} will be computed.  If \code{NULL}, confidence intervals will
+#' `conf.int` will be computed.  If `NULL`, confidence intervals will
 #' not be computed.
 #' @param df boolean indicating whether to return a column containing the
 #' degrees of freedom.
 #' @param \dots optional arguments provided by methods.
 #' @return Returns a matrix containing estimated coefficients, standard errors,
-#' t values, two-sided p-values. If \code{df} is TRUE, an additional column
-#' containing the degrees of freedom is included.  If \code{conf.int} is
+#' t values, two-sided p-values. If `df` is TRUE, an additional column
+#' containing the degrees of freedom is included.  If `conf.int` is
 #' specified lower and upper confidence limits are also returned.
 #' @author Gregory R. Warnes \email{greg@@warnes.net}
-#' @seealso \code{\link{lm}}, \code{\link{contrasts}},
-#' \code{\link{contr.treatment}}, \code{\link{contr.poly}}, Computation and
-#' testing of General Linear Hypothesis: \code{\link{glh.test}}, Computation
-#' and testing of estimable functions of model coefficients:
-#' \code{\link{estimable}}, \code{\link{make.contrasts}}
+#' @seealso 
+#' * [stats::lm()], [stats::contrasts()], [stats::contr.treatment()], [stats::contr.poly()], 
+#' * Computation and testing of General Linear Hypothesis: [glh.test()], 
+#' * Computation and testing of estimable functions of model coefficients: [estimable()], [make.contrasts()]
 #' @references Venables & Ripley, Section 6.2
 #' @keywords models regression
 #' @examples

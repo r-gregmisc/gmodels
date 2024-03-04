@@ -3,27 +3,31 @@
 #' This function converts human-readable contrasts into the form that R
 #' requires for computation.
 #' 
-#' Specifying a contrast row of the form \code{c(1,0,0,-1)} creates a contrast
+#' Specifying a contrast row of the form `c(1,0,0,-1)` creates a contrast
 #' that will compare the mean of the first group with the mean of the fourth
 #' group.
 #' 
 #' @param contr vector or matrix specifying contrasts (one per row).
 #' @param how.many dimensions of the desired contrast matrix.  This must equal
 #' the number of levels of the target factor variable.
-#' @return \code{make.contrasts} returns a matrix with dimensions
-#' (\code{how.many}, \code{how.many}) containing the specified contrasts
+#' @return `make.contrasts` returns a matrix with dimensions
+#' (`how.many`, `how.many`) containing the specified contrasts
 #' augmented (if necessary) with orthogonal "filler" contrasts.
 #' 
-#' This matrix can then be used as the argument to \code{\link{contrasts}} or
-#' to the \code{contrasts} argument of model functions (eg, \code{\link{lm}}).
+#' This matrix can then be used as the argument to [contrasts()] or
+#' to the `contrasts` argument of model functions (eg, [lm()]).
 #' @author Gregory R. Warnes \email{greg@@warnes.net}
-#' @seealso \code{\link{lm}}, \code{\link{contrasts}},
-#' \code{\link{contr.treatment}}, \code{\link{contr.poly}}, Computation and
-#' testing of General Linear Hypothesis: \code{\link{glh.test}}, Computation
-#' and testing of estimable functions of model coefficients:
-#' \code{\link{estimable}}, Estimate and Test Contrasts for a previously fit
-#' linear model: \code{\link{fit.contrast}}
+#' @seealso 
+#'  * [stats::lm()], [stats::contrasts()], [stats::contr.treatment()], 
+#'    [stats::contr.poly()], 
+#'  * Computation and testing of General Linear Hypothesis: [glh.test()], 
+#'  * Computation and testing of estimable functions of model coefficients:
+#'    [estimable()], 
+#'  * Estimate and Test Contrasts for a previously fit linear model: 
+#'    [fit.contrast()]
+#'    
 #' @keywords models regression
+#' 
 #' @examples
 #' 
 #' set.seed(4684)

@@ -1,28 +1,28 @@
 #' Efficient computation of principal components and singular value
 #' decompositions.
 #' 
-#' The standard \code{\link[stats]{prcomp}} and \code{\link{svd}} function are
-#' very inefficient for wide matrixes. \code{fast.prcomp} and \code{fast.svd}
+#' The standard [stats::prcomp()] and [svd()] function are
+#' very inefficient for wide matrixes. `fast.prcomp` and `fast.svd`
 #' are modified versions which are efficient even for matrixes that are very
 #' wide.
 #' 
-#' The current implementation of the function \code{\link{svd}} in S-Plus and R
+#' The current implementation of the function [svd()] in S-Plus and R
 #' is much slower when operating on a matrix with a large number of columns
 #' than on the transpose of this matrix, which has a large number of rows. As a
-#' consequence, \code{\link[stats]{prcomp}}, which uses \code{\link{svd}}, is
+#' consequence, [stats::prcomp()], which uses [svd()], is
 #' also very slow when applied to matrixes with a large number of rows.
 #' 
-#' The simple solution is to use \code{\link{La.svd}} instead of
-#' \code{\link{svd}}.  A suitable patch to \code{\link[stats]{prcomp}} has been
-#' submitted.  In the mean time, the function \code{fast.prcomp} has been
+#' The simple solution is to use [La.svd()] instead of
+#' [svd()].  A suitable patch to [stats::prcomp()] has been
+#' submitted.  In the mean time, the function `fast.prcomp` has been
 #' provided as a short-term work-around.
 #'  
 #' \describe{ 
 #'  \item{list("fast.prcomp")}{is a modified versiom of
-#'    \code{\link[stats]{prcomp}} that calls \code{\link{La.svd}} instead of
-#'      \code{\link{svd}} } 
+#'    [stats::prcomp()] that calls [La.svd()] instead of
+#'      [svd()] } 
 #'    \item{list("fast.svd")}{is simply a wrapper around
-#'      \code{\link{La.svd}}.  } 
+#'      [La.svd()].  } 
 #' }
 #' 
 #' @aliases fast.prcomp fast.svd
@@ -30,11 +30,10 @@
 #' @param x data matrix
 #' @inheritParams stats::prcomp
 #' @inheritParams base::svd
-#' @return See the documetation for \code{\link[stats]{prcomp}} or
-#' \code{\link{svd}} .
+#' @return See the documetation for [stats::prcomp()] or
+#' [svd()] .
 #' @author Modifications by Gregory R. Warnes \email{greg@@warnes.net}
-#' @seealso \code{\link[stats]{prcomp}}, \code{\link{svd}},
-#' \code{\link{La.svd}}
+#' @seealso [stats::prcomp()], [base::svd()], [base::La.svd()]
 #' @keywords multivariate algebra array
 #' @examples
 #' 

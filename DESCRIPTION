@@ -2,6 +2,8 @@ Package: gmodels
 Version: 2.19.0
 Date: 2024-03-01
 Title: Various R Programming Tools for Model Fitting
+URL: https://github.com/r-gregmisc/gmodels
+BugReports: https://github.com/r-gregmisc/gmodels/issues
 Author: c(
   person(c('Gregory', 'R.'), 'Warnes', email='greg@warnes.net', role=c('aut', 'cre')),
   person('Ben', 'Bolker', role='aut'),
@@ -18,10 +20,11 @@ Author: c(
   )
 Maintainer: Gregory R. Warnes <greg@warnes.net>
 Description: Various R programming tools for model fitting.
-Depends: R (>= 1.9.0)
+Depends: R
 Suggests: gplots, gtools, Matrix, nlme, lme4
-Imports: MASS, gdata
+Imports: MASS, gdata, stats
 License: GPL-2
 NeedsCompilation: no
 RoxygenNote: 7.3.1
 Encoding: UTF-8
+Roxygen: list(markdown = TRUE)

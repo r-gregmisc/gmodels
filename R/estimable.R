@@ -3,34 +3,34 @@
 #' Compute and test contrasts and other estimable linear functions of model
 #' coefficients for for lm, glm, lme, mer, and geese objects
 #' 
-#' \code{estimable} computes an estimate, test statitic, significance test, and
+#' `estimable` computes an estimate, test statitic, significance test, and
 #' (optional) confidence interval for each linear functions of the model
-#' coefficients specified by \code{cm}.
+#' coefficients specified by `cm`.
 #' 
 #' The estimable function(s) may be specified via a vector, list, or matrix.
-#' If \code{cm} is a vector, it should contained named elements each of which
+#' If `cm` is a vector, it should contained named elements each of which
 #' gives the coefficient to be applied to the corresponding parameter. These
 #' coefficients will be used to construct the contrast matrix, with unspecified
-#' model parameters assigned zero coefficients. If \code{cm} is a list, it
+#' model parameters assigned zero coefficients. If `cm` is a list, it
 #' should contain one or more coefficient vectors, which will be used to
-#' construct rows of the contrast matrix.  If \code{cm} is a matrix, column
+#' construct rows of the contrast matrix.  If `cm` is a matrix, column
 #' names must match (a subset of) the model parameters, and each row should
 #' contain the corresponding coefficient to be applied.  Model parameters which
-#' are not present in the set of column names of \code{cm} will be set to zero.
+#' are not present in the set of column names of `cm` will be set to zero.
 #' 
 #' The estimates and their variances are obtained by applying the contrast
-#' matrix (generated from) \code{cm} to the model estimates variance-covariance
+#' matrix (generated from) `cm` to the model estimates variance-covariance
 #' matrix.  Degrees of freedom are obtained from the appropriate model terms.
 #' 
 #' The user is responsible for ensuring that the specified linear functions are
 #' meaningful.
 #' 
-#' For computing contrasts among levels of a single factor, \code{fit.contrast}
+#' For computing contrasts among levels of a single factor, `fit.contrast`
 #' may be more convenient.  For computing contrasts between two specific
-#' combinations of model parameters, the \code{contrast} function in Frank
+#' combinations of model parameters, the `contrast` function in Frank
 #' Harrell's 'rms' library (formerly 'Design') may be more convenient.
 #' 
-#' %The \code{.wald} function is called internally by \code{estimable} and %is
+#' %The `.wald` function is called internally by `estimable` and %is
 #' not intended for direct use.
 #' 
 #' @aliases estimable estimable.default estimable.mlm
@@ -45,20 +45,20 @@
 #' otherwise.
 #' @param ... ignored
 #' @return Returns a matrix with one row per linear function.  Columns contain
-#' the beta0 value (optional, see \code{show.beta0} above), estimated
+#' the beta0 value (optional, see `show.beta0` above), estimated
 #' coefficients, standard errors, t values, degrees of freedom, two-sided
 #' p-values, and the lower and upper endpoints of the 1-alpha confidence
 #' intervals.
-#' @note The estimated fixed effect parameters of \code{lme} objects may have
+#' @note The estimated fixed effect parameters of `lme` objects may have
 #' different degrees of freedom.  If a specified contrast includes nonzero
 #' coefficients for parameters with differing degrees of freedom, the smallest
 #' number of degrees of freedom is used and a warning message is issued.
 #' @author BXC (Bendix Carstensen) \email{b@@bxc.dk}, Gregory R. Warnes
 #' \email{greg@@warnes.net}, Soren Hojsgaard \email{sorenh@@agrsci.dk}, and
 #' Randall C Johnson \email{rjohnson@@ncifcrf.gov}
-#' @seealso \code{\link{fit.contrast}}, \code{\link[stats]{lm}},
-#' \code{\link[nlme]{lme}}, \code{\link[stats]{contrasts}},
-#' \code{\link[rms]{contrast}}
+#' @seealso [fit.contrast()], [stats::lm()],
+#' [nlme::lme()], [stats::contrasts()],
+#' [rms::contrast()]
 #' @keywords models regression
 #' @examples
 #' 

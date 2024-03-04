@@ -36,33 +36,33 @@ fast.prcomp(x, retx = TRUE, center = TRUE, scale. = FALSE, tol = NULL)
     would omit essentially constant components.}
 }
 \value{
-See the documetation for \code{\link[stats]{prcomp}} or
-\code{\link{svd}} .
+See the documetation for \code{\link[stats:prcomp]{stats::prcomp()}} or
+\code{\link[=svd]{svd()}} .
 }
 \description{
-The standard \code{\link[stats]{prcomp}} and \code{\link{svd}} function are
+The standard \code{\link[stats:prcomp]{stats::prcomp()}} and \code{\link[=svd]{svd()}} function are
 very inefficient for wide matrixes. \code{fast.prcomp} and \code{fast.svd}
 are modified versions which are efficient even for matrixes that are very
 wide.
 }
 \details{
-The current implementation of the function \code{\link{svd}} in S-Plus and R
+The current implementation of the function \code{\link[=svd]{svd()}} in S-Plus and R
 is much slower when operating on a matrix with a large number of columns
 than on the transpose of this matrix, which has a large number of rows. As a
-consequence, \code{\link[stats]{prcomp}}, which uses \code{\link{svd}}, is
+consequence, \code{\link[stats:prcomp]{stats::prcomp()}}, which uses \code{\link[=svd]{svd()}}, is
 also very slow when applied to matrixes with a large number of rows.
 
-The simple solution is to use \code{\link{La.svd}} instead of
-\code{\link{svd}}.  A suitable patch to \code{\link[stats]{prcomp}} has been
+The simple solution is to use \code{\link[=La.svd]{La.svd()}} instead of
+\code{\link[=svd]{svd()}}.  A suitable patch to \code{\link[stats:prcomp]{stats::prcomp()}} has been
 submitted.  In the mean time, the function \code{fast.prcomp} has been
 provided as a short-term work-around.
- 
-\describe{ 
- \item{list("fast.prcomp")}{is a modified versiom of
-   \code{\link[stats]{prcomp}} that calls \code{\link{La.svd}} instead of
-     \code{\link{svd}} } 
-   \item{list("fast.svd")}{is simply a wrapper around
-     \code{\link{La.svd}}.  } 
+
+\describe{
+\item{list("fast.prcomp")}{is a modified versiom of
+\code{\link[stats:prcomp]{stats::prcomp()}} that calls \code{\link[=La.svd]{La.svd()}} instead of
+\code{\link[=svd]{svd()}} }
+\item{list("fast.svd")}{is simply a wrapper around
+\code{\link[=La.svd]{La.svd()}}.  }
 }
 }
 \examples{
@@ -108,8 +108,7 @@ provided as a short-term work-around.
 
 }
 \seealso{
-\code{\link[stats]{prcomp}}, \code{\link{svd}},
-\code{\link{La.svd}}
+\code{\link[stats:prcomp]{stats::prcomp()}}, \code{\link[base:svd]{base::svd()}}, \code{\link[base:svd]{base::La.svd()}}
 }
 \author{
 Modifications by Gregory R. Warnes \email{greg@warnes.net}

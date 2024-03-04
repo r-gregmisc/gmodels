@@ -144,7 +144,7 @@ CrossTable(warpbreaks$wool, warpbreaks$tension, dnn = c("Wool", "Tension"))
 
 }
 \seealso{
-\code{\link{xtabs}}, \code{\link{table}}, \code{\link{prop.table}}
+\code{\link[stats:xtabs]{stats::xtabs()}}, \code{\link[base:table]{base::table()}}, \code{\link[base:proportions]{base::prop.table()}}
 }
 \author{
 Marc Schwartz \email{marc_schwartz@comcast.net}. Original version

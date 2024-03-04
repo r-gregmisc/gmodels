@@ -153,11 +153,11 @@ fit.contrast(fm2, "AgeGroup", rbind("Linear"=c(-2,-1,1,2),
 Venables & Ripley, Section 6.2
 }
 \seealso{
-\code{\link{lm}}, \code{\link{contrasts}},
-\code{\link{contr.treatment}}, \code{\link{contr.poly}}, Computation and
-testing of General Linear Hypothesis: \code{\link{glh.test}}, Computation
-and testing of estimable functions of model coefficients:
-\code{\link{estimable}}, \code{\link{make.contrasts}}
+\itemize{
+\item \code{\link[stats:lm]{stats::lm()}}, \code{\link[stats:contrasts]{stats::contrasts()}}, \code{\link[stats:contrast]{stats::contr.treatment()}}, \code{\link[stats:contrast]{stats::contr.poly()}},
+\item Computation and testing of General Linear Hypothesis: \code{\link[=glh.test]{glh.test()}},
+\item Computation and testing of estimable functions of model coefficients: \code{\link[=estimable]{estimable()}}, \code{\link[=make.contrasts]{make.contrasts()}}
+}
 }
 \author{
 Gregory R. Warnes \email{greg@warnes.net}

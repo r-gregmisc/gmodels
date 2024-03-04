@@ -12,7 +12,7 @@
 #' will be printed.
 #' 
 #' Note: If 'x' is a vector and 'y' is not specified, no statistical tests will
-#' be performed, even if any are set to \code{TRUE}.
+#' be performed, even if any are set to `TRUE`.
 #' 
 #' @param x A vector or a matrix. If y is specified, x must be a vector
 #' @param y A vector in a matrix or a dataframe
@@ -21,24 +21,24 @@
 #' the output horizontally. If the number of columns exceeds max.width, the
 #' table will be wrapped for each successive increment of max.width columns. If
 #' you want a single column vertical table, set max.width to 1
-#' @param expected If \code{TRUE}, chisq will be set to \code{TRUE} and
+#' @param expected If `TRUE`, chisq will be set to `TRUE` and
 #' expected cell counts from the \eqn{\chi^2}{Chi-Square} will be included
-#' @param prop.r If \code{TRUE}, row proportions will be included
-#' @param prop.c If \code{TRUE}, column proportions will be included
-#' @param prop.t If \code{TRUE}, table proportions will be included
-#' @param prop.chisq If \code{TRUE}, chi-square contribution of each cell will
+#' @param prop.r If `TRUE`, row proportions will be included
+#' @param prop.c If `TRUE`, column proportions will be included
+#' @param prop.t If `TRUE`, table proportions will be included
+#' @param prop.chisq If `TRUE`, chi-square contribution of each cell will
 #' be included
-#' @param chisq If \code{TRUE}, the results of a chi-square test will be
+#' @param chisq If `TRUE`, the results of a chi-square test will be
 #' included
-#' @param fisher If \code{TRUE}, the results of a Fisher Exact test will be
+#' @param fisher If `TRUE`, the results of a Fisher Exact test will be
 #' included
-#' @param mcnemar If \code{TRUE}, the results of a McNemar test will be
+#' @param mcnemar If `TRUE`, the results of a McNemar test will be
 #' included
-#' @param resid If \code{TRUE}, residual (Pearson) will be included
-#' @param sresid If \code{TRUE}, standardized residual will be included
-#' @param asresid If \code{TRUE}, adjusted standardized residual will be
+#' @param resid If `TRUE`, residual (Pearson) will be included
+#' @param sresid If `TRUE`, standardized residual will be included
+#' @param asresid If `TRUE`, adjusted standardized residual will be
 #' included
-#' @param missing.include If \code{TRUE}, then remove any unused factor levels
+#' @param missing.include If `TRUE`, then remove any unused factor levels
 #' @param format Either SAS (default) or SPSS, depending on the type of output
 #' desired.
 #' @param dnn the names to be given to the dimensions in the result (the
@@ -85,7 +85,7 @@
 #' posted to r-devel on Jul 27, 2002. SPSS format modifications added by Nitin
 #' Jain based upon code provided by Dirk Enzmann
 #' \email{dirk.enzmann@@jura.uni-hamburg.de}
-#' @seealso \code{\link{xtabs}}, \code{\link{table}}, \code{\link{prop.table}}
+#' @seealso [stats::xtabs()], [base::table()], [base::prop.table()]
 #' @keywords category univar
 #' @examples
 #' 

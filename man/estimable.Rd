@@ -28,7 +28,7 @@ otherwise.}
 \item{...}{ignored}
 
 \item{joint.test}{Logical value. If TRUE a 'joint' Wald test for the
-hypothesis \eqn{L \beta=\beta_0} is performed.  
+hypothesis \eqn{L \beta=\beta_0} is performed.
 Otherwise 'row-wise' tests are performed, i.e. \eqn{(L \beta)[i]=\beta_0[i]}.}
 }
 \value{
@@ -70,7 +70,7 @@ may be more convenient.  For computing contrasts between two specific
 combinations of model parameters, the \code{contrast} function in Frank
 Harrell's 'rms' library (formerly 'Design') may be more convenient.
 
-%The \code{.wald} function is called internally by \code{estimable} and %is
+\%The \code{.wald} function is called internally by \code{estimable} and \%is
 not intended for direct use.
 }
 \note{
@@ -128,9 +128,9 @@ estimable(glm1, cm)
 
 }
 \seealso{
-\code{\link{fit.contrast}}, \code{\link[stats]{lm}},
-\code{\link[nlme]{lme}}, \code{\link[stats]{contrasts}},
-\code{\link[rms]{contrast}}
+\code{\link[=fit.contrast]{fit.contrast()}}, \code{\link[stats:lm]{stats::lm()}},
+\code{\link[nlme:lme]{nlme::lme()}}, \code{\link[stats:contrasts]{stats::contrasts()}},
+\code{\link[rms:contrast]{rms::contrast()}}
 }
 \author{
 BXC (Bendix Carstensen) \email{b@bxc.dk}, Gregory R. Warnes

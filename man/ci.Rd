@@ -23,12 +23,12 @@ ci(x, confidence = 0.95, alpha = 1 - confidence, ...)
 
 \item{\dots}{Arguments for methods}
 
-\item{na.rm}{`logical` indicating whether missing values should be removed.}
+\item{na.rm}{\code{logical} indicating whether missing values should be removed.}
 }
 \value{
 vector or matrix with one row per model parameter and
-elements/columns \code{Estimate}, \code{CI lower}, \code{CI upper},
-\code{Std. Error}, \code{DF} (for lme objects only), and \code{p-value}.
+elements/columns \code{Estimate}, \verb{CI lower}, \verb{CI upper},
+\verb{Std. Error}, \code{DF} (for lme objects only), and \code{p-value}.
 }
 \description{
 Compute and display confidence intervals for model estimates.  Methods are
@@ -55,8 +55,8 @@ ci(reg)
 
 }
 \seealso{
-\code{\link[stats]{confint}}, \code{\link[stats]{lm}},
-\code{\link[stats]{summary.lm}}
+\code{\link[stats:confint]{stats::confint()}}, \code{\link[stats:lm]{stats::lm()}},
+\code{\link[stats:summary.lm]{stats::summary.lm()}}
 }
 \author{
 Gregory R. Warnes \email{greg@warnes.net}

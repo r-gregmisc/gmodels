@@ -2,7 +2,7 @@
 #' 
 #' Test, print, or summarize a general linear hypothesis for a regression model
 #' 
-#' Test the general linear hypothesis \eqn{C \hat{\beta} = d } for the regression model \code{reg}.
+#' Test the general linear hypothesis \eqn{C \hat{\beta} = d } for the regression model `reg`.
 #' 
 #' The test statistic is obtained from the formula: 
 #' \deqn{
@@ -23,17 +23,17 @@
 #' @param d vector `d` specifying the null hypothesis values for each linear
 #' combination
 #' 
-#' @return Object of class \code{c("glh.test","htest")} with elements:
+#' @return Object of class `c("glh.test","htest")` with elements:
 #' \item{call }{Function call that created the object}
 #' \item{statistic }{F statistic} 
 #' \item{parameter}{vector containing the numerator (r) and 
 #'  denominator (n-p) degrees of freedom} 
 #' \item{p.value}{p-value}
-#' \item{estimate}{computed estimate for each row of \code{cm}}
+#' \item{estimate}{computed estimate for each row of `cm`}
 #' \item{null.value}{d} 
 #' \item{method}{description of the method}
-#' \item{data.name}{name of the model given for \code{reg}}
-#' \item{matrix}{matrix specifying the general linear hypotheis (\code{cm})}
+#' \item{data.name}{name of the model given for `reg`}
+#' \item{matrix}{matrix specifying the general linear hypotheis (`cm`)}
 #' 
 #' @note When using treatment contrasts (the default) the first level of the
 #' factors are subsumed into the intercept term.  The estimated model
@@ -41,10 +41,9 @@
 #' into account when forming contrast matrixes, particularly when computing
 #' contrasts that include 'baseline' level of factors.
 #' 
-#' See the comparison with \code{fit.contrast} in the examples below.
+#' See the comparison with `fit.contrast` in the examples below.
 #' @author Gregory R. Warnes \email{greg@@warnes.net}
-#' @seealso \code{\link{fit.contrast}}, \code{\link{estimable}},
-#' \code{\link{contrasts}}
+#' @seealso [fit.contrast()], [estimable()], [stats::contrasts()]
 #' @references R.H. Myers, Classical and Modern Regression with Applications,
 #' 2nd Ed, 1990, p. 105
 #' @keywords models regression

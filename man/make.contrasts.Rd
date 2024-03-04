@@ -17,8 +17,8 @@ the number of levels of the target factor variable.}
 (\code{how.many}, \code{how.many}) containing the specified contrasts
 augmented (if necessary) with orthogonal "filler" contrasts.
 
-This matrix can then be used as the argument to \code{\link{contrasts}} or
-to the \code{contrasts} argument of model functions (eg, \code{\link{lm}}).
+This matrix can then be used as the argument to \code{\link[=contrasts]{contrasts()}} or
+to the \code{contrasts} argument of model functions (eg, \code{\link[=lm]{lm()}}).
 }
 \description{
 This function converts human-readable contrasts into the form that R
@@ -106,12 +106,15 @@ summary(model, split=list( Genotype=list( "KO vs WT"=1 ),
 
 }
 \seealso{
-\code{\link{lm}}, \code{\link{contrasts}},
-\code{\link{contr.treatment}}, \code{\link{contr.poly}}, Computation and
-testing of General Linear Hypothesis: \code{\link{glh.test}}, Computation
-and testing of estimable functions of model coefficients:
-\code{\link{estimable}}, Estimate and Test Contrasts for a previously fit
-linear model: \code{\link{fit.contrast}}
+\itemize{
+\item \code{\link[stats:lm]{stats::lm()}}, \code{\link[stats:contrasts]{stats::contrasts()}}, \code{\link[stats:contrast]{stats::contr.treatment()}},
+\code{\link[stats:contrast]{stats::contr.poly()}},
+\item Computation and testing of General Linear Hypothesis: \code{\link[=glh.test]{glh.test()}},
+\item Computation and testing of estimable functions of model coefficients:
+\code{\link[=estimable]{estimable()}},
+\item Estimate and Test Contrasts for a previously fit linear model:
+\code{\link[=fit.contrast]{fit.contrast()}}
+}
 }
 \author{
 Gregory R. Warnes \email{greg@warnes.net}

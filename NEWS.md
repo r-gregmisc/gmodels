@@ -7,7 +7,7 @@ Other Changes:
   - Upgrade to current package development tooling, including:
   - Use `roxygen2` for documentation and NAMESPACE
   - Use `NEWS.md` instead of `NEWS`
-  - Add additional contributors to Authors list.
+  - Add additional contributors to authors list and use new format.
 
 # gmodels Version 2.18.1 - 2018-06-25
 

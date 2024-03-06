@@ -2,3 +2,7 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^revdep$
+^CRAN-SUBMISSION$
+^cran-comments\.md$
+^\.github$

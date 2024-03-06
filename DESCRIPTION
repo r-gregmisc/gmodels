@@ -1,6 +1,6 @@
 Package: gmodels
-Version: 2.19.0
-Date: 2024-03-01
+Version: 2.19.1
+Date: 2024-03-05
 Title: Various R Programming Tools for Model Fitting
 URL: https://github.com/r-gregmisc/gmodels
 BugReports: https://github.com/r-gregmisc/gmodels/issues

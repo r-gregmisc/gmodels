@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+revdep
+CRAN-SUBMISSION
+cran-comments.md

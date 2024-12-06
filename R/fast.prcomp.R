@@ -65,7 +65,7 @@
 #'   # prcomp directly on matrix is SLOW:
 #'   system.time( pr.x <- prcomp(x) )
 #' 
-#'   # prcomp.fast is much faster
+#'   # fast.prcomp is much faster
 #'   system.time( fast.pr.x <- fast.prcomp(x) )
 #' 
 #'   # and the results are equivalent
@@ -82,6 +82,8 @@ fast.prcomp <- function (x, retx = TRUE, center = TRUE, scale. = FALSE,
 {
   x <- as.matrix(x)
   x <- scale(x, center = center, scale = scale.)
+  cen <- attr(x, "scaled:center")
+  sc <- attr(x, "scaled:scale")
   s <- La.svd(x, nu = 0)
   if (!is.null(tol)) {
     rank <- sum(s$d > (s$d[1] * tol))
@@ -92,7 +94,8 @@ fast.prcomp <- function (x, retx = TRUE, center = TRUE, scale. = FALSE,
   
   dimnames(s$vt) <- list(paste("PC", seq(len = nrow(s$vt)), sep = ""),
                          colnames(x) )
-  r <- list(sdev = s$d, rotation = t(s$vt) )
+  r <- list(sdev = s$d, rotation = t(s$vt),
+            center = cen %||% FALSE, scale = sc %||% FALSE)
   if (retx)
     r$x <- x %*% t(s$vt)
   class(r) <- "prcomp"
